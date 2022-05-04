@@ -1,6 +1,0 @@
-{
-  "PERPETUALS_GRAPH_URL": "https://api.thegraph.com/subgraphs/name/picodes/perpetual",
-  "PERIPHERY_GRAPH_URL": "https://api.thegraph.com/subgraphs/name/picodes/periphery",
-  "TRANSACTION_GRAPH_URL": "https://api.thegraph.com/subgraphs/name/picodes/transaction",
-  "LIQUIDATION_TRIGGER_PERCENTAGE":0.5
-}
