@@ -18,8 +18,8 @@ let config = {
    * Load Wallets of Showrunners
    */
   showrunnerWallets: loadShowrunnersWallets(),
-  masterWallet: process.env.MASTER_WALLET_PRIVATE_KEY,
-  walletMonitoring: process.env.WALLET_MONITORING,
+  masterWallet: staticConfig.MASTER_WALLET_PRIVATE_KEY,
+  walletMonitoring: staticConfig.WALLET_MONITORING,
   fileSuffix: process.env.NODE_ENV === 'production' ? 'js' : 'ts', // use the right file suffix in a development or production environment
 
   // Static Config BEGIN
@@ -133,19 +133,18 @@ let config = {
   deployedMainnetCommunicatorContract: staticConfig.EPNS_MAINNET_DEPLOYED_COMMUNICATOR_CONTRACT,
   deployedKovanCommunicatorContract: staticConfig.EPNS_KOVAN_DEPLOYED_COMMUNICATOR_CONTRACT,
   deployedContractCommunicatorABI: require('./epns_contract_communicator.json'),
+
   /**
    * API configs
    */
-  api: {
+   api: {
     prefix: '/apis',
   },
 
   /**
-   * Showrunners config, always at last since this is a seperate module
+   * Deprecated, these features are not needed anymore
    */
-  cmcAPIKey: process.env.CMC_API_KEY,
-  cmcEndpoint: staticConfig.CMC_ENDPOINT,
-
+  
   /**
    * mail config
    */
@@ -157,8 +156,8 @@ let config = {
   /**
    * AWS Config
    */
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  accessKeyId: staticConfig.ACCESS_KEY_ID,
+  secretAccessKey: staticConfig.SECRET_ACCESS_KEY,
 };
 
 // Settings Confis

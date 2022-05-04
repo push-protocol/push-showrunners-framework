@@ -5,6 +5,7 @@
   "TRUSTED_URLS": ["https://epns.io", "https://backend.epns.io", "https://app.epns.io", "https://www.epns.io"],
 
   "DB_HOST": "localhost",
+  "DB_HOST2": "localhost",
   "DB_NAME": "dbname",
   "DB_USER": "2roor",
   "DB_PASS": "s1mpl3",
@@ -55,8 +56,13 @@
   "GAS_ENDPOINT": "https://ethgasstation.info/",
   "ENS_ENDPOINT": "https://api.thegraph.com/",
 
-  "SUPPORT_MAIL_ADDRESS": "support@epns.io",
-  "SUPPORT_MAIL_NAME": "EPNS Support",
-  "SOURCE_MAIL_ADDRESS": "dbot@epns.io",
-  "SOURCE_MAIL_NAME": "EPNS Support Bot",
+  "SUPPORT_MAIL_ADDRESS": "support@notneeded.com",
+  "SUPPORT_MAIL_NAME": "Showrunner Support",
+  "SOURCE_MAIL_ADDRESS": "dbot@notneeded.com",
+  "SOURCE_MAIL_NAME": "Showrunner Support Bot",
+
+  "MASTER_WALLET_PRIVATE_KEY": "not_needed_deprecated",
+  "WALLET_MONITORING": "0",
+  "ACCESS_KEY_ID": "not_needed_deprecated",
+  "SECRET_ACCESS_KEY": "not_needed_deprecated"
 }

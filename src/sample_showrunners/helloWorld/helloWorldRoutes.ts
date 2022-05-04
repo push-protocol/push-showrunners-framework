@@ -7,10 +7,10 @@ import TestChannel from './helloWorldChannel';
 const route = Router();
 
 export default (app: Router) => {
-  app.use('/showrunners/test', route);
+  app.use('/showrunners/helloWorld', route);
 
   route.post(
-    '/testit',
+    '/testnotif',
     celebrate({
       body: Joi.object({
         simulate: [Joi.bool(), Joi.object()],

@@ -48,20 +48,24 @@ export default async () => {
         // This is an environtment variable, first segregate the comment if any and the variable info
         const delimiter = '#';
 
-        const index = moddedLine.indexOf('#');
+        const index = moddedLine.indexOf('#') == -1 ? moddedLine.length : moddedLine.indexOf('#');
+        const comment = index == -1 ? "" : moddedLine.slice(index + 1, moddedLine.length);
+
         const splits =
           index == -1
             ? [moddedLine.slice(0, index), '']
             : [moddedLine.slice(0, index), ' ' + delimiter + moddedLine.slice(index + 1)];
 
         const envVar = splits[0].split('=')[0]; //  Get environment variable by splitting the sample and then taking first seperation
-        const comment = splits[1];
+        const envParam = splits[0].split('=')[1];
 
         // Check if envVar exists in real env, if not ask for val
         // console.log(envObject[`${envVar}`])
         if (!envObject[`${envVar}`] || envObject[`${envVar}`].trim() == '') {
           // env key doesn't exist, ask for input
           LoggerInstance.input(`  Enter ENV Variable Value --> ${envVar}`);
+
+          LoggerInstance.input(`  Acceptable Values --> ${envParam} ${comment ? "// " + comment : ""}`);
 
           var value: any = '';
 
@@ -78,7 +82,13 @@ export default async () => {
           }
 
           LoggerInstance.info(`  [Saved] ${envVar}=${value}`);
-          moddedLine = `${envVar}=${value}${comment}`;
+          if (comment) {
+            moddedLine = `${envVar}=${value} #${comment}`;
+          }
+          else {
+            moddedLine = `${envVar}=${value}`;
+          }
+          
 
           fileModified = true;
         } else {

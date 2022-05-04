@@ -3,11 +3,6 @@ import fs from 'fs';
 import cryptoHelper from '../helpers/cryptoHelper';
 const utils = require('../helpers/utilsHelper');
 
-
-
-
-
-
 // Loads wallets using the private keys present in each folder
 // Scans for channelNameKeys.json file in the channel directory 
 // Loads the private key and add the keys to channlKeys
@@ -18,6 +13,13 @@ const channelWallets = function loadShowrunnersWallets() {
 
   let channelKeys = {};
   let keys = {};
+
+  if (directories.length == 0) {
+    LoggerInstance.info(
+      `     ❌  showrunners doesn't have any channel folder in src/showrunners! Check docs.epns.io to see how to setup showrunners properly!`,
+    );
+    process.exit(1);
+  }
 
   for (const channel of directories) {
     const absPath = `${channelFolderPath}${channel}/${channel}Keys.json`;
