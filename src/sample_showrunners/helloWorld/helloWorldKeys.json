@@ -1,5 +1,6 @@
 ## Include your PRIVATE KEYS in this file.
 ## You can include more than 1 Private keys, if you have delegateed to multiple addresses.
 
-PRIVATE_KEY_1 = "Enter your First Private Key here"
-PRIVATE KEY_2 = "Enter your Second Private key here" 
+{
+   “PRIVATE_KEY”:“YOUR_CHANNEL_PRIVATE_KEY_HERE”
+}
