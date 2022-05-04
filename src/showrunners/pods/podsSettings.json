@@ -1,0 +1,6 @@
+{
+  "PRICE_TRESHOLD": 10,
+  "PODS_URL_GRAPH": "https://api.thegraph.com/subgraphs/name/pods-finance/pods",
+  "DATE_DIFFERENCE_TOLERANCE": 2,
+  "CTA": "https://app.pods.finance/"
+}
