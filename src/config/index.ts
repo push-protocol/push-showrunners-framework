@@ -124,14 +124,14 @@ let config = {
   /**
    * EPNS Related
    */
-  deployedContract: process.env.EPNS_DEPLOYED_CONTRACT,
-  deployedKovanCoreContract: process.env.EPNS_CORE_KOVAN_DEPLOYED_CONTRACT,
-  deployedMainnetCoreContract: process.env.EPNS_CORE_MAINNET_DEPLOYED_CONTRACT,
+  deployedContract: staticConfig.EPNS_DEPLOYED_CONTRACT,
+  deployedKovanCoreContract: staticConfig.EPNS_CORE_KOVAN_DEPLOYED_CONTRACT,
+  deployedMainnetCoreContract: staticConfig.EPNS_CORE_MAINNET_DEPLOYED_CONTRACT,
   deployedContractABI: require('./epns_contract.json'),
-  deployedPolygonCommunicatorContract: process.env.EPNS_POLYGON_DEPLOYED_COMMUNICATOR_CONTRACT,
-  deployedRopstenCommunicatorContract: process.env.EPNS_ROPSTEN_DEPLOYED_COMMUNICATOR_CONTRACT,
-  deployedMainnetCommunicatorContract: process.env.EPNS_MAINNET_DEPLOYED_COMMUNICATOR_CONTRACT,
-  deployedKovanCommunicatorContract: process.env.EPNS_KOVAN_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedPolygonCommunicatorContract: staticConfig.EPNS_POLYGON_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedRopstenCommunicatorContract: staticConfig.EPNS_ROPSTEN_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedMainnetCommunicatorContract: staticConfig.EPNS_MAINNET_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedKovanCommunicatorContract: staticConfig.EPNS_KOVAN_DEPLOYED_COMMUNICATOR_CONTRACT,
   deployedContractCommunicatorABI: require('./epns_contract_communicator.json'),
   /**
    * API configs
@@ -145,12 +145,6 @@ let config = {
    */
   cmcAPIKey: process.env.CMC_API_KEY,
   cmcEndpoint: staticConfig.CMC_ENDPOINT,
-
-  // gasAPIKey: process.env.GAS_API_KEY,
-  // gasEndpoint: process.env.GAS_ENDPOINT,
-
-  // cmcSandboxAPIKey: process.env.CMC_SANDBOX_API_KEY,
-  // cmcSandboxEndpoint: process.env.CMC_SANDBOX_ENDPOINT,
 
   /**
    * mail config
