@@ -41,7 +41,6 @@ export default async ({ expressApp }) => {
     }
     return channelModels;
   } 
-
   const models = loadDBModels()
 
   // It returns the agenda instance because it's needed in the subsequent loaders

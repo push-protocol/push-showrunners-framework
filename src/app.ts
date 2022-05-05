@@ -11,7 +11,6 @@ async function startServer() {
   Logger.info('✌️   Verifying ENV');
   await EnvVerifierLoader();
   Logger.info('✔️   ENV Verified / Generated and Loaded!');
-
   // Continue load
   const config = (await require('./config/index')).default;
 

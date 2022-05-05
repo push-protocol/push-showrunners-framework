@@ -18,8 +18,8 @@ let config = {
    * Load Wallets of Showrunners
    */
   showrunnerWallets: loadShowrunnersWallets(),
-  masterWallet: process.env.MASTER_WALLET_PRIVATE_KEY,
-  walletMonitoring: process.env.WALLET_MONITORING,
+  masterWallet: staticConfig.MASTER_WALLET_PRIVATE_KEY,
+  walletMonitoring: staticConfig.WALLET_MONITORING,
   fileSuffix: process.env.NODE_ENV === 'production' ? 'js' : 'ts', // use the right file suffix in a development or production environment
 
   // Static Config BEGIN
@@ -124,32 +124,27 @@ let config = {
   /**
    * EPNS Related
    */
-  deployedContract: process.env.EPNS_DEPLOYED_CONTRACT,
-  deployedKovanCoreContract: process.env.EPNS_CORE_KOVAN_DEPLOYED_CONTRACT,
+  deployedContract: staticConfig.EPNS_DEPLOYED_CONTRACT,
+  deployedKovanCoreContract: staticConfig.EPNS_CORE_KOVAN_DEPLOYED_CONTRACT,
+  deployedMainnetCoreContract: staticConfig.EPNS_CORE_MAINNET_DEPLOYED_CONTRACT,
   deployedContractABI: require('./epns_contract.json'),
-  deployedPolygonCommunicatorContract: process.env.EPNS_POLYGON_DEPLOYED_COMMUNICATOR_CONTRACT,
-  deployedRopstenCommunicatorContract: process.env.EPNS_ROPSTEN_DEPLOYED_COMMUNICATOR_CONTRACT,
-  deployedKovanCommunicatorContract: process.env.EPNS_KOVAN_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedPolygonCommunicatorContract: staticConfig.EPNS_POLYGON_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedRopstenCommunicatorContract: staticConfig.EPNS_ROPSTEN_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedMainnetCommunicatorContract: staticConfig.EPNS_MAINNET_DEPLOYED_COMMUNICATOR_CONTRACT,
+  deployedKovanCommunicatorContract: staticConfig.EPNS_KOVAN_DEPLOYED_COMMUNICATOR_CONTRACT,
   deployedContractCommunicatorABI: require('./epns_contract_communicator.json'),
+
   /**
    * API configs
    */
-  api: {
+   api: {
     prefix: '/apis',
   },
 
   /**
-   * Showrunners config, always at last since this is a seperate module
+   * Deprecated, these features are not needed anymore
    */
-  cmcAPIKey: process.env.CMC_API_KEY,
-  cmcEndpoint: staticConfig.CMC_ENDPOINT,
-
-  // gasAPIKey: process.env.GAS_API_KEY,
-  // gasEndpoint: process.env.GAS_ENDPOINT,
-
-  // cmcSandboxAPIKey: process.env.CMC_SANDBOX_API_KEY,
-  // cmcSandboxEndpoint: process.env.CMC_SANDBOX_ENDPOINT,
-
+  
   /**
    * mail config
    */
@@ -161,8 +156,8 @@ let config = {
   /**
    * AWS Config
    */
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  accessKeyId: staticConfig.ACCESS_KEY_ID,
+  secretAccessKey: staticConfig.SECRET_ACCESS_KEY,
 };
 
 // Settings Confis
@@ -189,6 +184,13 @@ const epnsSettingsKovan: EPNSSettings = {
   contractAddress: config.deployedKovanCoreContract,
   contractABI: config.deployedContractABI,
 };
+
+const epnsSettingsMainnet: EPNSSettings = {
+  network: config.web3MainnetNetwork,
+  contractAddress: config.deployedMainnetCoreContract,
+  contractABI: config.deployedContractABI,
+};
+
 export interface SDKSettings {
   networkSettings: NetWorkSettings;
   epnsCoreSettings: EPNSSettings;
@@ -206,10 +208,16 @@ export interface ISettings {
     contractAddress: string;
     contractABI: any;
   };
+  epnsMainnetCommunicatorSettings: {
+    network: string;
+    contractAddress: string;
+    contractABI: any;
+  };
   infuraSettings: InfuraSettings;
   networkSettings: NetWorkSettings;
   epnsSettingsRopsten: EPNSSettings;
   epnsSettingsKovan: EPNSSettings;
+  epnsSettingsMainnet: EPNSSettings;
 }
 
 export const settings: ISettings = {
@@ -221,6 +229,11 @@ export const settings: ISettings = {
   epnsKovanCommunicatorSettings: {
     network: config.web3KovanNetwork,
     contractAddress: config.deployedKovanCommunicatorContract,
+    contractABI: config.deployedContractCommunicatorABI,
+  },
+  epnsMainnetCommunicatorSettings: {
+    network: config.web3MainnetNetwork,
+    contractAddress: config.deployedMainnetCommunicatorContract,
     contractABI: config.deployedContractCommunicatorABI,
   },
   infuraSettings: infuraSettings,
