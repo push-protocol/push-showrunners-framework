@@ -140,5 +140,7 @@ epns-firebase-adminsdk.json
 external
 dump.rdb*
 yarn.lock 
+
 # ChannelKeys
 src/showrunners/*/*Keys.json
+src/showrunners/*/*Settings.json
