@@ -70,7 +70,7 @@ export default async ({ expressApp }) => {
 
   logger.info('✌️   Loading webhooks');
   try{
-    await webhooksLoader({ logger });
+    await webhooksLoader({ logger, app: expressApp });
   }catch(err){
     logger.error(`❌   Error while loading webhooks: ${err}`);
   }

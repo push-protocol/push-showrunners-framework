@@ -11,7 +11,7 @@ const utils = require('../helpers/utilsHelper');
 const webhookHelper = require('../helpers/webhookHelper');
 const route = Router();
 
-export default async ({ logger }) => {
+export default async ({ logger, app }) => {
   // WEBHOOK SERVICE
   logger.info(`    -- Checking and Loading Dynamic Webhooks...`);
   const channelFolderPath = `${__dirname}/../showrunners/`;
@@ -23,7 +23,7 @@ export default async ({ logger }) => {
 
     if (fs.existsSync(absPath)) {
       const webhook = await import(absPath);
-      webhook.default();
+      webhook.default(app);
       logger.info(`     ✔️  ${relativePath} Loaded!`);
     } else {
       logger.info(`     ❌  ${relativePath} Not Found... skipped`);
