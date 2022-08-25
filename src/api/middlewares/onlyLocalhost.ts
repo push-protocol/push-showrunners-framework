@@ -41,7 +41,7 @@ const onlyLocalhost = async (req, res, next) => {
   }
 };
 
-const checkLocalHost = async (address) => {
+export const checkLocalHost = async (address) => {
   return new Promise((resolve, reject) => {
     dns.lookup(address, function(err, addr) {
       if(err) {
