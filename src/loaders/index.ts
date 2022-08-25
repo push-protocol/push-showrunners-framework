@@ -8,6 +8,7 @@ import logger from './logger';
 
 import mongooseLoader from './mongoose';
 import jobsLoader from './jobs';
+import webhooksLoader from './webhooks';
 import dbLoader from './db';
 import dbListenerLoader from './dbListener';
 const utils = require('../helpers/utilsHelper');
@@ -66,6 +67,15 @@ export default async ({ expressApp }) => {
     console.log("\n\n\n\n\n\n\n")
   }
   logger.info('✔️   Jobs loaded');
+
+  logger.info('✌️   Loading webhooks');
+  try{
+    await webhooksLoader({ logger });
+  }catch(err){
+    logger.error(`❌   Error while loading webhooks: ${err}`);
+  }
+  logger.info('✔️   Webhooks loaded');
+
 
   await expressLoader({ app: expressApp });
   logger.info('✔️   Express loaded');
