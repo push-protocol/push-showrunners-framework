@@ -48,4 +48,14 @@ export default class HelloWorldChannel extends EPNSChannel {
       this.logError(error);
     }
   }
+
+  /**
+   * The method responsible for handling webhook payload
+   * @param payload
+   */
+  public async webhookPayloadHandler(payload: any, simulate: any) {
+    const { Message } = payload;
+
+    // do something with the payload
+  }
 }
