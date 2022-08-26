@@ -6,9 +6,10 @@ import epnsHelperProd from '@epnsproject/backend-sdk';
 import config, { SDKSettings } from '../config';
 import { Logger } from 'winston';
 import { ethers } from 'ethers';
-import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
+// import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
 
-export const epnsHelper = config.showrunnersEnv == 'PROD'? epnsHelperProd: (config.showrunnersEnv == 'STAGING'? epnsHelperStaging: null)
+export const epnsHelper =
+  config.showrunnersEnv == 'PROD' ? epnsHelperProd : config.showrunnersEnv == 'STAGING' ? epnsHelperStaging : null;
 
 export interface ChannelSettings {
   sdkSettings: SDKSettings;
@@ -62,7 +63,7 @@ export class EPNSChannel {
 
     const walletKey = wallets[walletKeyID];
     this.logInfo('WalletKey Obtained');
-    return walletKey.startsWith("0x") ? walletKey : `0x${walletKey}`;
+    return walletKey.startsWith('0x') ? walletKey : `0x${walletKey}`;
   }
 
   //   Initialize and load this.cSettings
@@ -160,7 +161,7 @@ export class EPNSChannel {
         this.saveFailedNotification(params);
         // if sending this notification fails for any reason then resend it
       }
-      await this.countNotification(retry);
+      // await this.countNotification(retry);
       this.logInfo(`transaction ${this.cSettings.name}: %o`, tx);
       return tx;
     } catch (error) {
@@ -207,38 +208,38 @@ export class EPNSChannel {
       this.logError(err.message);
     }
   }
-  async countNotification(retry: Boolean) {
-    if (!this.jobId) return;
-    let positiveInc = Number(!retry); // if retry is false then the notification went through
-    let negativeInc = Number(retry); // if retry is true, then notification failed from the server side
+  // async countNotification(retry: Boolean) {
+  //   if (!this.jobId) return;
+  //   let positiveInc = Number(!retry); // if retry is false then the notification went through
+  //   let negativeInc = Number(retry); // if retry is true, then notification failed from the server side
 
-    // increment the job model notifications send by this value and the endtime
-    const notif = await NotificationDetailsModel.findOneAndUpdate(
-      { _id: this.jobId },
-      {
-        $inc: { notificationCount: positiveInc, failedNotificationCount: negativeInc },
-        $set: { endDateTime: Date.now() },
-      },
-      { new: true },
-    );
-    this.logInfo(`logging Notification for ${this.cSettings.name} as ${JSON.stringify(notif)}`);
-  }
+  //   // increment the job model notifications send by this value and the endtime
+  //   const notif = await NotificationDetailsModel.findOneAndUpdate(
+  //     { _id: this.jobId },
+  //     {
+  //       $inc: { notificationCount: positiveInc, failedNotificationCount: negativeInc },
+  //       $set: { endDateTime: Date.now() },
+  //     },
+  //     { new: true },
+  //   );
+  //   this.logInfo(`logging Notification for ${this.cSettings.name} as ${JSON.stringify(notif)}`);
+  // }
 
-  async logJobToDB() {
-    const { name: channelName } = this.cSettings;
-    try {
-      const { channelAddress } = this;
+  // async logJobToDB() {
+  //   const { name: channelName } = this.cSettings;
+  //   try {
+  //     const { channelAddress } = this;
 
-      const newData = new NotificationDetailsModel({
-        channelName,
-        channelAddress,
-      });
+  //     const newData = new NotificationDetailsModel({
+  //       channelName,
+  //       channelAddress,
+  //     });
 
-      const newJob = await newData.save();
-      this.jobId = newJob._id;
-      this.logInfo(`logging Job for ${this.cSettings.name}`);
-    } catch (e) {
-      this.logError('Failded to save Notification Deatils of ' + channelName);
-    }
-  }
+  //     const newJob = await newData.save();
+  //     this.jobId = newJob._id;
+  //     this.logInfo(`logging Job for ${this.cSettings.name}`);
+  //   } catch (e) {
+  //     this.logError('Failded to save Notification Deatils of ' + channelName);
+  //   }
+  // }
 }
