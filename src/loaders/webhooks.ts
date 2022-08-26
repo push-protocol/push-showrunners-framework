@@ -18,8 +18,8 @@ export default async ({ logger, app }) => {
   const directories = utils.getDirectories(channelFolderPath);
 
   for (const channel of directories) {
-    const absPath = `${channelFolderPath}${channel}/${channel}Webhook.${config.fileSuffix}`;
-    const relativePath = `../showrunners/${channel}/${channel}Webhook.${config.fileSuffix}`;
+    const absPath = `${channelFolderPath}${channel}/${channel}AWSSNS.${config.fileSuffix}`;
+    const relativePath = `../showrunners/${channel}/${channel}AWSSNS.${config.fileSuffix}`;
 
     if (fs.existsSync(absPath)) {
       const webhook = await import(absPath);
