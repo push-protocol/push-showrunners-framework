@@ -178,9 +178,9 @@ export default class ProofOfHumanityChannel extends EPNSChannel {
           if (users.includes(e.requestor) || simulate?.logicOverride) {
             const message = `Your profile has been challenged`;
 
-            const payloadMsg = `Your profile has been challenged\n\nChallenger : [s:${
-              e.challenger
-            }]\nReason : [d:${e?.reason ?? 'Not mentioned'}]`;
+            const payloadMsg = `Your profile has been challenged\n\nChallenger : [s:${e.challenger}]\nReason : [d:${
+              e?.reason ?? 'Not mentioned'
+            }]`;
 
             await this.sendNotification({
               recipient: e.requestor,
