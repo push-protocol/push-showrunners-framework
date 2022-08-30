@@ -15,6 +15,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 let config = {
   /**
+   * Showrunners Environment
+   */
+   showrunnersEnv: process.env.SHOWRUNNERS_ENV,
+  /**
    * Load Wallets of Showrunners
    */
   showrunnerWallets: loadShowrunnersWallets(),
@@ -121,6 +125,7 @@ let config = {
   web3PolygonMumbaiProvider: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3PolygonMumbaiRPC: staticConfig.POLYGON_MUMBAI_RPC,
 
+  web3GnosisRPC: staticConfig.GNOSIS_MAINNET_RPC,
   /**
    * EPNS Related
    */
@@ -240,11 +245,12 @@ export const settings: ISettings = {
   networkSettings: networkSettings,
   epnsSettingsRopsten: epnsSettingsRopsten,
   epnsSettingsKovan: epnsSettingsKovan,
+  epnsSettingsMainnet: epnsSettingsMainnet,
 };
 
 export const defaultSdkSettings: SDKSettings = {
-  epnsCoreSettings: settings.epnsSettingsKovan,
-  epnsCommunicatorSettings: settings.epnsKovanCommunicatorSettings,
+  epnsCoreSettings: config.showrunnersEnv == 'PROD'? settings.epnsSettingsMainnet:(config.showrunnersEnv == 'STAGING'? settings.epnsSettingsKovan: null) ,
+  epnsCommunicatorSettings: config.showrunnersEnv == 'PROD'? settings.epnsMainnetCommunicatorSettings:(config.showrunnersEnv == 'STAGING'? settings.epnsKovanCommunicatorSettings: null),
   networkSettings: networkSettings,
 };
 

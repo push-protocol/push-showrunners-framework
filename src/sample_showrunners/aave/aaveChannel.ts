@@ -4,7 +4,6 @@
 import { Service, Inject } from 'typedi';
 import config, { defaultSdkSettings, settings } from '../../config';
 import { ethers } from 'ethers';
-import epnsHelper from '@epnsproject/backend-sdk';
 import aaveSettings from './aaveSettings.json';
 import aaveLendingPoolDeployedContractABI from './aave_LendingPool.json';
 import { EPNSChannel } from '../../helpers/epnschannel';
@@ -79,7 +78,7 @@ export default class AaveChannel extends EPNSChannel {
     return true;
   }
 
-  public async checkHealthFactor(aave, userAddress, sdk: epnsHelper, simulate) {
+  public async checkHealthFactor(aave, userAddress, sdk: any, simulate) {
     this.logInfo(`Checking Health Factor`);
     try {
       const logicOverride =

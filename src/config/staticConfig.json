@@ -28,6 +28,8 @@
   "POLYGON_MAINNET_RPC": "https://rpc-mainnet.maticvigil.com",
   "POLYGON_MUMBAI_RPC": "https://rpc-mumbai.maticvigil.com",
 
+  "GNOSIS_MAINNET_RPC": "https://xdai.poanetwork.dev",
+
   "KOVAN_WEB3_NETWORK": "kovan",
   "ROPSTEN_WEB3_NETWORK": "ropsten",
   "MAINNET_WEB3_NETWORK": "homestead",
