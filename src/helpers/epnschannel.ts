@@ -1,12 +1,13 @@
+import epnsHelperProd from '@epnsproject/backend-sdk';
+import epnsHelperStaging from '@epnsproject/backend-sdk-staging';
+import { ethers } from 'ethers';
 import path from 'path';
 import { Container } from 'typedi';
-import showrunnersHelper from './showrunnersHelper';
-import epnsHelperStaging from '@epnsproject/backend-sdk-staging';
-import epnsHelperProd from '@epnsproject/backend-sdk';
-import config, { SDKSettings } from '../config';
 import { Logger } from 'winston';
-import { ethers } from 'ethers';
+import config, { SDKSettings } from '../config';
+import showrunnersHelper from './showrunnersHelper';
 // import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
+import * as EpnsAPI from "@epnsproject/sdk-restapi";
 
 export const epnsHelper =
   config.showrunnersEnv == 'PROD' ? epnsHelperProd : config.showrunnersEnv == 'STAGING' ? epnsHelperStaging : null;
@@ -30,8 +31,9 @@ export interface ISendNotificationParams {
   notificationType: number;
   cta?: string;
   image: string;
+  expiry: number;
+  hidden: boolean;
   simulate: boolean | Object;
-  offChain?: boolean;
   timestamp?: number;
   retry?: boolean;
 }
@@ -66,7 +68,7 @@ export class EPNSChannel {
     return walletKey.startsWith('0x') ? walletKey : `0x${walletKey}`;
   }
 
-  //   Initialize and load this.cSettings
+  //   Initialize and load this.Settings
   async init() {
     this.logInfo('Initializing Channel : %s', this.cSettings.name);
     try {
@@ -74,11 +76,7 @@ export class EPNSChannel {
       this.walletKey = await this.getWalletKey(this.cSettings.dirname);
       this.channelAddress = this.cSettings?.address ?? ethers.utils.computeAddress(this.walletKey);
       this.logInfo(`channelAddress : ${this.channelAddress}`);
-      this.epnsSDK = new epnsHelper(this.walletKey, {
-        channelAddress: this.channelAddress,
-        networkKeys: sdkSettings.networkSettings,
-        networkToMonitor: this.cSettings.networkToMonitor,
-      });
+
       this.logInfo('Channel Initialization Complete');
     } catch (error) {
       this.logError(error);
@@ -139,31 +137,53 @@ export class EPNSChannel {
       this.logInfo(`Sending Notification`);
       this.logInfo('------------------------');
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
-      const tx = await sdk.sendNotification(
-        params.recipient,
-        params.title,
-        params.message,
-        params.payloadTitle,
-        params.payloadMsg,
-        params.notificationType,
-        params?.cta ?? this.cSettings?.url,
-        params.image,
-        params.simulate,
-        {
-          offChain: isOffChain,
-        },
-      );
 
-      const { retry = false } = tx;
-      // if its offchain and it fails then use retry logic
-      if (isOffChain && retry && globalRetryIfFailed) {
-        // if sending this notification fails for any reason then resend it
-        this.saveFailedNotification(params);
-        // if sending this notification fails for any reason then resend it
-      }
-      // await this.countNotification(retry);
-      this.logInfo(`transaction ${this.cSettings.name}: %o`, tx);
-      return tx;
+      const signer = new ethers.Wallet(this.walletKey);
+
+      // apiResponse?.status === 204, if sent successfully!
+      const apiResponse = await EpnsAPI.payloads.sendNotification({
+        signer,
+        type: params.notificationType,
+        identityType: 2, // direct payload
+        notification: {
+          title: params.title,
+          body: params.message
+        },
+        payload: {
+          title: params.payloadTitle,
+          body: params.payloadMsg,
+          cta: params?.cta ?? this.cSettings?.url,
+          img: params.image
+        },
+        channel: this.channelAddress, // your channel address
+        env: 'staging'
+      });
+      
+      // const tx = await sdk.sendNotification(
+      //   params.recipient,
+      //   params.title,
+      //   params.message,
+      //   params.payloadTitle,
+      //   params.payloadMsg,
+      //   params.notificationType,
+      //   params?.cta ?? this.cSettings?.url,
+      //   params.image,
+      //   params.simulate,
+      //   {
+      //     offChain: isOffChain,
+      //   },
+      // );
+
+      // const { retry = false } = tx;
+      // // if its offchain and it fails then use retry logic
+      // if (isOffChain && retry && globalRetryIfFailed) {
+      //   // if sending this notification fails for any reason then resend it
+      //   this.saveFailedNotification(params);
+      //   // if sending this notification fails for any reason then resend it
+      // }
+      // // await this.countNotification(retry);
+      // this.logInfo(`transaction ${this.cSettings.name}: %o`, tx);
+      // return tx;
     } catch (error) {
       this.logError(`Failed to send notification for channel ${this.cSettings.name}`);
       if (isOffChain) {
