@@ -1,5 +1,3 @@
-import epnsHelperProd from '@epnsproject/backend-sdk';
-import epnsHelperStaging from '@epnsproject/backend-sdk-staging';
 import { ethers } from 'ethers';
 import path from 'path';
 import { Container } from 'typedi';
@@ -8,9 +6,6 @@ import config, { SDKSettings } from '../config';
 import showrunnersHelper from './showrunnersHelper';
 // import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
 import * as EpnsAPI from "@epnsproject/sdk-restapi";
-
-export const epnsHelper =
-  config.showrunnersEnv == 'PROD' ? epnsHelperProd : config.showrunnersEnv == 'STAGING' ? epnsHelperStaging : null;
 
 export interface ChannelSettings {
   sdkSettings: SDKSettings;
@@ -156,7 +151,7 @@ export class EPNSChannel {
           img: params.image
         },
         channel: this.channelAddress, // your channel address
-        env: 'staging'
+        env: config.showrunnersEnv
       });
       
       // const tx = await sdk.sendNotification(
