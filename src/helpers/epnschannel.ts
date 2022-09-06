@@ -134,7 +134,12 @@ export class EPNSChannel {
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
 
       const signer = new ethers.Wallet(this.walletKey);
-
+      const caipRecipients = [];
+      if (params.notificationType === 4 && Array.isArray(params.recipient)) {
+        params.recipient.forEach((add) => {
+          caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, add));
+        });
+      }
       // apiResponse?.status === 204, if sent successfully!
       const apiResponse = await EpnsAPI.payloads.sendNotification({
         signer,
@@ -151,7 +156,9 @@ export class EPNSChannel {
           img: params.image,
         },
         channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, this.channelAddress),
-        recipients: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, params.recipient), // your channel address
+        recipients: caipRecipients.length
+          ? caipRecipients
+          : this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, params.recipient), // your channel address
         env: config.showrunnersEnv,
       });
       if (apiResponse?.status === 204) {
@@ -201,6 +208,12 @@ export class EPNSChannel {
       const signer = new ethers.Wallet(this.walletKey);
       // get the model and create a new entry for the recently failed job
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
+      const caipRecipients = [];
+      if (params.notificationType === 4 && Array.isArray(params.recipient)) {
+        params.recipient.forEach((add) => {
+          caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, add));
+        });
+      }
       const notificationPayload = await EpnsAPI.payloads.sendNotification({
         signer,
         type: params.notificationType,
@@ -216,7 +229,9 @@ export class EPNSChannel {
           img: params.image,
         },
         channel: this.getCAIPAddress('eip155', 42, this.channelAddress),
-        recipients: this.getCAIPAddress('eip155', 42, params.recipient), // your channel address
+        recipients: caipRecipients.length
+          ? caipRecipients
+          : this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, params.recipient), // your channel address
         env: config.showrunnersEnv,
       });
 
