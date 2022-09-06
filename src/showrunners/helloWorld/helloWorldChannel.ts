@@ -25,8 +25,6 @@ export default class HelloWorldChannel extends EPNSChannel {
   // Whose Profile is about to be expired
   async helloWorld(simulate) {
     try {
-      let sdk = await this.getSdk();
-
       this.logInfo('Sending notification to evidence provider');
 
       for (const e of mockMessages.messages) {

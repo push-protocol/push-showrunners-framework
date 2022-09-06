@@ -17,7 +17,7 @@ let config = {
   /**
    * Showrunners Environment
    */
-   showrunnersEnv: process.env.SHOWRUNNERS_ENV,
+  showrunnersEnv: process.env.SHOWRUNNERS_ENV,
   /**
    * Load Wallets of Showrunners
    */
@@ -113,7 +113,7 @@ let config = {
 
   web3RopstenProvider: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3RopstenNetwork: staticConfig.ROPSTEN_WEB3_NETWORK,
-  web3RopstenSocket:staticConfig.ROPSTEN_WEB3_SOCKET,
+  web3RopstenSocket: staticConfig.ROPSTEN_WEB3_SOCKET,
 
   web3KovanProvider: `https://kovan.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3KovanNetwork: staticConfig.KOVAN_WEB3_NETWORK,
@@ -142,14 +142,14 @@ let config = {
   /**
    * API configs
    */
-   api: {
+  api: {
     prefix: '/apis',
   },
 
   /**
    * Deprecated, these features are not needed anymore
    */
-  
+
   /**
    * mail config
    */
@@ -249,10 +249,19 @@ export const settings: ISettings = {
 };
 
 export const defaultSdkSettings: SDKSettings = {
-  epnsCoreSettings: config.showrunnersEnv == 'PROD'? settings.epnsSettingsMainnet:(config.showrunnersEnv == 'STAGING'? settings.epnsSettingsKovan: null) ,
-  epnsCommunicatorSettings: config.showrunnersEnv == 'PROD'? settings.epnsMainnetCommunicatorSettings:(config.showrunnersEnv == 'STAGING'? settings.epnsKovanCommunicatorSettings: null),
+  epnsCoreSettings:
+    config.showrunnersEnv == 'PROD'
+      ? settings.epnsSettingsMainnet
+      : config.showrunnersEnv == 'STAGING'
+      ? settings.epnsSettingsKovan
+      : null,
+  epnsCommunicatorSettings:
+    config.showrunnersEnv == 'PROD'
+      ? settings.epnsMainnetCommunicatorSettings
+      : config.showrunnersEnv == 'STAGING'
+      ? settings.epnsKovanCommunicatorSettings
+      : null,
   networkSettings: networkSettings,
 };
-
 
 export default config;

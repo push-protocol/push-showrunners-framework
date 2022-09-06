@@ -5,7 +5,8 @@ import { Logger } from 'winston';
 import config, { SDKSettings } from '../config';
 import showrunnersHelper from './showrunnersHelper';
 // import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
-import * as EpnsAPI from "@epnsproject/sdk-restapi";
+import * as EpnsAPI from '@epnsproject/sdk-restapi';
+import { AccountId } from 'caip';
 
 export interface ChannelSettings {
   sdkSettings: SDKSettings;
@@ -82,13 +83,13 @@ export class EPNSChannel {
     return Math.floor(Date.now() / 1000);
   }
 
-  public async getSdk() {
-    if (this.epnsSDK) {
-      return this.epnsSDK;
-    }
-    await this.init();
-    return this.epnsSDK;
-  }
+  // public async getSdk() {
+  //   if (this.epnsSDK) {
+  //     return this.epnsSDK;
+  //   }
+  //   await this.init();
+  //   return this.epnsSDK;
+  // }
 
   //   --------------------------------------------------
   //   Logging Related
@@ -127,7 +128,6 @@ export class EPNSChannel {
     const isOffChain = params.offChain ?? this.cSettings.useOffChain ?? false;
     const globalRetryIfFailed = params.retry === undefined ? true : params.retry;
     try {
-      const sdk = await this.getSdk();
       this.logInfo('------------------------');
       this.logInfo(`Sending Notification`);
       this.logInfo('------------------------');
@@ -142,18 +142,22 @@ export class EPNSChannel {
         identityType: 2, // direct payload
         notification: {
           title: params.title,
-          body: params.message
+          body: params.message,
         },
         payload: {
           title: params.payloadTitle,
           body: params.payloadMsg,
           cta: params?.cta ?? this.cSettings?.url,
-          img: params.image
+          img: params.image,
         },
-        channel: this.channelAddress, // your channel address
-        env: config.showrunnersEnv
+        channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, this.channelAddress),
+        recipients: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, params.recipient), // your channel address
+        env: config.showrunnersEnv,
       });
-      
+      if (apiResponse?.status === 204) {
+        this.logInfo('Notification sent successfully!');
+      }
+
       // const tx = await sdk.sendNotification(
       //   params.recipient,
       //   params.title,
@@ -194,24 +198,27 @@ export class EPNSChannel {
    */
   async saveFailedNotification(params: ISendNotificationParams) {
     try {
-      const sdk = await this.getSdk();
+      const signer = new ethers.Wallet(this.walletKey);
       // get the model and create a new entry for the recently failed job
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
-      const notificationPayload = await sdk.sendNotification(
-        params.recipient,
-        params.title,
-        params.message,
-        params.payloadTitle,
-        params.payloadMsg,
-        params.notificationType,
-        params?.cta ?? this.cSettings?.url,
-        params.image,
-        params.simulate,
-        {
-          offChain: true,
-          returnPayload: true,
+      const notificationPayload = await EpnsAPI.payloads.sendNotification({
+        signer,
+        type: params.notificationType,
+        identityType: 2, // direct payload
+        notification: {
+          title: params.title,
+          body: params.message,
         },
-      );
+        payload: {
+          title: params.payloadTitle,
+          body: params.payloadMsg,
+          cta: params?.cta ?? this.cSettings?.url,
+          img: params.image,
+        },
+        channel: this.getCAIPAddress('eip155', 42, this.channelAddress),
+        recipients: this.getCAIPAddress('eip155', 42, params.recipient), // your channel address
+        env: config.showrunnersEnv,
+      });
 
       this.failedNotificationsModel = Container.get('retryModel');
       // add extra check to prevent thrownig errors if a model is not present
@@ -257,4 +264,16 @@ export class EPNSChannel {
   //     this.logError('Failded to save Notification Deatils of ' + channelName);
   //   }
   // }
+
+  getCAIPAddress(namespace: string, chainID: number, address: string) {
+    try {
+      const accountId = new AccountId({
+        chainId: { namespace: namespace, reference: chainID.toString() },
+        address,
+      });
+      return accountId.toString();
+    } catch (e) {
+      this.logError(e);
+    }
+  }
 }
