@@ -2,14 +2,13 @@ import { ethers } from 'ethers';
 import path from 'path';
 import { Container } from 'typedi';
 import { Logger } from 'winston';
-import config, { SDKSettings } from '../config';
+import config from '../config';
 import showrunnersHelper from './showrunnersHelper';
 // import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
 import * as EpnsAPI from '@epnsproject/sdk-restapi';
 import { AccountId } from 'caip';
 
 export interface ChannelSettings {
-  sdkSettings: SDKSettings;
   networkToMonitor: string;
   dirname: string;
   name: string;
@@ -27,11 +26,12 @@ export interface ISendNotificationParams {
   notificationType: number;
   cta?: string;
   image: string;
-  expiry: number;
-  hidden: boolean;
+  expiry?: number;
+  hidden?: boolean;
   simulate: boolean | Object;
   timestamp?: number;
   retry?: boolean;
+  offChain?: boolean;
 }
 
 export class EPNSChannel {
@@ -68,7 +68,6 @@ export class EPNSChannel {
   async init() {
     this.logInfo('Initializing Channel : %s', this.cSettings.name);
     try {
-      const sdkSettings = this.cSettings.sdkSettings;
       this.walletKey = await this.getWalletKey(this.cSettings.dirname);
       this.channelAddress = this.cSettings?.address ?? ethers.utils.computeAddress(this.walletKey);
       this.logInfo(`channelAddress : ${this.channelAddress}`);
