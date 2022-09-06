@@ -1,6 +1,5 @@
 import { Inject, Service } from 'typedi';
-import config, { defaultSdkSettings, settings } from '../../config';
-
+import config from '../../config';
 import { Logger } from 'winston';
 import { EPNSChannel } from '../../helpers/epnschannel';
 import { mockMessages } from './messages';
@@ -9,11 +8,6 @@ import { mockMessages } from './messages';
 export default class HelloWorldChannel extends EPNSChannel {
   constructor(@Inject('logger') public logger: Logger) {
     super(logger, {
-      sdkSettings: {
-        epnsCoreSettings: defaultSdkSettings.epnsCoreSettings,
-        epnsCommunicatorSettings: defaultSdkSettings.epnsCommunicatorSettings,
-        networkSettings: defaultSdkSettings.networkSettings,
-      },
       networkToMonitor: config.web3MainnetNetwork,
       dirname: __dirname,
       name: 'Hello World',

@@ -52,6 +52,7 @@
     "argon2": "0.28.5",
     "async-redis": "^1.1.7",
     "aws-sdk": "2.783.0",
+    "axios": "^0.27.2",
     "bent": "7.3.1",
     "bignumber.js": "^9.0.2",
     "body-parser": "^1.18.2",
