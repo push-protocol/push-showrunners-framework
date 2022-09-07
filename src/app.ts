@@ -1,10 +1,9 @@
 import 'reflect-metadata'; // We need this in order to use @Decorators
 
-import mongoose from 'mongoose';
 import express from 'express';
 
-import Logger from './loaders/logger';
 import EnvVerifierLoader from './loaders/envVerifier';
+import Logger from './loaders/logger';
 
 async function startServer() {
   // Check environment setup first

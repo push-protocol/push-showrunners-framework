@@ -1,4 +1,3 @@
-import { EPNSSettings, InfuraSettings, NetWorkSettings } from '@epnsproject/backend-sdk-staging';
 import dotenv from 'dotenv';
 import loadShowrunnersWallets from './channelsConfig';
 import staticConfig from './staticConfig.json';
@@ -17,7 +16,7 @@ let config = {
   /**
    * Showrunners Environment
    */
-   showrunnersEnv: process.env.SHOWRUNNERS_ENV,
+  showrunnersEnv: process.env.SHOWRUNNERS_ENV,
   /**
    * Load Wallets of Showrunners
    */
@@ -113,7 +112,7 @@ let config = {
 
   web3RopstenProvider: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3RopstenNetwork: staticConfig.ROPSTEN_WEB3_NETWORK,
-  web3RopstenSocket:staticConfig.ROPSTEN_WEB3_SOCKET,
+  web3RopstenSocket: staticConfig.ROPSTEN_WEB3_SOCKET,
 
   web3KovanProvider: `https://kovan.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3KovanNetwork: staticConfig.KOVAN_WEB3_NETWORK,
@@ -142,14 +141,14 @@ let config = {
   /**
    * API configs
    */
-   api: {
+  api: {
     prefix: '/apis',
   },
 
   /**
    * Deprecated, these features are not needed anymore
    */
-  
+
   /**
    * mail config
    */
@@ -164,95 +163,5 @@ let config = {
   accessKeyId: staticConfig.ACCESS_KEY_ID,
   secretAccessKey: staticConfig.SECRET_ACCESS_KEY,
 };
-
-// Settings Confis
-
-const infuraSettings: InfuraSettings = {
-  projectID: config.infuraAPI.projectID,
-  projectSecret: config.infuraAPI.projectSecret,
-};
-
-const networkSettings: NetWorkSettings = {
-  alchemy: config.alchemyAPI,
-  infura: infuraSettings,
-  etherscan: config.etherscanAPI,
-};
-
-const epnsSettingsRopsten: EPNSSettings = {
-  network: config.web3RopstenNetwork,
-  contractAddress: config.deployedContract,
-  contractABI: config.deployedContractABI,
-};
-
-const epnsSettingsKovan: EPNSSettings = {
-  network: config.web3KovanNetwork,
-  contractAddress: config.deployedKovanCoreContract,
-  contractABI: config.deployedContractABI,
-};
-
-const epnsSettingsMainnet: EPNSSettings = {
-  network: config.web3MainnetNetwork,
-  contractAddress: config.deployedMainnetCoreContract,
-  contractABI: config.deployedContractABI,
-};
-
-export interface SDKSettings {
-  networkSettings: NetWorkSettings;
-  epnsCoreSettings: EPNSSettings;
-  epnsCommunicatorSettings: EPNSSettings;
-}
-
-export interface ISettings {
-  epnsRopstenCommunicatorSettings: {
-    network: string;
-    contractAddress: string;
-    contractABI: any;
-  };
-  epnsKovanCommunicatorSettings: {
-    network: string;
-    contractAddress: string;
-    contractABI: any;
-  };
-  epnsMainnetCommunicatorSettings: {
-    network: string;
-    contractAddress: string;
-    contractABI: any;
-  };
-  infuraSettings: InfuraSettings;
-  networkSettings: NetWorkSettings;
-  epnsSettingsRopsten: EPNSSettings;
-  epnsSettingsKovan: EPNSSettings;
-  epnsSettingsMainnet: EPNSSettings;
-}
-
-export const settings: ISettings = {
-  epnsRopstenCommunicatorSettings: {
-    network: config.web3RopstenNetwork,
-    contractAddress: config.deployedRopstenCommunicatorContract,
-    contractABI: config.deployedContractCommunicatorABI,
-  },
-  epnsKovanCommunicatorSettings: {
-    network: config.web3KovanNetwork,
-    contractAddress: config.deployedKovanCommunicatorContract,
-    contractABI: config.deployedContractCommunicatorABI,
-  },
-  epnsMainnetCommunicatorSettings: {
-    network: config.web3MainnetNetwork,
-    contractAddress: config.deployedMainnetCommunicatorContract,
-    contractABI: config.deployedContractCommunicatorABI,
-  },
-  infuraSettings: infuraSettings,
-  networkSettings: networkSettings,
-  epnsSettingsRopsten: epnsSettingsRopsten,
-  epnsSettingsKovan: epnsSettingsKovan,
-  epnsSettingsMainnet: epnsSettingsMainnet,
-};
-
-export const defaultSdkSettings: SDKSettings = {
-  epnsCoreSettings: config.showrunnersEnv == 'PROD'? settings.epnsSettingsMainnet:(config.showrunnersEnv == 'STAGING'? settings.epnsSettingsKovan: null) ,
-  epnsCommunicatorSettings: config.showrunnersEnv == 'PROD'? settings.epnsMainnetCommunicatorSettings:(config.showrunnersEnv == 'STAGING'? settings.epnsKovanCommunicatorSettings: null),
-  networkSettings: networkSettings,
-};
-
 
 export default config;
