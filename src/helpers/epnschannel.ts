@@ -34,13 +34,20 @@ export interface ISendNotificationParams {
   offChain?: boolean;
 }
 
+interface newStandardPK {
+  pk: string,
+  chainId: string,
+  wallet: string,
+  caip10: string
+}
+
 export class EPNSChannel {
   constructor(public logger: Logger, cSettings: ChannelSettings) {
     this.cSettings = cSettings;
     this.init();
   }
 
-  walletKey: string;
+  walletKey: newStandardPK;
   channelAddress: string;
   epnsSDK: any;
   cSettings: ChannelSettings;
@@ -48,6 +55,10 @@ export class EPNSChannel {
   // channel monitoring service
   jobId: any;
   // channel monitoring service
+
+  private formatWalletKey(walletKey) {
+    return walletKey.startsWith('0x') ? walletKey : `0x${walletKey}`
+  }
 
   private async getWalletKey(dirname: string) {
     dirname = path.basename(dirname);
@@ -57,11 +68,28 @@ export class EPNSChannel {
     const currentWalletInfo = await showrunnersHelper.getValidWallet(dirname, wallets);
 
     this.logInfo('currentWalletInfo: %o', currentWalletInfo);
-    const walletKeyID = `wallet${currentWalletInfo.currentWalletID}`;
 
-    const walletKey = wallets[walletKeyID];
+    const walletKeyID = `wallet${currentWalletInfo.currentWalletID}`;
+    const walletInfo = wallets[walletKeyID];
+    const isOldStandard = (typeof walletInfo === 'string' || walletInfo instanceof String) ? true : false;
+
+    let walletKeyMeta = {
+      pk: isOldStandard ? this.formatWalletKey(walletInfo) : this.formatWalletKey(walletInfo.PK),
+      chainId: isOldStandard ? `eip155:1` : walletInfo.CHAIN_ID,
+    };
+
     this.logInfo('WalletKey Obtained');
-    return walletKey.startsWith('0x') ? walletKey : `0x${walletKey}`;
+    const wallet = ethers.utils.computeAddress(walletKeyMeta.pk);
+
+    const walletKeyObject = {
+      pk: walletKeyMeta.pk,
+      chainId: walletKeyMeta.chainId,
+      wallet: wallet,
+      caip10: this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, wallet)
+    }
+
+    console.log(walletKeyObject);
+    return walletKeyObject;
   }
 
   //   Initialize and load this.Settings
@@ -69,7 +97,7 @@ export class EPNSChannel {
     this.logInfo('Initializing Channel : %s', this.cSettings.name);
     try {
       this.walletKey = await this.getWalletKey(this.cSettings.dirname);
-      this.channelAddress = this.cSettings?.address ?? ethers.utils.computeAddress(this.walletKey);
+      this.channelAddress = this.cSettings?.address ?? ethers.utils.computeAddress(this.walletKey.pk);
       this.logInfo(`channelAddress : ${this.channelAddress}`);
 
       this.logInfo('Channel Initialization Complete');
@@ -123,6 +151,20 @@ export class EPNSChannel {
   //
   // Notification Related
   // ---------------------------------
+  public convertToCAIP(recipients: string | Array<string>) {
+    let caipRecipients = recipients;
+
+    if (Array.isArray(recipients)) {
+      caipRecipients = [];
+      
+      recipients.forEach((add: string) => {
+        caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, add));
+      });
+    }
+
+    return caipRecipients;
+  }
+
   async sendNotification(params: ISendNotificationParams) {
     const isOffChain = params.offChain ?? this.cSettings.useOffChain ?? false;
     const globalRetryIfFailed = params.retry === undefined ? true : params.retry;
@@ -132,15 +174,10 @@ export class EPNSChannel {
       this.logInfo('------------------------');
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
 
-      const signer = new ethers.Wallet(this.walletKey);
-      const caipRecipients = [];
-      if (params.notificationType === 4 && Array.isArray(params.recipient)) {
-        params.recipient.forEach((add) => {
-          caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, add));
-        });
-      }
+      const signer = new ethers.Wallet(this.walletKey.pk);
+      
       // apiResponse?.status === 204, if sent successfully!
-      const apiResponse = await EpnsAPI.payloads.sendNotification({
+      let apiResponsePayload = {
         signer,
         type: params.notificationType,
         identityType: 2, // direct payload
@@ -154,12 +191,16 @@ export class EPNSChannel {
           cta: params?.cta ?? this.cSettings?.url,
           img: params.image,
         },
-        channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, this.channelAddress),
-        recipients: caipRecipients.length
-          ? caipRecipients
-          : this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, params.recipient), // your channel address
+        channel: this.walletKey.caip10,
         env: config.showrunnersEnv,
-      });
+      };
+
+      if (params.notificationType != 1) {
+        const caipRecipients = this.convertToCAIP(params.recipient);
+        apiResponsePayload["recipients"] = caipRecipients;
+      }
+      
+      const apiResponse = await EpnsAPI.payloads.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
         this.logInfo('Notification sent successfully!');
       }

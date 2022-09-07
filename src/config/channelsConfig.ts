@@ -1,6 +1,6 @@
-import LoggerInstance from '../loaders/logger';
 import fs from 'fs';
 import cryptoHelper from '../helpers/cryptoHelper';
+import LoggerInstance from '../loaders/logger';
 const utils = require('../helpers/utilsHelper');
 
 // Loads wallets using the private keys present in each folder
@@ -32,7 +32,12 @@ const channelWallets = function loadShowrunnersWallets() {
       channelKeys[`${channel}`] = {};
 
       for (const [key, value] of Object.entries(object)) {
-        const result = cryptoHelper.checkPrivateKeyValidity(value);
+        // check and decide old standard or not
+        const isOldStandard = (typeof value === 'string' || value instanceof String) ? true : false;
+        const pkey = isOldStandard ? value : value.PK;
+
+        const result = cryptoHelper.checkPrivateKeyValidity(pkey);
+
         if (result) {
           channelKeys[`${channel}`][`wallet${count}`] = value;
           count++;
