@@ -35,10 +35,10 @@ export interface ISendNotificationParams {
 }
 
 interface newStandardPK {
-  pk: string,
-  chainId: string,
-  wallet: string,
-  caip10: string
+  pk: string;
+  chainId: string;
+  wallet: string;
+  caip10: string;
 }
 
 export class EPNSChannel {
@@ -57,7 +57,7 @@ export class EPNSChannel {
   // channel monitoring service
 
   private formatWalletKey(walletKey) {
-    return walletKey.startsWith('0x') ? walletKey : `0x${walletKey}`
+    return walletKey.startsWith('0x') ? walletKey : `0x${walletKey}`;
   }
 
   private async getWalletKey(dirname: string) {
@@ -71,7 +71,7 @@ export class EPNSChannel {
 
     const walletKeyID = `wallet${currentWalletInfo.currentWalletID}`;
     const walletInfo = wallets[walletKeyID];
-    const isOldStandard = (typeof walletInfo === 'string' || walletInfo instanceof String) ? true : false;
+    const isOldStandard = typeof walletInfo === 'string' || walletInfo instanceof String ? true : false;
 
     let walletKeyMeta = {
       pk: isOldStandard ? this.formatWalletKey(walletInfo) : this.formatWalletKey(walletInfo.PK),
@@ -85,10 +85,9 @@ export class EPNSChannel {
       pk: walletKeyMeta.pk,
       chainId: walletKeyMeta.chainId,
       wallet: wallet,
-      caip10: this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, wallet)
-    }
+      caip10: this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, wallet),
+    };
 
-    console.log(walletKeyObject);
     return walletKeyObject;
   }
 
@@ -156,7 +155,7 @@ export class EPNSChannel {
 
     if (Array.isArray(recipients)) {
       caipRecipients = [];
-      
+
       recipients.forEach((add: string) => {
         caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, add));
       });
@@ -175,7 +174,7 @@ export class EPNSChannel {
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
 
       const signer = new ethers.Wallet(this.walletKey.pk);
-      
+
       // apiResponse?.status === 204, if sent successfully!
       let apiResponsePayload = {
         signer,
@@ -197,9 +196,9 @@ export class EPNSChannel {
 
       if (params.notificationType != 1) {
         const caipRecipients = this.convertToCAIP(params.recipient);
-        apiResponsePayload["recipients"] = caipRecipients;
+        apiResponsePayload['recipients'] = caipRecipients;
       }
-      
+
       const apiResponse = await EpnsAPI.payloads.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
         this.logInfo('Notification sent successfully!');
@@ -330,5 +329,38 @@ export class EPNSChannel {
     } catch (e) {
       this.logError(e);
     }
+  }
+
+  async getChannelSubscribers(channelAdd: string) {
+    try {
+      const res = await EpnsAPI.channels._getSubscribers({
+        channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, channelAdd),
+        env: config.showrunnersEnv,
+      });
+      return res;
+    } catch (e) {
+      this.logError(e);
+    }
+  }
+
+  async getContract(address: string, abi) {
+    try {
+      const parsedNetwork = parseInt(this.cSettings.networkToMonitor)
+        ? parseInt(this.cSettings.networkToMonitor)
+        : this.cSettings.networkToMonitor;
+      const provider = ethers.getDefaultProvider(parsedNetwork, {
+        etherscan: config.etherscanAPI ? config.etherscanAPI : null,
+        infura: config.infuraAPI
+          ? { projectId: config.infuraAPI.projectID, projectSecret: config.infuraAPI.projectSecret }
+          : null,
+        alchemy: config.alchemyAPI ? config.alchemyAPI : null,
+        quorum: 1,
+      });
+      const contract = new ethers.Contract(address, abi, provider);
+      return {
+        provider,
+        contract,
+      };
+    } catch (e) {}
   }
 }
