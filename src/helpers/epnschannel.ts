@@ -331,10 +331,10 @@ export class EPNSChannel {
     }
   }
 
-  async getChannelSubscribers(channelAdd: string) {
+  async getChannelSubscribers() {
     try {
       const res = await EpnsAPI.channels._getSubscribers({
-        channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, channelAdd),
+        channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, this.channelAddress),
         env: config.showrunnersEnv,
       });
       return res;
