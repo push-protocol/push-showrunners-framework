@@ -361,6 +361,35 @@ export class EPNSChannel {
         provider,
         contract,
       };
-    } catch (e) {}
+    } catch (e) {
+      this.logError(e);
+    }
+  }
+
+  async getInteractableContract(network: any, PK: any, address: string, abi: any) {
+    try {
+      const parsedNetwork = parseInt(network) ? parseInt(network) : network;
+      const provider = ethers.getDefaultProvider(parsedNetwork, {
+        etherscan: config.etherscanAPI ? config.etherscanAPI : null,
+        infura: config.infuraAPI
+          ? { projectId: config.infuraAPI.projectID, projectSecret: config.infuraAPI.projectSecret }
+          : null,
+        alchemy: config.alchemyAPI ? config.alchemyAPI : null,
+        quorum: 1,
+      });
+      var contractWithSigner = null;
+      const contract = new ethers.Contract(address, abi, provider);
+      if (PK) {
+        var wallet = new ethers.Wallet(PK, provider);
+        contractWithSigner = contract.connect(wallet);
+      }
+      return {
+        provider,
+        contract,
+        contractWithSigner,
+      };
+    } catch (e) {
+      this.logError(e);
+    }
   }
 }
