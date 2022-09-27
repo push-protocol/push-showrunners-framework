@@ -1,6 +1,6 @@
-# EPNS Showrunners (Server)
+# PUSH Showrunners (Server)
 
-The EPNS Showrunners handles the channels created and maintaned by us. It also shows how easy it is to interact with the protocol to build highly customized notifications for your dApp, smart contracts or even centralized services.
+The PUSH Showrunners handles the channels created and maintaned by us. It also shows how easy it is to interact with the protocol to build highly customized notifications for your dApp, smart contracts or even centralized services.
 
 ## Installation and Set Up Guide
 
@@ -32,7 +32,7 @@ The EPNS Showrunners handles the channels created and maintaned by us. It also s
 Following definitions are used in the rest of the spec to refer to a particular category or service.
 | Term | Description
 | ------------- | ------------- |
-| Showrunners | Showrunners are Channels on EPNS notification protocol that are created and maintained by us |
+| Showrunners | Showrunners are Channels on PUSH protocol notification protocol that are created and maintained by us |
 
 ### Tech Specs
 
