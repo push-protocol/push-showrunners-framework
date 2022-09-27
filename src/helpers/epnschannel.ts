@@ -79,7 +79,9 @@ export class EPNSChannel {
     };
 
     this.logInfo('WalletKey Obtained');
-    const wallet = ethers.utils.computeAddress(walletKeyMeta.pk);
+
+    // const wallet = ethers.utils.computeAddress(walletKeyMeta.pk);
+    const wallet = this.cSettings?.address ?? ethers.utils.computeAddress(walletKeyMeta.pk);
 
     const walletKeyObject = {
       pk: walletKeyMeta.pk,
