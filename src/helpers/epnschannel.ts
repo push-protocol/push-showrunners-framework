@@ -15,6 +15,7 @@ export interface ChannelSettings {
   url: string;
   address?: string;
   useOffChain: boolean;
+  isPolygon?: boolean;
 }
 
 export interface ISendNotificationParams {
@@ -87,7 +88,7 @@ export class EPNSChannel {
       pk: walletKeyMeta.pk,
       chainId: walletKeyMeta.chainId,
       wallet: wallet,
-      caip10: this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, wallet),
+      caip10: this.getCAIPAddress(wallet),
     };
 
     return walletKeyObject;
@@ -159,8 +160,10 @@ export class EPNSChannel {
       caipRecipients = [];
 
       recipients.forEach((add: string) => {
-        caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'prod' ? 1 : 42, add));
+        caipRecipients.push(this.getCAIPAddress(add));
       });
+    } else {
+      caipRecipients = this.getCAIPAddress(recipients);
     }
 
     return caipRecipients;
@@ -200,7 +203,6 @@ export class EPNSChannel {
         const caipRecipients = this.convertToCAIP(params.recipient);
         apiResponsePayload['recipients'] = caipRecipients;
       }
-
       const apiResponse = await EpnsAPI.payloads.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
         this.logInfo('Notification sent successfully!');
@@ -252,7 +254,7 @@ export class EPNSChannel {
       const caipRecipients = [];
       if (params.notificationType === 4 && Array.isArray(params.recipient)) {
         params.recipient.forEach((add) => {
-          caipRecipients.push(this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, add));
+          caipRecipients.push(this.getCAIPAddress(add));
         });
       }
       const notificationPayload = await EpnsAPI.payloads.sendNotification({
@@ -269,10 +271,8 @@ export class EPNSChannel {
           cta: params?.cta ?? this.cSettings?.url,
           img: params.image,
         },
-        channel: this.getCAIPAddress('eip155', 42, this.channelAddress),
-        recipients: caipRecipients.length
-          ? caipRecipients
-          : this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, params.recipient), // your channel address
+        channel: this.getCAIPAddress(this.channelAddress),
+        recipients: caipRecipients.length ? caipRecipients : this.getCAIPAddress(params.recipient), // your channel address
         env: config.showrunnersEnv,
       });
 
@@ -321,10 +321,16 @@ export class EPNSChannel {
   //   }
   // }
 
-  getCAIPAddress(namespace: string, chainID: number, address: string) {
+  getCAIPAddress(address: string) {
     try {
+      let chainID = '1';
+      if (this.cSettings?.isPolygon) {
+        chainID = config.showrunnersEnv === 'staging' ? '8001' : '137';
+      } else {
+        chainID = config.showrunnersEnv === 'staging' ? '42' : '1';
+      }
       const accountId = new AccountId({
-        chainId: { namespace: namespace, reference: chainID.toString() },
+        chainId: { namespace: 'eip155', reference: chainID.toString() },
         address,
       });
       return accountId.toString();
@@ -336,7 +342,7 @@ export class EPNSChannel {
   async getChannelSubscribers() {
     try {
       const res = await EpnsAPI.channels._getSubscribers({
-        channel: this.getCAIPAddress('eip155', config.showrunnersEnv === 'staging' ? 42 : 1, this.channelAddress),
+        channel: this.getCAIPAddress(this.channelAddress),
         env: config.showrunnersEnv,
       });
       return res;
