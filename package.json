@@ -35,7 +35,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@arbitrum/sdk": "^1.1.0",
-    "@epnsproject/sdk-restapi": "^0.1.17",
+    "@epnsproject/sdk-restapi": "^0.1.20",
     "@improbable-eng/grpc-web": "^0.15.0",
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
     "@injectivelabs/derivatives-consumer": "^0.5.1",

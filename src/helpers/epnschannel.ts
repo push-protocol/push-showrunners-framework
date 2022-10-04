@@ -327,7 +327,7 @@ export class EPNSChannel {
       if (this.cSettings?.isPolygon) {
         chainID = config.showrunnersEnv === 'staging' ? '8001' : '137';
       } else {
-        chainID = config.showrunnersEnv === 'staging' ? '42' : '1';
+        chainID = config.showrunnersEnv === 'staging' ? '5' : '1';
       }
       const accountId = new AccountId({
         chainId: { namespace: 'eip155', reference: chainID.toString() },
