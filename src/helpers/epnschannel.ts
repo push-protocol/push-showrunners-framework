@@ -5,7 +5,7 @@ import { Logger } from 'winston';
 import config from '../config';
 import showrunnersHelper from './showrunnersHelper';
 // import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
-import * as EpnsAPI from '@epnsproject/sdk-restapi';
+import * as PushAPI from '@pushprotocol/restapi';
 import { AccountId } from 'caip';
 
 export interface ChannelSettings {
@@ -203,7 +203,7 @@ export class EPNSChannel {
         const caipRecipients = this.convertToCAIP(params.recipient);
         apiResponsePayload['recipients'] = caipRecipients;
       }
-      const apiResponse = await EpnsAPI.payloads.sendNotification(apiResponsePayload);
+      const apiResponse = await PushAPI.payloads.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
         this.logInfo('Notification sent successfully!');
       }
@@ -257,7 +257,7 @@ export class EPNSChannel {
           caipRecipients.push(this.getCAIPAddress(add));
         });
       }
-      const notificationPayload = await EpnsAPI.payloads.sendNotification({
+      const notificationPayload = await PushAPI.payloads.sendNotification({
         signer,
         type: params.notificationType,
         identityType: 2, // direct payload
@@ -341,7 +341,7 @@ export class EPNSChannel {
 
   async getChannelSubscribers() {
     try {
-      const res = await EpnsAPI.channels._getSubscribers({
+      const res = await PushAPI.channels._getSubscribers({
         channel: this.getCAIPAddress(this.channelAddress),
         env: config.showrunnersEnv,
       });

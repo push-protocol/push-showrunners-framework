@@ -35,7 +35,6 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@arbitrum/sdk": "^1.1.0",
-    "@epnsproject/sdk-restapi": "^0.1.20",
     "@improbable-eng/grpc-web": "^0.15.0",
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
     "@injectivelabs/derivatives-consumer": "^0.5.1",
@@ -46,6 +45,7 @@
     "@injectivelabs/ts-types": "^0.5.0",
     "@makerdao/dai": "^0.42.4",
     "@makerdao/dai-plugin-mcd": "^1.8.5",
+    "@pushprotocol/restapi": "^0.2.2",
     "@rodrigogs/mysql-events": "0.6.0",
     "@uniswap/v3-sdk": "^3.3.2",
     "agenda": "^2.0.2",
