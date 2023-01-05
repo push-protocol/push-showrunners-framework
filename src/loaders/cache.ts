@@ -15,7 +15,7 @@ class CacheInstance {
    */
   public async setCache(key: String, value: Number) {
     return this.ReddisInstance.set(key, value);
-  };
+  }
 
   /**
    * push lcache
@@ -26,7 +26,7 @@ class CacheInstance {
    */
   public async pushLCache(key: String, value: Number) {
     return this.ReddisInstance.rpush(key, value);
-  };
+  }
 
   /**
    * get lcache
@@ -36,7 +36,7 @@ class CacheInstance {
    */
   public async getLCache(key: String) {
     return this.ReddisInstance.lrange(key, 0, -1);
-  };
+  }
 
   /**
    * Add caches
@@ -49,10 +49,10 @@ class CacheInstance {
     const prev: Number = Number(await this.getCache(key));
     if (prev != 0) {
       value = Number(prev) + Number(value);
-      value = Number(value) / 2
+      value = Number(value) / 2;
     }
     return this.ReddisInstance.set(key, value);
-  };
+  }
 
   /**
    * Remove cache
@@ -62,7 +62,7 @@ class CacheInstance {
    */
   public async removeCache(key: String) {
     return this.ReddisInstance.del(key);
-  };
+  }
 
   /**
    * Get cache
@@ -72,9 +72,20 @@ class CacheInstance {
    */
   public async getCache(key: String) {
     return this.ReddisInstance.get(key);
-  };
+  }
 
+  /**
+   * Set set Icache
+   * @description add cache for certain time period
+   * @param {String} key Cache Key
+   * @param {Number} expiresIn Time in seconds for expiry
+   * @param {String} value Cache value
+   * @return {Promise<{ String }>}
+   */
+
+  public async addIcache(key: String, value: String, expiresIn: Number) {
+    return this.ReddisInstance.set(key, value, 'EX', expiresIn);
+  }
 }
-
 
 export default new CacheInstance();
