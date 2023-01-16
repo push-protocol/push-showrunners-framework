@@ -46,6 +46,7 @@
     "@injectivelabs/ts-types": "^0.5.0",
     "@makerdao/dai": "^0.42.4",
     "@makerdao/dai-plugin-mcd": "^1.8.5",
+    "@pushprotocol/restapi": "^0.3.0",
     "@rodrigogs/mysql-events": "0.6.0",
     "@uniswap/v3-sdk": "^3.3.2",
     "agenda": "^2.0.2",
