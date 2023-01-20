@@ -341,7 +341,6 @@ export class EPNSChannel {
         chainId: { namespace: 'eip155', reference: chainID.toString() },
         address,
       });
-      console.log(accountId.toString(), 'from function itself', this.cSettings.chain);
       return accountId.toString();
     } catch (e) {
       this.logError(e);

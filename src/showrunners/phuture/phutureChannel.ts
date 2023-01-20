@@ -50,7 +50,6 @@ export default class PhutureChannel extends EPNSChannel {
         ? simulate.logicOverride?.user
         : await this.getChannelSubscribers();
       const { indexes } = await request(phutureSettings.PHUTURE_SUBGRAPH, this.fetchIndexAssetsInfo());
-      console.log({ indexes });
       const response = await Promise.all(
         subscribers.map(async (subscriber: string) => {
           const res = await request(phutureSettings.PHUTURE_SUBGRAPH, this.fetchUserDetails(subscriber));
