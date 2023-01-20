@@ -332,11 +332,11 @@ export class EPNSChannel {
           chainID = config.showrunnersEnv === 'staging' ? '80001' : '137';
         }
       }
+
       // to keep old channels working
       if (this.cSettings?.isPolygon) {
-        chainID = config.showrunnersEnv === 'staging' ? '80001' : '137';
+        chainID = config.showrunnersEnv === 'staging' ? '8001' : '137';
       }
-
       const accountId = new AccountId({
         chainId: { namespace: 'eip155', reference: chainID.toString() },
         address,
