@@ -3,7 +3,7 @@ module.exports = {
     name: "EPNS Staging Showrunners",
     script: "build/app.js",
     instances: "max",
-    max_memory_restart: "256M",
+    max_memory_restart: "2048M",
     env: {
       NODE_ENV: "development"
     },
