@@ -125,6 +125,10 @@ let config = {
   web3PolygonMumbaiRPC: staticConfig.POLYGON_MUMBAI_RPC,
 
   web3GnosisRPC: staticConfig.GNOSIS_MAINNET_RPC,
+
+  web3BscMainnetRPC: staticConfig.BSC_MAINNET_RPC,
+  web3BscTestnetRPC: staticConfig.BSC_TESTNET_RPC,
+
   /**
    * EPNS Related
    */
