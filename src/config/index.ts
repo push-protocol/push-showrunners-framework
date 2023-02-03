@@ -126,8 +126,8 @@ let config = {
 
   web3GnosisRPC: staticConfig.GNOSIS_MAINNET_RPC,
 
-  web3BscMainnetRPC: staticConfig.BSC_MAINNET_RPC,
-  web3BscTestnetRPC: staticConfig.BSC_TESTNET_RPC,
+  web3BnbMainnetRPC: staticConfig.BNB_MAINNET_RPC,
+  web3BnbTestnetRPC: staticConfig.BNB_TESTNET_RPC,
 
   /**
    * EPNS Related
