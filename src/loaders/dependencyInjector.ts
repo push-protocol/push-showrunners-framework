@@ -1,17 +1,18 @@
 import { Container } from 'typedi';
 import LoggerInstance from './logger';
 import CacheInstance from './cache';
-
+import { NotificationDetailsModel } from '../models/analytics';
 
 export default ({ models }: { models: { name: string; model: any }[] }) => {
   try {
     LoggerInstance.info('✌️   Loading Mongo DB Models');
 
-    models.forEach(m => {
-      LoggerInstance.info('   --  ✔️  Loading Mongo DB Model: %s', m)
+    models.forEach((m) => {
+      LoggerInstance.info('   --  ✔️  Loading Mongo DB Model: %s', m);
       Container.set(m.name, m.model);
     });
-
+    // inject the model for analytics dashboard
+    Container.set('AnalyticsModel', NotificationDetailsModel);
     LoggerInstance.info('✔️   All Mongo DB Models loaded!');
 
     Container.set('logger', LoggerInstance);

@@ -7,6 +7,8 @@ import showrunnersHelper from './showrunnersHelper';
 // import { NotificationDetailsModel, INotificationDetails } from '../showrunners/monitoring/monitoringModel';
 import * as PushAPI from '@pushprotocol/restapi';
 import { AccountId } from 'caip';
+import { IAnalyticsLog } from '../models/analytics';
+import mongoose from 'mongoose';
 
 export interface ChannelSettings {
   networkToMonitor: string;
@@ -55,6 +57,7 @@ export class EPNSChannel {
   cSettings: ChannelSettings;
   failedNotificationsModel: any;
   // channel monitoring service
+  analyticsModel: mongoose.Model<IAnalyticsLog>;
   jobId: any;
   // channel monitoring service
 
@@ -208,32 +211,7 @@ export class EPNSChannel {
       if (apiResponse?.status === 204) {
         this.logInfo('Notification sent successfully!');
       }
-
-      // const tx = await sdk.sendNotification(
-      //   params.recipient,
-      //   params.title,
-      //   params.message,
-      //   params.payloadTitle,
-      //   params.payloadMsg,
-      //   params.notificationType,
-      //   params?.cta ?? this.cSettings?.url,
-      //   params.image,
-      //   params.simulate,
-      //   {
-      //     offChain: isOffChain,
-      //   },
-      // );
-
-      // const { retry = false } = tx;
-      // // if its offchain and it fails then use retry logic
-      // if (isOffChain && retry && globalRetryIfFailed) {
-      //   // if sending this notification fails for any reason then resend it
-      //   this.saveFailedNotification(params);
-      //   // if sending this notification fails for any reason then resend it
-      // }
-      // // await this.countNotification(retry);
-      // this.logInfo(`transaction ${this.cSettings.name}: %o`, tx);
-      // return tx;
+      await this.countNotification(true);
     } catch (error) {
       this.logError(`Failed to send notification for channel ${this.cSettings.name}`);
       if (isOffChain) {
@@ -241,6 +219,7 @@ export class EPNSChannel {
         this.saveFailedNotification(params);
         // if sending this notification fails for any reason then resend it
       }
+      await this.countNotification(false);
       this.logError(error);
     }
   }
@@ -287,40 +266,7 @@ export class EPNSChannel {
       this.logError(err.message);
     }
   }
-  // async countNotification(retry: Boolean) {
-  //   if (!this.jobId) return;
-  //   let positiveInc = Number(!retry); // if retry is false then the notification went through
-  //   let negativeInc = Number(retry); // if retry is true, then notification failed from the server side
 
-  //   // increment the job model notifications send by this value and the endtime
-  //   const notif = await NotificationDetailsModel.findOneAndUpdate(
-  //     { _id: this.jobId },
-  //     {
-  //       $inc: { notificationCount: positiveInc, failedNotificationCount: negativeInc },
-  //       $set: { endDateTime: Date.now() },
-  //     },
-  //     { new: true },
-  //   );
-  //   this.logInfo(`logging Notification for ${this.cSettings.name} as ${JSON.stringify(notif)}`);
-  // }
-
-  // async logJobToDB() {
-  //   const { name: channelName } = this.cSettings;
-  //   try {
-  //     const { channelAddress } = this;
-
-  //     const newData = new NotificationDetailsModel({
-  //       channelName,
-  //       channelAddress,
-  //     });
-
-  //     const newJob = await newData.save();
-  //     this.jobId = newJob._id;
-  //     this.logInfo(`logging Job for ${this.cSettings.name}`);
-  //   } catch (e) {
-  //     this.logError('Failded to save Notification Deatils of ' + channelName);
-  //   }
-  // }
 
   getCAIPAddress(address: string) {
     try {
@@ -409,4 +355,46 @@ export class EPNSChannel {
       this.logError(e);
     }
   }
+
+  // ------ Analytics functions
+  // Initialize the analytics settings
+  async initAnalytics({ jobName = '' }) {
+    this.analyticsModel = Container.get('AnalyticsModel');
+    const { name: channelName } = this.cSettings;
+    try {
+      const { channelAddress } = this;
+      const newData = new this.analyticsModel({
+        channelName,
+        channelAddress,
+        functionName: jobName,
+      });
+
+      const newJob = await newData.save();
+      this.jobId = newJob._id;
+      this.logInfo(`Initialising Analytics for  ${this.cSettings.name}`);
+    } catch (e) {
+      this.logError('Failded to Initialise analytics of ' + channelName);
+      console.log(e);
+    }
+  }
+
+  async countNotification(success: boolean) {
+    if (!this.jobId) {
+      this.logInfo('Analytics has not yet been instantiated for this instance');
+      return;
+    }
+    let positiveInc = Number(success); // if success is true then the notification went through
+    let negativeInc = Number(!success); // if success is false, then notification failed from the server side
+    // increment the job model notifications send by this value and the endtime
+    const notif = await this.analyticsModel.findOneAndUpdate(
+      { _id: this.jobId },
+      {
+        $inc: { sentNotificationCount: positiveInc, failedNotificationCount: negativeInc },
+      },
+      { new: true },
+    );
+    this.logInfo(`logging Analytics for ${this.cSettings.name} as ${JSON.stringify(notif)}`);
+    return notif
+  }
+  // ------ Analytics functions
 }
