@@ -91,16 +91,21 @@ export async function enableAWSWebhook(route: Router, payloadHandler: payloadHan
       if (!validatePayload(payload) && !isLocalhost) {
         throw { statusCode: 400, message: 'Invalid signature' };
       }
+      console.log(`A payload of type ${payload.Type} has been created`);
       // TODO uncomment after testing and development is done
       // validate the payload to make sure it comes from the intended source
       // check for the different payload types
       if (payload.Type === 'Notification') {
+        console.log('Notification Recieved');
+        console.log({ payload });
         // go through all the different types of message and dispatch them, this is the core part which differs on a protocol by protocol level
         const response = await payloadHandler(payload, simulate);
         return res.send({ response });
       }
 
       if (payload.Type === 'SubscriptionConfirmation') {
+        console.log('SubscriptionConfirmation Recieved');
+        console.log({ payload });
         const url = payload.SubscribeURL;
         const response = await axios.get(url);
         if (response.status === 200) {
