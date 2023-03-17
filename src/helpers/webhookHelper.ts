@@ -91,6 +91,7 @@ export async function enableAWSWebhook(route: Router, payloadHandler: payloadHan
       if (!validatePayload(payload) && !isLocalhost) {
         throw { statusCode: 400, message: 'Invalid signature' };
       }
+      console.log({payload})
       console.log(`A payload of type ${payload.Type} has been created`);
       // TODO uncomment after testing and development is done
       // validate the payload to make sure it comes from the intended source
