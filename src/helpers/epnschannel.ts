@@ -9,6 +9,7 @@ import * as PushAPI from '@pushprotocol/restapi';
 import { AccountId } from 'caip';
 import { IAnalyticsLog } from '../models/analytics';
 import mongoose from 'mongoose';
+import { ENV } from '@pushprotocol/restapi/src/lib/constants';
 
 export interface ChannelSettings {
   networkToMonitor: string;
@@ -267,7 +268,6 @@ export class EPNSChannel {
     }
   }
 
-
   getCAIPAddress(address: string) {
     try {
       let chainID = config.showrunnersEnv === 'staging' ? '5' : '1';
@@ -296,15 +296,36 @@ export class EPNSChannel {
 
   async getChannelSubscribers() {
     try {
-      const res = await PushAPI.channels._getSubscribers({
-        channel: this.getCAIPAddress(this.channelAddress),
-        env: config.showrunnersEnv,
-      });
-      return res;
+      let page = 1;
+      let limit = 10;
+      let isPaginate = true;
+      let subscribers = [];
+      while (isPaginate) {
+        const res = await PushAPI.channels.getSubscribers({
+          channel: this.getCAIPAddress(this.channelAddress), // channel address in CAIP
+          page, // Optional, defaults to 1
+          limit, // Optional, defaults to 10
+          env: ENV.STAGING,
+        });
+        if (!res) {
+          isPaginate = false;
+          return [];
+        }
+        if (res.subscribers.length) {
+          subscribers = [...subscribers, ...res.subscribers];
+          page++;
+        } else {
+          isPaginate = false;
+        }
+      }
+
+      return subscribers;
     } catch (e) {
       this.logError(e);
     }
   }
+
+  // have to change this function
 
   async getContract(address: string, abi) {
     try {
@@ -394,7 +415,7 @@ export class EPNSChannel {
       { new: true },
     );
     this.logInfo(`logging Analytics for ${this.cSettings.name} as ${JSON.stringify(notif)}`);
-    return notif
+    return notif;
   }
   // ------ Analytics functions
 }
