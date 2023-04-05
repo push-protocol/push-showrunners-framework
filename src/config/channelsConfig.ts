@@ -33,8 +33,9 @@ const channelWallets = function loadShowrunnersWallets() {
 
       for (const [key, value] of Object.entries(object)) {
         // check and decide old standard or not
-        const isOldStandard = (typeof value === 'string' || value instanceof String) ? true : false;
-        const pkey = isOldStandard ? value : value.PK;
+        const isOldStandard = typeof value === 'string' || value instanceof String ? true : false;
+        const newValue: any = value;
+        const pkey = isOldStandard ? newValue : newValue.PK;
 
         const result = cryptoHelper.checkPrivateKeyValidity(pkey);
 

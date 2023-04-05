@@ -107,7 +107,7 @@ let config = {
   alchemyAPI: process.env.ALCHEMY_API,
 
   web3MainnetProvider: `https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-  web3MainnetNetwork: staticConfig.MAINNET_WEB3_NETWORK,
+  web3MainnetNetwork: process.env.MAINNET_RPC_OVERRIDE || staticConfig.MAINNET_WEB3_NETWORK,
   web3MainnetSocket: staticConfig.MAINNET_WEB3_SOCKET,
 
   web3RopstenProvider: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
@@ -122,7 +122,7 @@ let config = {
   web3PolygonMainnetRPC: staticConfig.POLYGON_MAINNET_RPC,
 
   web3PolygonMumbaiProvider: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-  web3PolygonMumbaiRPC: staticConfig.POLYGON_MUMBAI_RPC,
+  web3PolygonMumbaiRPC: process.env.BNB_RPC_OVERRIDE || staticConfig.POLYGON_MUMBAI_RPC,
 
   web3GnosisRPC: staticConfig.GNOSIS_MAINNET_RPC,
 
