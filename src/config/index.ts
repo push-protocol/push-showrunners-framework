@@ -122,11 +122,11 @@ let config = {
   web3PolygonMainnetRPC: staticConfig.POLYGON_MAINNET_RPC,
 
   web3PolygonMumbaiProvider: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-  web3PolygonMumbaiRPC: process.env.BNB_RPC_OVERRIDE || staticConfig.POLYGON_MUMBAI_RPC,
+  web3PolygonMumbaiRPC: staticConfig.POLYGON_MUMBAI_RPC,
 
   web3GnosisRPC: staticConfig.GNOSIS_MAINNET_RPC,
 
-  web3BnbMainnetRPC: staticConfig.BNB_MAINNET_RPC,
+  web3BnbMainnetRPC: process.env.BNB_RPC_OVERRIDE || staticConfig.BNB_MAINNET_RPC,
   web3BnbTestnetRPC: staticConfig.BNB_TESTNET_RPC,
 
   /**
