@@ -159,7 +159,7 @@ export class EPNSChannel {
   // Notification Related
   // ---------------------------------
   public convertToCAIP(recipients: string | Array<string>) {
-    let caipRecipients = recipients;
+    let caipRecipients: any = recipients;
 
     if (Array.isArray(recipients)) {
       caipRecipients = [];
@@ -208,7 +208,8 @@ export class EPNSChannel {
         const caipRecipients = this.convertToCAIP(params.recipient);
         apiResponsePayload['recipients'] = caipRecipients;
       }
-      const apiResponse = await PushAPI.payloads.sendNotification(apiResponsePayload);
+      const payloadAPI: any = PushAPI.payloads;
+      const apiResponse = await payloadAPI.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
         this.logInfo('Notification sent successfully!');
       }
@@ -229,7 +230,7 @@ export class EPNSChannel {
    */
   async saveFailedNotification(params: ISendNotificationParams) {
     try {
-      const signer = new ethers.Wallet(this.walletKey);
+      const signer = new ethers.Wallet(this.walletKey as any);
       // get the model and create a new entry for the recently failed job
       params.payloadMsg = params.payloadMsg + `[timestamp: ${params?.timestamp ?? this.timestamp}]`;
       const caipRecipients = [];
@@ -254,7 +255,7 @@ export class EPNSChannel {
         },
         channel: this.getCAIPAddress(this.channelAddress),
         recipients: caipRecipients.length ? caipRecipients : this.getCAIPAddress(params.recipient), // your channel address
-        env: config.showrunnersEnv,
+        env: config.showrunnersEnv as any,
       });
 
       this.failedNotificationsModel = Container.get('retryModel');
@@ -287,7 +288,6 @@ export class EPNSChannel {
         chainId: { namespace: 'eip155', reference: chainID.toString() },
         address,
       });
-      console.log(accountId.toString(), 'from function itself', this.cSettings.chain);
       return accountId.toString();
     } catch (e) {
       this.logError(e);
@@ -301,11 +301,12 @@ export class EPNSChannel {
       let isPaginate = true;
       let subscribers = [];
       while (isPaginate) {
-        const res = await PushAPI.channels.getSubscribers({
+        const channelsAPI: any = PushAPI.channels;
+        const res = await channelsAPI.getSubscribers({
           channel: this.getCAIPAddress(this.channelAddress), // channel address in CAIP
           page, // Optional, defaults to 1
           limit, // Optional, defaults to 10
-          env: ENV.STAGING,
+          env: config.showrunnersEnv,
         });
         if (!res) {
           isPaginate = false;
