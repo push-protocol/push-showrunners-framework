@@ -107,7 +107,7 @@ let config = {
   alchemyAPI: process.env.ALCHEMY_API,
 
   web3MainnetProvider: `https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-  web3MainnetNetwork: staticConfig.MAINNET_WEB3_NETWORK,
+  web3MainnetNetwork: process.env.MAINNET_RPC_OVERRIDE || staticConfig.MAINNET_WEB3_NETWORK,
   web3MainnetSocket: staticConfig.MAINNET_WEB3_SOCKET,
 
   web3RopstenProvider: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
@@ -126,7 +126,7 @@ let config = {
 
   web3GnosisRPC: staticConfig.GNOSIS_MAINNET_RPC,
 
-  web3BnbMainnetRPC: staticConfig.BNB_MAINNET_RPC,
+  web3BnbMainnetRPC: process.env.BNB_RPC_OVERRIDE || staticConfig.BNB_MAINNET_RPC,
   web3BnbTestnetRPC: staticConfig.BNB_TESTNET_RPC,
 
   /**
