@@ -10,6 +10,7 @@ import { AccountId } from 'caip';
 import { IAnalyticsLog } from '../models/analytics';
 import mongoose from 'mongoose';
 import { ENV } from '@pushprotocol/restapi/src/lib/constants';
+import { forEach } from 'lodash';
 
 export interface ChannelSettings {
   networkToMonitor: string;
@@ -23,7 +24,7 @@ export interface ChannelSettings {
 }
 
 export interface ISendNotificationParams {
-  recipient: string;
+  recipient: string | Array<string>;
   title: string;
   message: string;
   payloadTitle: string;
@@ -204,10 +205,19 @@ export class EPNSChannel {
         env: config.showrunnersEnv,
       };
 
-      if (params.notificationType != 1) {
+      if (params.notificationType == 3) {
         const caipRecipients = this.convertToCAIP(params.recipient);
         apiResponsePayload['recipients'] = caipRecipients;
       }
+
+      if (params.notificationType === 4 && Array.isArray(params.recipient)) {
+        const caipRecipients = [];
+        params.recipient.forEach((recipient) => {
+          if(recipient) caipRecipients.push(this.getCAIPAddress(recipient));
+        });
+        apiResponsePayload['recipients'] = caipRecipients;
+      }
+     
       const payloadAPI: any = PushAPI.payloads;
       const apiResponse = await payloadAPI.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
