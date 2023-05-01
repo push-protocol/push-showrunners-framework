@@ -57,7 +57,7 @@ export class EPNSChannel {
   channelAddress: string;
   epnsSDK: any;
   cSettings: ChannelSettings;
-  failedNotificationsModel: any;
+  // failedNotifications Model: any;
   // channel monitoring service
   analyticsModel: mongoose.Model<IAnalyticsLog>;
   jobId: any;
@@ -213,11 +213,11 @@ export class EPNSChannel {
       if (params.notificationType === 4 && Array.isArray(params.recipient)) {
         const caipRecipients = [];
         params.recipient.forEach((recipient) => {
-          if(recipient) caipRecipients.push(this.getCAIPAddress(recipient));
+          if (recipient) caipRecipients.push(this.getCAIPAddress(recipient));
         });
         apiResponsePayload['recipients'] = caipRecipients;
       }
-     
+
       const payloadAPI: any = PushAPI.payloads;
       const apiResponse = await payloadAPI.sendNotification(apiResponsePayload);
       if (apiResponse?.status === 204) {
@@ -264,16 +264,16 @@ export class EPNSChannel {
           img: params.image,
         },
         channel: this.getCAIPAddress(this.channelAddress),
-        recipients: caipRecipients.length ? caipRecipients : this.getCAIPAddress(params.recipient), // your channel address
+        recipients: caipRecipients.length ? caipRecipients : this.getCAIPAddress(params.recipient as string), // your channel address
         env: config.showrunnersEnv as any,
       });
 
-      this.failedNotificationsModel = Container.get('retryModel');
-      // add extra check to prevent thrownig errors if a model is not present
-      if (this.failedNotificationsModel) {
-        const data = { payload: notificationPayload, lastAttempted: new Date() };
-        await this.failedNotificationsModel.insertMany([data]);
-      }
+      // this.failedNotificationsModel = Container.get('retryModel');
+      // // add extra check to prevent thrownig errors if a model is not present
+      // if (this.failedNotificationsModel) {
+      //   const data = { payload: notificationPayload, lastAttempted: new Date() };
+      //   await this.failedNotificationsModel.insertMany([data]);
+      // }
     } catch (err) {
       this.logError(err.message);
     }
