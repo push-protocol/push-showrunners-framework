@@ -1,0 +1,34 @@
+name: Channel request
+description: Request a new channel for Push Protocol's communication
+title: "[channel]: "
+labels: [channel]
+body:
+- type: markdown
+  attributes:
+    value: |
+      Thank you for suggesting a new channel for Push Protocol's communication.
+- type: checkboxes
+  attributes:
+    label: Is there an existing channel request for this?
+    description: Please search to see if an issue related to this channel request/channel request already exists
+    options:
+    - label: I have searched the existing issues
+      required: true
+- type: textarea
+  attributes:
+    label: Channel Name
+    description: Name of the proposed channel
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Channel Purpose
+    description: Briefly describe the purpose and intended use of the proposed channel
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Justification
+    description: Explain why this new channel would benefit Push Protocol's communication
+  validations:
+    required: true
