@@ -25,7 +25,7 @@
   "IPFS_LOCAL_ENDPOINT": "/ip4/0.0.0.0/tcp/5001",
   "IPFS_INFURA_ENDPOINT": "https://ipfs.infura.io:5001",
 
-  "POLYGON_MAINNET_RPC": "https://rpc-mainnet.maticvigil.com",
+  "POLYGON_MAINNET_RPC": "https://proportionate-boldest-darkness.matic.quiknode.pro/7fb775fb60a2454d0b7cc90693d9e0e639fa74bf/",
   "POLYGON_MUMBAI_RPC": "https://rpc-mumbai.maticvigil.com",
 
   "BNB_MAINNET_RPC": "https://bsc-dataseed.binance.org",
