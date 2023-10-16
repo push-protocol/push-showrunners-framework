@@ -38,7 +38,7 @@ The showrunners framework is a scaffold that developers can use to build out not
 ``` 
 git clone https://github.com/ethereum-push-notification-service/epns-showrunners-staging-v2.git
 ```
-- Open the root folder in a terminal and enter toc initalises mongodb, redis and ipfs local instances
+- To make it easier to use, we will be using Docker. You can initialize it using the code below code , but if looking for a manual setup then [Refer this](#external-services).
 ```
 docker-compose up
 ```
@@ -97,7 +97,7 @@ Now lets have a quick tour into example and understand How to actually run a Sho
 | ------------- | ------------- |
 | Showrunners | Showrunners are Channels on PUSH protocol notification protocol that are created and maintained by us | -->
 
-### Tech Specs
+<!-- ### Tech Specs
 
 The Showrunners run on node.js server and are modularized on the ideas and architecture of [Bulletproof NodeJS](https://github.com/santiq/bulletproof-nodejs), the essential features in the architeture are as follows:
 
@@ -110,9 +110,9 @@ The Showrunners run on node.js server and are modularized on the ideas and archi
 
 ### Credits
 
-- [Bulletproof NodeJS](https://github.com/santiq/bulletproof-nodejs)
+- [Bulletproof NodeJS](https://github.com/santiq/bulletproof-nodejs) -->
 
-### External Services
+## External Services
 
 We would need external services of:
 
