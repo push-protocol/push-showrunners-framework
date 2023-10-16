@@ -27,7 +27,7 @@
 
 # PUSH Showrunners (Server)
 
-The PUSH Showrunners handles the channels created and maintaned by us. It also shows how easy it is to interact with the protocol to build highly customized notifications for your dApp, smart contracts or even centralized services.
+The showrunners framework is a scaffold that developers can use to build out notifications for their use cases. Showrunners framework provides the tools and helpers required for constructing the payload and sending the notification using the Push protocol infrastructure. 
 
 ---
 
@@ -38,8 +38,10 @@ The PUSH Showrunners handles the channels created and maintaned by us. It also s
 ``` 
 git clone https://github.com/ethereum-push-notification-service/epns-showrunners-staging-v2.git
 ```
-- Open the root folder in a terminal and enter 
-```docker-compose up```. This initalises mongodb, redis and ipfs local instances
+- Open the root folder in a terminal and enter toc initalises mongodb, redis and ipfs local instances
+```
+docker-compose up
+```
 - Open the root folder in another terminal and enter
 ```
 npm install
@@ -54,23 +56,45 @@ npm start
 ```docker-compose down```
 
 ---
+## Channel Structure 
+Before we dive into an example ,Let's understand the requirements for the folder structure inside the src/showrunners folder and how you can use them to quickly refine / debug / deploy your channels.
 
-## Showrunner Channels
+Each folder inside ```src/showrunners``` is treated as their own channel. Showrunners is designed to be a plug and play solution for your channel which means that each of the folders designated filenames are used to add-on various functionalities.
 
+1. channelChannel.js [.ts] (Mandatory)
+    - Example: helloWorldChannel.js
+    - This file contains all the logic functions of your channel, it can for instance have a way to poll all opted in users of your channel and based on certain conditions that are met, fire notifications out.
+1. channelKeys.json (Mandatory)
+    - Example: helloWorldKeys.json
+    - This file contains all your private keys that you either belong to the channel you created or have authorized the wallets to send notification on your channel's behalf.
+1. channelRoutes.js [.ts]
+    - Example: helloWorldRoutes.js
+    - This file contains the routes that you will enable to ensure you are able to manually trigger notification or any other logic points in your channelChannel.js [.ts]
+    - You will ideally use the route of this files in postman to trigger logic functions / test them out. 
+1. channelJobs.js [.ts]
+    - Example: helloWorldJobs.js
+    - This file contains your cron jobs to trigger logic points in your channelChannel.js [.ts]
+    - The file is based on node-schedule and can handle a wide variety of automated cron jobs to enable sending wide array of notifications based on triggers.
+1. channelAWSSNS.js[.ts]
+    - Example: helloWorldAWSSNS.ts
+    - This file contains the webhook helpers and handle the logic points for consuming a webhook.
+    - This file is based on AWS-SNS and can handle the variety of logics for consuming webhook to enable sending wide array of notifications based on webhook triggers.
 
-- To subscribe to channels, please visit our [Alpha dApp](https://app.epns.io)
-- Currently notifications can be recieved through our [Google Play Alpha App](https://play.google.com/store/apps/details?id=io.epns.epns)
-- The alpha protocol and product are working and are in ropsten network
-- **Have an idea for protocol or product?** Awesome! get in touch by joining our [Telegram Group](https://t.me/epnsproject) or following us on [Twitter](https://twitter.com/epnsproject)
+---
+
+## Examples :
+
+Now lets have a quick tour into example and understand How to actually run a Showrunner framework over a demo HelloWorld channel
+(Hello World Example)[https://docs.push.org/developers/developer-tooling/showrunners-framework/hello-world-channel]
 
 ---
 
 ## Technical Details
 
-Following definitions are used in the rest of the spec to refer to a particular category or service.
+<!-- Following definitions are used in the rest of the spec to refer to a particular category or service.
 | Term | Description
 | ------------- | ------------- |
-| Showrunners | Showrunners are Channels on PUSH protocol notification protocol that are created and maintained by us |
+| Showrunners | Showrunners are Channels on PUSH protocol notification protocol that are created and maintained by us | -->
 
 ### Tech Specs
 
@@ -96,16 +120,6 @@ We would need external services of:
 - [Mongodb Atlas](https://www.mongodb.com/cloud/atlas)
 
 For local ease of development, we make use of [Docker](https://docs.docker.com/get-docker/).
-
----
-
-## Resources
-- **[Website](https://push.org)** To checkout our Product.
-- **[Docs](https://docs.push.org/developers/)** For comprehensive documentation.
-- **[Blog](https://medium.com/push-protocol)** To learn more about our partners, new launches, etc.
-- **[Discord](https://discord.gg/pushprotocol)** for support and discussions with the community and the team.
-- **[GitHub](https://github.com/ethereum-push-notification-service)** for source code, project board, issues, and pull requests.
-- **[Twitter](https://twitter.com/pushprotocol)** for the latest updates on the product and published blogs.
 
 ---
 
