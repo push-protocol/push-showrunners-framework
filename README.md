@@ -85,7 +85,8 @@ Each folder inside ```src/showrunners``` is treated as their own channel. Showru
 ## Examples :
 
 Now lets have a quick tour into example and understand How to actually run a Showrunner framework over a demo HelloWorld channel
-(Hello World Example)[https://docs.push.org/developers/developer-tooling/showrunners-framework/hello-world-channel]
+
+[Hello World Example](https://docs.push.org/developers/developer-tooling/showrunners-framework/hello-world-channel)
 
 ---
 
