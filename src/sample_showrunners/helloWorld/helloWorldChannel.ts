@@ -21,7 +21,7 @@ export default class HelloWorldChannel extends EPNSChannel {
     try {
       this.logInfo('Sending notification to evidence provider');
 
-      // Notification Type: 1 for Broadcast, 3 for Subset, 4 for targeted
+      // Notification Type: 1 for Broadcast, 3 for targeted, 4 for subset
       // Read More: https://docs.epns.io/developers/developer-guides/sending-notifications/notification-payload-types/notification-standard-basics
       const notificationType = 1;
 
