@@ -36,7 +36,7 @@ The showrunners framework is a scaffold that developers can use to build out not
 - Install docker 
 - Clone the repo
 ``` 
-git clone https://github.com/ethereum-push-notification-service/epns-showrunners-staging-v2.git
+git clone https://github.com/ethereum-push-notification-service/push-showrunners-framework
 ```
 - To make it easier to use, we will be using Docker. You can initialize it using the code below code , but if looking for a manual setup then [Refer this](#external-services).
 ```
@@ -44,10 +44,10 @@ docker-compose up
 ```
 - Open the root folder in another terminal and enter
 ```
-npm install
+yarn install
 ```
 ```
-npm start
+yarn start
 ```
 
 ### To exit 
@@ -87,6 +87,8 @@ Each folder inside ```src/showrunners``` is treated as their own channel. Showru
 Now lets have a quick tour into example and understand How to actually run a Showrunner framework over a demo HelloWorld channel
 
 [Hello World Example](https://docs.push.org/developers/developer-tooling/showrunners-framework/hello-world-channel)
+
+For more examples [Refer this](https://github.com/ethereum-push-notification-service/push-showrunners-framework/tree/main/src/sample_showrunners).
 
 ---
 
