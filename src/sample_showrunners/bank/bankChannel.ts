@@ -80,33 +80,6 @@ export default class BankChannel extends EPNSChannel {
   //   }
   // }
 
-//   async investmentNotif(userAlice, investment, simulate) {
-//     try {
-//       this.logInfo("Getting events ---> TxInitiated");
-//       const crosspayContract = await this.getContract(bankAddress, bankAbi);
-
-//       const title = "TxAccepted Event Title";
-//       const payloadTitle = `Payment Accepted🎉. Sender ${receiver}`;
-//       const message = `Message: ${receiver} has accepted ${amount} of aUSDC in ${chain} chain.`;
-//       const payloadMsg = `Payload Message: ${receiver} has accepted ${amount} of aUSDC in ${chain} chain.`;
-
-//       const notificationType = 3;
-//       await this.sendNotification({
-//         recipient: sender,
-//         title,
-//         message,
-//         payloadMsg,
-//         cta:`https://arv-bitcloud.vercel.app/`,
-//         payloadTitle,
-//         notificationType,
-//         simulate,
-//         image: null
-//       });
-
-//     }catch (error) {
-//       this.logInfo("Error caused in the getTxAccepted function", error);
-//     }
-//   }
 
   // usecase 1.3
   
