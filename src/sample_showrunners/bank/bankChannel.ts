@@ -3,11 +3,14 @@ import config from '../../config';
 import { EPNSChannel } from '../../helpers/epnschannel';
 import { Logger } from 'winston';
 import { request, gql } from 'graphql-request';
+
+// Import the Push SDK
 import { PushAPI } from "@pushprotocol/restapi";
  
 import { ethers } from "ethers";
 import bank from "./bank.json";
 
+// Smart contract deployed Chain (Network)
 const NETWORK_TO_MONITOR = config.web3PolygonMumbaiRPC; 
 const bankAbi = bank.abi;
 const bankAddress = "0x46b37B93376074F4e9ae6834A3FA8A7a41f946a3" // edit address
@@ -28,6 +31,10 @@ export default class BankChannel extends EPNSChannel {
     event Apy(uint256 apy);
     event Investments(uint256 investment);
     event HolidayStatus(bool holiday);
+
+    Category 1 --> Boolean
+    Category 2 --> Slider
+    Category 3 --> Slider
 */
 
   async startEventListener(simulate) {
@@ -37,7 +44,7 @@ export default class BankChannel extends EPNSChannel {
         const contract = new ethers.Contract(bankAddress, bankAbi, provider);
 
         const signer = new ethers.Wallet(
-          process.env.PRIVATE_KEY, // Arv test
+          process.env.PRIVATE_KEY, // Private key of the channel owner (or channel creation wallet)
             provider
         );
 
@@ -47,7 +54,6 @@ export default class BankChannel extends EPNSChannel {
         // contract.on("Apy", async (apy, event) => {
         //     // call functions in channel
         //     this.logInfo("Calling ---> apyNotif()");
-        //     // const subscribers = await this.getChannelSubscribers();
     
         //     this.apyNotif(userAlice, apy, simulate);    
         // })
@@ -63,7 +69,6 @@ export default class BankChannel extends EPNSChannel {
             // call functions in channel
             this.logInfo("Calling ---> holidayNotif()");
     
-            // if (subscribers.includes(receiver)) this.getTxApproved(sender, receiver, amount, chain, simulate);    
             this.holidayNotif(userAlice, holiday, simulate);    
         })
    
@@ -80,9 +85,8 @@ export default class BankChannel extends EPNSChannel {
   //   }
   // }
 
-
-  // usecase 1.3
   
+  // This function is triggered with slider settings
   async investmentNotif(userAlice, investment, simulate) {
     try {
       this.logInfo("Getting events ---> investmentNotif");
@@ -97,7 +101,7 @@ export default class BankChannel extends EPNSChannel {
           body: `Hi subscriber! This is to notify you that your bank's investment have reached ${investment}.`,
           cta: 'https://google.com/',
           embed: 'https://avatars.githubusercontent.com/u/64157541?s=200&v=4',
-          // index of the notification the channel wants to trigger, in this for 2nd index which is for Setting2 type
+          // index of the notification the channel wants to trigger, in this for 3nd index which is for Slider type
           category: 3,
         },
       });
@@ -123,7 +127,7 @@ export default class BankChannel extends EPNSChannel {
           body: `Hi subscriber! This is to notify you that bank is ${holiday == true ? 'closed' : 'open'} today.`,
           cta: 'https://google.com/',
           embed: 'https://avatars.githubusercontent.com/u/64157541?s=200&v=4',
-          // index of the notification the channel wants to trigger, in this for 2nd index which is for Setting2 type
+          // index of the notification the channel wants to trigger, in this for 2nd index which is for Boolean type
           category: 1,
         },
       });
