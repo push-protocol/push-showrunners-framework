@@ -1,3 +1,8 @@
+## Showrunners X Notification Settings Integration🔔
+
+Notification settings allow users to customize their experience by opting in for notifications they're interested in. Bundling the power of Showrunners and Notification settings can help both the organization and their users to get custom notifications directly from the chain.
+Let's dive deep into how you can harness this feature.
+
 ## Installation
 
 Open the Showrunners and install with yarn
