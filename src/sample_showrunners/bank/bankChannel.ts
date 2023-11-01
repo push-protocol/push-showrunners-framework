@@ -36,23 +36,16 @@ export default class BankChannel extends EPNSChannel {
     event HolidayStatus(bool holiday);
 
     Category 1 --> Boolean
-    Category 2 --> Slider
-    Category 3 --> Slider
+      This notification use-case considers a scenario where the users get notification about Bank holidays.
+
+    Category 2, 3 --> Slider
+      This notification use-case send notification to users who are interested in investments and APY. 
 */
 
   async startEventListener(simulate) {
         this.logInfo("EventListener function started!")
         
-        const provider = new ethers.providers.WebSocketProvider(process.env.ALCHEMY_WEBSOCKET);
-        const contract = new ethers.Contract(bankAddress, bankAbi, provider);
-
-        const signer = new ethers.Wallet(
-          process.env.PRIVATE_KEY, // Private key of the channel owner (or channel creation wallet)
-            provider
-        );
-
-        // Initialize wallet user, pass 'prod' instead of 'staging' for mainnet apps
-        const userAlice = await PushAPI.initialize(signer, { env: "staging" });
+        const { contract, userAlice } = await this.initializeUser();
     
         // contract.on("Apy", async (apy, event) => {
         //     // call functions in channel
@@ -94,7 +87,7 @@ export default class BankChannel extends EPNSChannel {
     try {
       this.logInfo("Getting events ---> investmentNotif");
 
-    const notifResForSliderI = await userAlice.channel.send(['*'], {
+    const payload = {
         notification: {
           title: 'Bank Investment Updates',
           body: 'Sending notification Bank Investment Updates category 3',
@@ -107,9 +100,11 @@ export default class BankChannel extends EPNSChannel {
           // index of the notification the channel wants to trigger, in this for 3nd index which is for Slider type
           category: 3,
         },
-      });
+      }
+      // send notification with settings
+      const notifRes = this.sendThroughNotifSettings(userAlice, payload);
 
-      this.logInfo('Notification for Investment slider sent successful🟢', notifResForSliderI)
+      this.logInfo('Notification for Investment slider sent successful🟢', notifRes)
 
     }catch (error) {
       this.logInfo("Error caused in the holidayNotif function", error);
@@ -120,7 +115,7 @@ export default class BankChannel extends EPNSChannel {
     try {
       this.logInfo("Getting events ---> holidayNotif");
 
-    const notifResForBoolean = await userAlice.channel.send(['*'], {
+      const payload = {
         notification: {
           title: 'Bank Holiday Status',
           body: 'Sending notification Bank Holiday Status category 1',
@@ -132,13 +127,41 @@ export default class BankChannel extends EPNSChannel {
           embed: 'https://avatars.githubusercontent.com/u/64157541?s=200&v=4',
           // index of the notification the channel wants to trigger, in this for 1nd index which is for Boolean type
           category: 1,
-        },
-      });
+        }
+      }
 
-      this.logInfo('Notification for boolean sent successful🟢', notifResForBoolean)
+      // send notification with settings
+      const notifRes = this.sendThroughNotifSettings(userAlice, payload)
+
+      this.logInfo('Notification for boolean sent successful🟢', notifRes)
 
     }catch (error) {
       this.logInfo("Error caused in the holidayNotif function", error);
     }
+  }
+
+  async sendThroughNotifSettings(userAlice, payload) {
+    try {
+      const notifRes = await userAlice.channel.send(['*'], payload);
+
+      return notifRes
+    } catch (error) {
+      this.logInfo("ERROR🔴 from sendThroughNotifSettings: ", error);
+    }
+  }
+
+  async initializeUser() {
+    const provider = new ethers.providers.WebSocketProvider(process.env.ALCHEMY_WEBSOCKET);
+    const contract = new ethers.Contract(bankAddress, bankAbi, provider);
+
+    const signer = new ethers.Wallet(
+      process.env.PRIVATE_KEY, // Private key of the channel owner (or channel creation wallet)
+        provider
+    );
+
+    // Initialize wallet user, pass 'prod' instead of 'staging' for mainnet apps
+    const userAlice = await PushAPI.initialize(signer, { env: "staging" });
+
+    return {contract, userAlice};
   }
 }
