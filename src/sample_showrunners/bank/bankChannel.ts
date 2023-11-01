@@ -10,6 +10,9 @@ import { PushAPI } from "@pushprotocol/restapi";
 import { ethers } from "ethers";
 import bank from "./bank.json";
 
+import 'dotenv/config'
+require('dotenv').config()
+
 // Smart contract deployed Chain (Network)
 const NETWORK_TO_MONITOR = config.web3PolygonMumbaiRPC; 
 const bankAbi = bank.abi;
@@ -127,7 +130,7 @@ export default class BankChannel extends EPNSChannel {
           body: `Hi subscriber! This is to notify you that bank is ${holiday == true ? 'closed' : 'open'} today.`,
           cta: 'https://google.com/',
           embed: 'https://avatars.githubusercontent.com/u/64157541?s=200&v=4',
-          // index of the notification the channel wants to trigger, in this for 2nd index which is for Boolean type
+          // index of the notification the channel wants to trigger, in this for 1nd index which is for Boolean type
           category: 1,
         },
       });

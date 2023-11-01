@@ -8,13 +8,16 @@ import { PushAPI } from "@pushprotocol/restapi";
 
 import { ethers } from "ethers";
 
+import 'dotenv/config'
+require('dotenv').config()
+
 const route = Router();
 
 export default async (app: Router) => {
   app.use('/showrunners/bank', route);
-  const provider = new ethers.providers.WebSocketProvider('wss://polygon-mumbai.g.alchemy.com/v2/jPp5II90BUILENlH5dGYkQMMKndhuOGd');
+  const provider = new ethers.providers.WebSocketProvider(process.env.ALCHEMY_WEBSOCKET);
   const signer = new ethers.Wallet(
-    '5f88b404b7d967b68b77939f7c376b3dd9aa385100e462baa2ad205965c3517c', // Arv test
+    process.env.PRIVATE_KEY, // Arv test
       provider
   );
 
