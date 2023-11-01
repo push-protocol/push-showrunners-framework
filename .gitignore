@@ -146,4 +146,3 @@ yarn.lock
 src/showrunners
 src/showrunners/*/*Keys.json
 src/showrunners/*/*PrivateSettings.json
-src/sample_showrunners/*/*Keys.json
