@@ -10,15 +10,6 @@ import axios from 'axios';
 import { EPNSChannel } from '../../helpers/epnschannel';
 import { Logger } from 'winston';
 
-// Import the Push SDK
-import { PushAPI } from "@pushprotocol/restapi";
- 
-import { ethers } from "ethers";
-import { mongo } from 'mongoose';
-
-import { ethTickerModel } from './ethTickerModel';
-
-
 const bent = require('bent'); // Download library
 
 const NETWORK_TO_MONITOR = config.web3MainnetNetwork;
@@ -76,9 +67,8 @@ export default class EthTickerChannel extends EPNSChannel {
 
       const cmcroute = 'v1/cryptocurrency/quotes/latest';
       const cmcEndpoint = 'https://pro-api.coinmarketcap.com/'
-      const pollURL = `${cmcEndpoint}${cmcroute}?symbol=ETH&CMC_PRO_API_KEY=${'1bbe0bab-4ee7-4a38-8b03-b49a0b4fff4e' || config.cmcAPIKey}`;
+      const pollURL = `${cmcEndpoint}${cmcroute}?symbol=ETH&CMC_PRO_API_KEY=${config.cmcAPIKey}`;
 
-      console.log(`CMC Cnnfig: ${cmcEndpoint}, CMC_PRO_API_KEY = ${'1bbe0bab-4ee7-4a38-8b03-b49a0b4fff4e' || config.cmcAPIKey}`);
 
       getJSON(pollURL)
         .then(async (response: any) => {
@@ -104,25 +94,10 @@ export default class EthTickerChannel extends EPNSChannel {
           const dayChangeFixed = dayChange.toFixed(2);
           const weekChangeFixed = weekChange.toFixed(2);
 
-          // Initialize arr for all recepients
+          // 1. Initialize arr for all recipients
           let recipients: string[] = [];
 
-          // 1. Store prev price in MongoDB
-          // Store
-          await ethTickerModel.findByIdAndUpdate(
-            { _id: 'prev_eth_price' },
-            { prevEthPrice: Number(formattedPrice) },
-            { upsert: true },
-          );
-
-          // Retrieve
-          // const prevPrice = 0; //= mongo.findOne();
-          const prevPrice = await ethTickerModel.findOne({ _id: 'prev_eth_price' });
-          
-          // 2. Calculate percentage change. |prevValue - currentValue| / prevValue
-          const changePercentage = Math.abs(prevPrice.prevEthPrice - price) / prevPrice.prevEthPrice;
-
-          // 3. Get the list of all the addresses opted in for the setting - /subscribers?category=2&setting=true
+          // 2. Get the list of all the addresses opted in for the setting - /subscribers?category=2&setting=true
           const { data: userData } = await axios(`https://backend-staging.epns.io/apis/v1/channels/eip155:${'11155111'}:${'0x9C2dA92ff312b630B67cEa1d2C234250c2d3410e'}/subscribers?category=${'2'}&setting=${'true'}`);
 
           // 4. Loop through the `settings` array for the required type (say 2 here) and get the `user` value
@@ -155,7 +130,7 @@ export default class EthTickerChannel extends EPNSChannel {
           }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
               
           const payload = {
-            type: 1, // Type of Notification
+            type: 3, // Type of Notification
             notifTitle: title, // Title of Notification
             notifMsg: message, // Message of Notification
             title: payloadTitle, // Internal Title
