@@ -70,6 +70,7 @@ export default class BankChannel extends EPNSChannel {
    
   }
 
+
   // async apyNotif(userAlice, apy, simulate) {
   //   try {
   //     this.logInfo("Getting events ---> apyNotif");
@@ -144,7 +145,7 @@ export default class BankChannel extends EPNSChannel {
     try {
       const notifRes = await userAlice.channel.send(['*'], payload);
 
-      return notifRes
+      return notifRes;
     } catch (error) {
       this.logInfo("ERROR🔴 from sendThroughNotifSettings: ", error);
     }
