@@ -23,20 +23,19 @@ import AaveChannel from './aaveChannel';
 export default () => {
   const startTime = new Date(new Date().setHours(0, 0, 0, 0));
 
-  const dailyRule = new schedule.RecurrenceRule();
-  dailyRule.hour = 0;
-  dailyRule.minute = 0;
-  dailyRule.second = 0;
-  dailyRule.dayOfWeek = new schedule.Range(0, 6);
+  const threeHourRule = new schedule.RecurrenceRule();
+  threeHourRule.hour = new schedule.Range(0, 23, 3);
+  threeHourRule.minute = 0;
+  threeHourRule.second = 0;
 
   // AAVE CHANNEL RUNS EVERY 24 Hours
-  logger.info(`     🛵 Scheduling Showrunner - Aave Channel [on 6 Hours] [${new Date(Date.now())}]`);
-  schedule.scheduleJob({ start: startTime, rule: dailyRule }, async function () {
+  logger.info(`     🛵 Scheduling Showrunner - Aave Channel [on 3 Hours] [${new Date(Date.now())}]`);
+  schedule.scheduleJob({ start: startTime, rule: threeHourRule }, async function () {
     const aaveChannel = Container.get(AaveChannel);
     const taskName = 'Aave users address checks and sendMessageToContract()';
 
     try {
-      await aaveChannel.sendMessageToContract(false);
+      await aaveChannel.getUserSettings(false);
       logger.info(`[${new Date(Date.now())}] 🐣 Cron Task Completed -- ${taskName}`);
     }
     catch (err) {
