@@ -74,7 +74,7 @@ export default class AaveChannel extends EPNSChannel {
                 }
                 else if (settings.index == 1 && settings.enabled == false) {
                   //If User settings Exist but is disabled by the user => send normal notification.
-                  this.checkHealthFactor(subscriberObj.subscriber, 0, 3, simulate)
+                  // Don't send any notifications.
                 }
                 // Supply APY code goes here -->
                 if (settings.index == 2 && settings.enabled == true) {
@@ -133,7 +133,6 @@ export default class AaveChannel extends EPNSChannel {
                       }
                       loopCounter++;
                     }
-
                     k++;
                   })
                   const tx = await this.sendNotification({
@@ -152,7 +151,7 @@ export default class AaveChannel extends EPNSChannel {
             }
             else {
               // For Users who have not opted into notification setting
-              //  this.checkHealthFactor(subscriberObj.subscriber, 0, 3, simulate)
+                this.checkHealthFactor(subscriberObj.subscriber, 0, 3, simulate)
             }
           })
         } else {
@@ -303,17 +302,6 @@ export default class AaveChannel extends EPNSChannel {
     this.logInfo("Error occured in Supply Borrow APY in aave")
   }
   return true;
-  }
-
-  public async testLogic(healthFactor) {
-
-    if (Number(healthFactor) >= 0 && Number(healthFactor) <= 3) {
-      const precision = CUSTOMIZABLE_SETTINGS.precision;
-      const newHealthFactor = parseFloat(healthFactor).toFixed(precision);
-      return true;
-    } else {
-      return false;
-    }
   }
 
 }
