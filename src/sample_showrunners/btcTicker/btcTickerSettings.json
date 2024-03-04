@@ -1,0 +1,7 @@
+{
+    "cmcEndpoint": "https://pro-api.coinmarketcap.com/",
+    "providerUrl":"https://rpc.ankr.com/eth",
+    "route":"v1/cryptocurrency/quotes/latest",
+    "cmcKey":"Key"
+  }
+  

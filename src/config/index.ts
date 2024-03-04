@@ -110,14 +110,6 @@ let config = {
   web3MainnetNetwork: process.env.MAINNET_RPC_OVERRIDE || staticConfig.MAINNET_WEB3_NETWORK,
   web3MainnetSocket: staticConfig.MAINNET_WEB3_SOCKET,
 
-  web3RopstenProvider: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-  web3RopstenNetwork: staticConfig.ROPSTEN_WEB3_NETWORK,
-  web3RopstenSocket: staticConfig.ROPSTEN_WEB3_SOCKET,
-
-  web3KovanProvider: `https://kovan.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-  web3KovanNetwork: staticConfig.KOVAN_WEB3_NETWORK,
-  web3KovanSocket: staticConfig.KOVAN_WEB3_SOCKET,
-
   web3PolygonMainnetProvider: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3PolygonMainnetRPC: staticConfig.POLYGON_MAINNET_RPC,
 
