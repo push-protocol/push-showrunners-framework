@@ -103,9 +103,9 @@ export default class PricetrackerChannel extends EPNSChannel {
           // UPDATE CYCLES VALUE
           // HERE
           await priceTrackerGlobalModel.findOneAndUpdate({ _id: 'global' }, { $inc: { cycles: 3 } }, { upsert: true });
-          const ethTickerGlobalData = await priceTrackerGlobalModel.findOne({ _id: 'global' });
+          const priceTickerGlobalData = await priceTrackerGlobalModel.findOne({ _id: 'global' });
 
-          this.logInfo(`Cycles value after all computation: ${ethTickerGlobalData.cycles}`);
+          this.logInfo(`Cycles value after all computation: ${priceTickerGlobalData.cycles}`);
 
           break;
         }
