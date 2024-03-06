@@ -57,7 +57,7 @@ export default class PricetrackerChannel extends EPNSChannel {
       data = data.data;
 
       // Initalize provider, signer and userAlice for Channel interaction
-      const provider = new ethers.providers.JsonRpcProvider(config.web3TestnetSepoliaProvider||settings.providerUrl);
+      const provider = new ethers.providers.JsonRpcProvider(config.web3TestnetSepoliaProvider || settings.providerUrl);
       const signer = new ethers.Wallet(keys.PRIVATE_KEY_NEW_STANDARD.PK, provider);
       const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
 
@@ -103,9 +103,9 @@ export default class PricetrackerChannel extends EPNSChannel {
           // UPDATE CYCLES VALUE
           // HERE
           await priceTrackerGlobalModel.findOneAndUpdate({ _id: 'global' }, { $inc: { cycles: 3 } }, { upsert: true });
-          const priceTickerGlobalData = await priceTrackerGlobalModel.findOne({ _id: 'global' });
+          const ethTickerGlobalData = await priceTrackerGlobalModel.findOne({ _id: 'global' });
 
-          this.logInfo(`Cycles value after all computation: ${priceTickerGlobalData.cycles}`);
+          this.logInfo(`Cycles value after all computation: ${ethTickerGlobalData.cycles}`);
 
           break;
         }
@@ -404,16 +404,16 @@ export default class PricetrackerChannel extends EPNSChannel {
                     // Send a notification only is body exists
                     if (payload.msg !== '') {
                       this.logInfo('🎺 Notification to this Address: ' + payload.recipient);
-                        this.sendNotification({
-                          recipient: payload.recipient, // new
-                          title: payload.notifTitle,
-                          message: payload.notifMsg,
-                          payloadTitle: payload.title,
-                          payloadMsg: payloadMsg,
-                          notificationType: 3,
-                          simulate: simulate,
-                          image: null,
-                        });
+                      //   this.sendNotification({
+                      //     recipient: payload.recipient, // new
+                      //     title: payload.notifTitle,
+                      //     message: payload.notifMsg,
+                      //     payloadTitle: payload.title,
+                      //     payloadMsg: payloadMsg,
+                      //     notificationType: 3,
+                      //     simulate: simulate,
+                      //     image: null,
+                      //   });
                     }
                   } catch (error) {
                     throw {

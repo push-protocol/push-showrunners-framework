@@ -1,8 +1,15 @@
 {
+  "ETH_TRACKER_CACHE_KEY": "ETH_TRACKER_CACHE_KEY",
+  "PAGINATION_PARAMS": {
+    "limit": 1000,
+    "currentPage": 1,
+    "totalPages": 1
+  },
+  "DEFAULT_BALANCE_OBJECT": { "balance": 0 },
     "cmcEndpoint": "https://pro-api.coinmarketcap.com/",
-    "providerUrl":"https://ethereum-sepolia.publicnode.com",
+    "providerUrl":"SEPOLIA_PROVIDER_URL",
     "route":"v2/cryptocurrency/quotes/latest",
-    "cmcKey":"you cmc api key",
+    "cmcKey":"CMC_API_KEY",
     "id":"1,1027,1839,5426,2010,5805,1975,6636,3890,9111",
     "tokenNames":["BTC","ETH","BNB","SOL","ADA","AVAX","LINK","DOT","MATIC","PUSH"]
 }
