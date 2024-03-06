@@ -10,7 +10,7 @@ import { ethers } from 'ethers';
 import { btcTickerUserModel, btcTickerGlobalModel } from './btcTickerModel';
 import axios from 'axios';
 
-const NETWORK_TO_MONITOR = config.web3MainnetNetwork;
+const NETWORK_TO_MONITOR = config.web3TestnetSepoliaNetwork;
 
 @Service()
 export default class BtcTickerChannel extends EPNSChannel {
@@ -106,10 +106,10 @@ export default class BtcTickerChannel extends EPNSChannel {
       // --------------------------------------------------------------------------------------------- */
 
       // Initializing userAlice
-      const provider = new ethers.providers.JsonRpcProvider( config.web3MainnetProvider || settings.providerUrl);
+      const provider = new ethers.providers.JsonRpcProvider( config.web3TestnetSepoliaProvider || settings.providerUrl);
 
       const signer = new ethers.Wallet(keys.PRIVATE_KEY_NEW_STANDARD.PK, provider);
-      const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.PROD });
+      const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
 
       let i = 1;  
 
@@ -148,8 +148,7 @@ export default class BtcTickerChannel extends EPNSChannel {
            // this.logInfo(`⚡⚡⚡Setting ${JSON.stringify(userSettings)} (${subscriberObj.subscriber})`);
 
             // Fetch users last btc price & last cycle values
-            const userDBValue =
-              (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber })) ||
+            const userDBValue = (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber })) ||
               (await btcTickerUserModel.create({
                 _id: subscriberObj.subscriber,
                 lastCycle: btcTrackerGlobalData.cycles,
@@ -164,7 +163,7 @@ export default class BtcTickerChannel extends EPNSChannel {
             
 
           //  this.logInfo(`🔽Previous BTC price of ${subscriberObj.subscriber}: ` + Number(userDBValue.lastBtcPrice));
-         //   this.logInfo(`Change Price ${subscriberObj.subscriber} :` + changePercentage);
+            this.logInfo(`Change Price ${subscriberObj.subscriber} :` + changePercentage);
 
             // ----------------------------------------------------
 

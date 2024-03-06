@@ -110,6 +110,9 @@ let config = {
   web3MainnetNetwork: process.env.MAINNET_RPC_OVERRIDE || staticConfig.MAINNET_WEB3_NETWORK,
   web3MainnetSocket: staticConfig.MAINNET_WEB3_SOCKET,
 
+  web3TestnetSepoliaProvider:process.env.SEPOLIA_QUICKNODE_RPC,
+  web3TestnetSepoliaNetwork: 'SEPOLIA',
+  
   web3PolygonMainnetProvider: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
   web3PolygonMainnetRPC: staticConfig.POLYGON_MAINNET_RPC,
 

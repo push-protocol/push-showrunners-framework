@@ -12,14 +12,7 @@
 // Execute a cron job every 5 Minutes = */5 * * * *
 // Starts from seconds = * * * * * *
 
-import config from '../../config';
 import logger from '../../loaders/logger';
-
-// Import the Push SDK
-import { PushAPI } from "@pushprotocol/restapi";
- 
-import { ethers } from "ethers";
-
 import { Container } from 'typedi';
 import schedule from 'node-schedule';
 

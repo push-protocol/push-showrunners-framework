@@ -1,7 +1,7 @@
 {
     "cmcEndpoint": "https://pro-api.coinmarketcap.com/",
-    "providerUrl":"https://rpc.ankr.com/eth",
+    "providerUrl":"https://sepolia.gateway.tenderly.co",
     "route":"v1/cryptocurrency/quotes/latest",
-    "cmcKey":"Key"
+    "cmcKey":"coin marketcap api key"
   }
   
