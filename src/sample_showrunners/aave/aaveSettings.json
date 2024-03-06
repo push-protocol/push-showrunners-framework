@@ -1,6 +1,16 @@
 {
-    "aaveLendingPoolDeployedContractPolygonMainnet": "0x8dFf5E27EA6b7AC08EbFdf9eB090F32ee9a30fcf",
     "aaveLendingPoolDeployedContractPolygonMumbai": "0x9198F13B08E299d85E096929fA9781A1E3d5d827",
     "aaveLendingPoolDeployedContractMainnet": "0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9",
-    "aaveLendingPoolDeployedContractKovan": "0xE0fBa4Fc209b4948668006B2bE61711b7f465bAe"
+    "aaveV3PoolContractMainnet":"0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+    "aaveV3PoolContractMumbai":"0xcC6114B983E4Ed2737E9BD3961c9924e6216c704",
+    "aaveLendingPoolDeployedContractGoerli": "0x4bd5643ac6f66a5237E18bfA7d47cF22f1c9F210",
+    "goerliProvider":"https://eth-goerli.api.onfinality.io/public",
+    "MainnetProvider":"https://rpc.ankr.com/eth",
+    "MumbaiProvider":"https://rpc.ankr.com/polygon_mumbai",
+    "polygonProvider":"https://rpc.ankr.com/polygon",
+    "aaveV3PoolDataProvider":"0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3",
+    "aaveV2PoolDataProvider":"0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d",
+    "aaveV3PolygonPoolDataProvider":"0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654",
+    "aaveV3PolygonPoolLending":"0x794a61358D6845594F94dc1DB02A252b5b4814aD",
+    "aaveV2PoolLendingMumbai":"0x8dff5e27ea6b7ac08ebfdf9eb090f32ee9a30fcf"
 }

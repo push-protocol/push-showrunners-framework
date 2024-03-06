@@ -29,7 +29,29 @@ export default (app: Router) => {
       logger.debug('Calling /showrunners/aave/send_message endpoint with body: %o', req.body);
       try {
         const aave = Container.get(aaveChannel);
-        const data = await aave.sendMessageToContract(req.body.simulate);
+        const data = await aave.getUserSettings(req.body.simulate);
+        return res.status(200).json({ success: true, data: data });
+      } catch (e) {
+        logger.error('🔥 error: %o', e);
+        return handleResponse(res, 500, false, 'error', JSON.stringify(e));
+      }
+    },
+  );
+
+  route.post(
+    '/getData',
+    celebrate({
+      body: Joi.object({
+        simulate: [Joi.bool(), Joi.object()],
+      }),
+    }),
+    middlewares.onlyLocalhost,
+    async (req: Request, res: Response, next: NextFunction) => {
+      const logger: Logger = Container.get('logger');
+      logger.debug('Calling /showrunners/aave/send_message endpoint with body: %o', req.body);
+      try {
+        const aave = Container.get(aaveChannel);
+        const data = await aave.getData();
         return res.status(200).json({ success: true, data: data });
       } catch (e) {
         logger.error('🔥 error: %o', e);
@@ -48,10 +70,11 @@ export default (app: Router) => {
     middlewares.onlyLocalhost,
     async (req: Request, res: Response, next: NextFunction) => {
       const logger: Logger = Container.get('logger');
-      logger.debug('Calling /showrunners/aave/send_message endpoint with body: %o', req.body);
+      logger.debug('Calling /showrunners/aave/send_message endpoint with body: %o',req.body);
       try {
+       // console.log("Body"+req.body);
         const aave = Container.get(aaveChannel);
-        const data = await aave.checkHealthFactor(null, null, null, req.body.simulate);
+        const data = await aave.checkHealthFactor(JSON.stringify(req.body.simulate.logicOverride.applyToAddr),0,3, req.body.simulate);
 
         return res.status(200).json({ success: true, data: data });
       } catch (e) {
