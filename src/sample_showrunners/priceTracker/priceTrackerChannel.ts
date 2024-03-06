@@ -57,7 +57,7 @@ export default class PricetrackerChannel extends EPNSChannel {
       data = data.data;
 
       // Initalize provider, signer and userAlice for Channel interaction
-      const provider = new ethers.providers.JsonRpcProvider(config.web3TestnetSepoliaProvider || settings.providerUrl);
+      const provider = new ethers.providers.JsonRpcProvider(config.web3TestnetSepoliaProvider||settings.providerUrl);
       const signer = new ethers.Wallet(keys.PRIVATE_KEY_NEW_STANDARD.PK, provider);
       const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
 
@@ -73,6 +73,9 @@ export default class PricetrackerChannel extends EPNSChannel {
         tokenInfo.push({ symbol: tokenSymbol, price: formattedPrice });
       }
 
+      // Temp
+      // await priceTrackerGlobalModel.findOneAndUpdate({ _id: 'global' }, { cycles: 0 }, { upsert: true });
+
       // Global variables from DB
       const priceTrackerGlobalData =
         (await priceTrackerGlobalModel.findOne({ _id: 'global' })) ||
@@ -82,13 +85,13 @@ export default class PricetrackerChannel extends EPNSChannel {
         }));
 
       // Set CYCLES variable in DB
-      const CYCLES = priceTrackerGlobalData.cycles;
+      const CYCLES = priceTrackerGlobalData.cycles; // priceTrackerGlobalData.cycles
 
       // Looping for subscribers' data in the channel
       while (true) {
         const userData: any = await userAlice.channel.subscribers({
           page: i,
-          limit: 10,
+          limit: 30,
           setting: true,
         });
 
@@ -100,9 +103,9 @@ export default class PricetrackerChannel extends EPNSChannel {
           // UPDATE CYCLES VALUE
           // HERE
           await priceTrackerGlobalModel.findOneAndUpdate({ _id: 'global' }, { $inc: { cycles: 3 } }, { upsert: true });
-          const priceTickerGlobalData = await priceTrackerGlobalModel.findOne({ _id: 'global' });
+          const ethTickerGlobalData = await priceTrackerGlobalModel.findOne({ _id: 'global' });
 
-        //  this.logInfo(`Cycles value after all computation: ${priceTickerGlobalData?.cycles}`);
+          this.logInfo(`Cycles value after all computation: ${ethTickerGlobalData.cycles}`);
 
           break;
         }
@@ -120,14 +123,11 @@ export default class PricetrackerChannel extends EPNSChannel {
               // Only perform computation if user settings exist
               try {
                 if (userSettings !== null) {
-                 
-                  this.logInfo(`Subs ${subscriberObj.subscriber}`);
                   // Looping through userSettings to handle each userSetting
-                  
                   await Promise.all(
                     userSettings?.map(async (mapObj, index) => {
                       // If subscriber is subscribed to the setting
-                      if (mapObj.user == true) {
+                      if (mapObj.user == true && mapObj.type == 1) {
                         // Get current price of the token
                         const currentToken = tokenInfo.find((obj) => obj.symbol === mapObj.description);
                         const currentPrice = currentToken?.price;
@@ -159,45 +159,104 @@ export default class PricetrackerChannel extends EPNSChannel {
                           this.logInfo(`Price Alert & Time Interval Slider case: ${subscriberObj.subscriber}`);
 
                           // Fetch user values for settings
-                          let userValueTime = userSettings[9].user ==0 ?3:userSettings[9].user;
+                          let userValueTime = userSettings[9].user == 0 ? 3 : userSettings[9].user;
                           let userValuePrice = userSettings[10].user;
 
-                          // Fetch user last cycle values
-                          const userDBValue =
+                          // Case for if user opts-in, opts-out and again opts-in later in time interval
+                          const presentInDb = (await priceTrackerModel.findOne({ _id: subscriberObj.subscriber }))
+                            ? true
+                            : false;
+
+                          if (presentInDb) {
+                            const userDBValueCheck = await priceTrackerModel.findOne({ _id: subscriberObj.subscriber });
+
+                            if (Number(userDBValueCheck.lastCycle + userValueTime) < Number(CYCLES)) {
+                              // Set current cycle as lastCycle
+                              await priceTrackerModel.findOneAndUpdate(
+                                { _id: subscriberObj.subscriber },
+                                { lastCycle: CYCLES },
+                                { upsert: true },
+                              );
+
+                              const userLastCycleValue = await priceTrackerModel.findOne({
+                                _id: subscriberObj.subscriber,
+                              });
+                              this.logInfo(
+                                `👋 UserLastCycleValue (${subscriberObj.subscriber}): ` + userLastCycleValue.lastCycle,
+                              ); // 45
+                            }
+                          }
+
+                          // --------------------------------------------------------------------------------
+
+                          const userDBValueBefore =
                             (await priceTrackerModel.findOne({ _id: subscriberObj.subscriber })) ||
                             (await priceTrackerModel.create({
                               _id: subscriberObj.subscriber,
-                              lastCycle: priceTrackerGlobalData.cycles,
+                              lastCycle: CYCLES,
+                              settingsValue: userValueTime,
                             }));
+
+                          // Check if user changed their settings
+                          const userSettingsDBValue = userDBValueBefore.settingsValue
+                            ? userDBValueBefore.settingsValue
+                            : 0; // 0
+                          const userChangedValue = userSettingsDBValue != userValueTime; // true
+
+                          if (userChangedValue) {
+                            this.logInfo(
+                              '🤯User changed settings value: ' + subscriberObj.subscriber + ' by: ' + userValueTime,
+                            );
+
+                            await priceTrackerModel.findOneAndUpdate(
+                              { _id: subscriberObj.subscriber },
+                              { lastCycle: CYCLES, settingsValue: userValueTime },
+                            );
+                          }
+
+                          const userDBValue = await priceTrackerModel.findOne({ _id: subscriberObj.subscriber });
 
                           this.logInfo(
                             `Mapped value of ${userDBValue._id} is ${userDBValue.lastCycle} from both price and time`,
                           );
                           this.logInfo(`User value of ${userDBValue._id} is ${userValueTime} from both price and time`);
+                          this.logInfo(
+                            `🔽User value in db of ${userDBValue._id} is ${userDBValue.settingsValue} from both price and time`,
+                          );
 
                           // Condition to trigger notification
-                          if (
-                            Math.abs(Number(changePercentage)) >= userValuePrice &&
-                            userDBValue.lastCycle + userValueTime == CYCLES
-                          ) {
-                            // UPDATE the users mapped value in DB
-                            await priceTrackerModel.findOneAndUpdate(
-                              { _id: subscriberObj.subscriber },
-                              { lastCycle: CYCLES },
-                              { upsert: true },
-                            );
-                            // Build the payload of the notification
-                            const payloadMsg =
-                              Number(changePercentage) > 0
-                                ? `Percentage Change (${mapObj.description}): [s:+${Math.abs(
-                                    Number(changePercentage),
-                                  )}% ($ ${currentPrice})]\n `
-                                : `Percentage Change (${mapObj.description}): [d:-${Math.abs(
-                                    Number(changePercentage),
-                                  )}% ($ ${currentPrice})]\n `;
-                                  this.logInfo(`Address: ${subscriberObj.subscriber} Data : ${payloadMsg}`);
 
-                            notifData2.push({ key: `${Math.abs(Number(changePercentage))}`, notif: `${payloadMsg}` });
+                          // Math.abs(Number(changePercentage)) >= userValuePrice &&
+                          //  userDBValue.lastCycle + userValueTime == CYCLES
+                          if (userDBValue.lastCycle + userValueTime == CYCLES) {
+                            // Math.abs(Number(changePercentage)) >= userValuePrice && userDBValue.lastCycle + userValueTime == CYCLES
+                            if (Math.abs(Number(changePercentage)) >= userValuePrice) {
+                              // UPDATE the users mapped value in DB
+                              await priceTrackerModel.findOneAndUpdate(
+                                { _id: subscriberObj.subscriber },
+                                { lastCycle: CYCLES },
+                                { upsert: true },
+                              );
+
+                              // Build the payload of the notification
+                              const payloadMsg =
+                                Number(changePercentage) > 0
+                                  ? `Percentage Change (${mapObj.description}): [s:+${Math.abs(
+                                      Number(changePercentage),
+                                    )}% ($ ${currentPrice})]\n `
+                                  : `Percentage Change (${mapObj.description}): [d:-${Math.abs(
+                                      Number(changePercentage),
+                                    )}% ($ ${currentPrice})]\n `;
+
+                              notifData2.push({ key: `${Math.abs(Number(changePercentage))}`, notif: `${payloadMsg}` });
+                            } else {
+                              // UPDATE the users mapped value in DB
+                              await priceTrackerModel.findOneAndUpdate(
+                                { _id: subscriberObj.subscriber },
+                                { lastCycle: CYCLES },
+                                { upsert: true },
+                              );
+                            }
                           }
                         } else if (userSettings[10]?.enabled == true) {
                           this.logInfo(`Price Alert Slider only case: ${subscriberObj.subscriber}`);
@@ -226,20 +285,71 @@ export default class PricetrackerChannel extends EPNSChannel {
                           this.logInfo(`Time Interval Slider only case: ${subscriberObj.subscriber}`);
 
                           // Fetch user values for settings
-                          let userValue = userSettings[9].user ==0 ?3:userSettings[9].user;
+                          let userValue = userSettings[9].user == 0 ? 3 : userSettings[9].user;
 
-                          const userDBValue =
+                          // Case for if user opts-in, opts-out and again opts-in later in time interval
+                          const presentInDb = (await priceTrackerModel.findOne({ _id: subscriberObj.subscriber }))
+                            ? true
+                            : false;
+
+                          if (presentInDb) {
+                            const userDBValueCheck = await priceTrackerModel.findOne({ _id: subscriberObj.subscriber });
+
+                            if (Number(userDBValueCheck.lastCycle + userValue) < Number(CYCLES)) {
+                              // Set current cycle as lastCycle
+                              await priceTrackerModel.findOneAndUpdate(
+                                { _id: subscriberObj.subscriber },
+                                { lastCycle: CYCLES },
+                                { upsert: true },
+                              );
+
+                              const userLastCycleValue = await priceTrackerModel.findOne({
+                                _id: subscriberObj.subscriber,
+                              });
+                              this.logInfo(
+                                `👋 UserLastCycleValue (${subscriberObj.subscriber}): ` + userLastCycleValue.lastCycle,
+                              ); // 45
+                            }
+                          }
+
+                          const userDBValueBefore =
                             (await priceTrackerModel.findOne({ _id: subscriberObj.subscriber })) ||
                             (await priceTrackerModel.create({
                               _id: subscriberObj.subscriber,
-                              lastCycle: priceTrackerGlobalData.cycles,
+                              lastCycle: CYCLES,
+                              settingsValue: userValue,
                             }));
+
+                          // Check if user changed their settings
+                          const userSettingsDBValue = userDBValueBefore.settingsValue
+                            ? userDBValueBefore.settingsValue
+                            : 0; // 0
+                          const userChangedValue = userSettingsDBValue != userValue; // true
+
+                          if (userChangedValue) {
+                            this.logInfo(
+                              '🤯User changed settings value: ' + subscriberObj.subscriber + ' by: ' + userValue,
+                            );
+
+                            await priceTrackerModel.findOneAndUpdate(
+                              { _id: subscriberObj.subscriber },
+                              { lastCycle: CYCLES, settingsValue: userValue },
+                            );
+                          }
+
+                          const userDBValue = await priceTrackerModel.findOne({ _id: subscriberObj.subscriber });
+
+                          this.logInfo(`Mapped value of ${userDBValue._id} is ${userDBValue.lastCycle} from only time`);
+                          this.logInfo(`User value of ${userDBValue._id} is ${userValue} from only time`);
+                          this.logInfo(`Cycles value ${CYCLES} before computation from only time`);
+                          this.logInfo(
+                            `🔽User value in db of ${userDBValue._id} is ${userDBValue.settingsValue} from both price and time`,
+                          );
 
                           if (userDBValue.lastCycle + userValue == CYCLES) {
                             // userDBValue.lastCycle + userValue == CYCLES
                             // userDBValue.lastCycle + 6 == CYCLES
                             // userValue = 210, CYCLES
-                         //   this.logInfo(`This address will receive the notif: ${subscriberObj.subscriber}`);
 
                             // UPDATE the users mapped value in DB
                             await priceTrackerModel.findOneAndUpdate(
@@ -254,6 +364,7 @@ export default class PricetrackerChannel extends EPNSChannel {
                             notifData2.push({ key: `${currentPrice}`, notif: `${payloadMsg}` });
                           }
                         } else {
+                          this.logInfo('-------Executing the New case---------');
 
                           // Build the payload of the notification
                           const payloadMsg = `${mapObj.description} at [d:$${currentPrice}]\n `;
@@ -288,18 +399,21 @@ export default class PricetrackerChannel extends EPNSChannel {
                       recipient: subscriberObj.subscriber, // Recipient
                     };
 
+                    this.logInfo('📄: ' + JSON.stringify(payload));
+
                     // Send a notification only is body exists
                     if (payload.msg !== '') {
-                      this.sendNotification({
-                        recipient: payload.recipient, // new
-                        title: payload.notifTitle,
-                        message: payload.notifMsg,
-                        payloadTitle: payload.title,
-                        payloadMsg: payloadMsg,
-                        notificationType: 3,
-                        simulate: simulate,
-                        image: null,
-                      });
+                      this.logInfo('🎺 Notification to this Address: ' + payload.recipient);
+                        this.sendNotification({
+                          recipient: payload.recipient, // new
+                          title: payload.notifTitle,
+                          message: payload.notifMsg,
+                          payloadTitle: payload.title,
+                          payloadMsg: payloadMsg,
+                          notificationType: 3,
+                          simulate: simulate,
+                          image: null,
+                        });
                     }
                   } catch (error) {
                     throw {
