@@ -36,7 +36,7 @@ export default class PricetrackerChannel extends EPNSChannel {
       // Get New price function call
       await this.getNewPrice(simulate);
     } catch (error) {
-      logger.error(`[${new Date(Date.now())}]-[Price Tracker]- Errored on CMC API... skipped with error: %o`, err);
+      logger.error(`[${new Date(Date.now())}]-[Price Tracker]- Errored on CMC API... skipped with error: %o`, error.message);
     }
   }
 
@@ -133,7 +133,7 @@ export default class PricetrackerChannel extends EPNSChannel {
                         const currentPrice = currentToken?.price;
 
                         // Get previous token price
-                        const previousPriceData = (await priceTrackerTokenModel.findOne({ _id: mapObj.description }))
+                        const previousPriceData: any = (await priceTrackerTokenModel.findOne({ _id: mapObj.description }))
                           ? await priceTrackerTokenModel.findOne({ _id: mapObj.description })
                           : 0;
 

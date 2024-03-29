@@ -472,25 +472,31 @@ export default class BtcTickerChannel extends EPNSChannel {
                 { upsert: true },
               );
 
-              const payload = {
-                type: 3, // Type of Notification
-                notifTitle: title, // Title of Notification
-                notifMsg: message, // Message of Notification
-                title: payloadTitle, // Internal Title
-                msg: payloadMsg, // Internal Message
-                recipient: subscriberObj.subscriber, // Recipient
-              };
-              // Send notification
-              this.sendNotification({
-                recipient: payload.recipient, // new
-                title: payload.notifTitle,
-                message: payload.notifMsg,
-                payloadTitle: payload.title,
-                payloadMsg: payload.msg,
-                notificationType: payload.type,
-                simulate: simulate,
-                image: null,
-              });
+              try {
+                // Build Payload
+                const payload = {
+                  type: 3, // Type of Notification
+                  notifTitle: title, // Title of Notification
+                  notifMsg: message, // Message of Notification
+                  title: payloadTitle, // Internal Title
+                  msg: payloadMsg, // Internal Message
+                  recipient: subscriberObj.subscriber, // Recipient
+                };
+
+                // Send notification
+                this.sendNotification({
+                  recipient: payload.recipient, // new
+                  title: payload.notifTitle,
+                  message: payload.notifMsg,
+                  payloadTitle: payload.title,
+                  payloadMsg: payload.msg,
+                  notificationType: payload.type,
+                  simulate: simulate,
+                  image: null,
+                });
+              } catch (error) {
+                    this.logError(`Error sending notification: ${error}`);
+              }
             }
           }),
         );
