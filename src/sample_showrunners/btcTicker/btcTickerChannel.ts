@@ -34,6 +34,20 @@ export default class BtcTickerChannel extends EPNSChannel {
     }
   }
 
+  // Helper function for sending notifications with payload
+  public async triggerNotification(simulate, payload: any) {
+    this.sendNotification({
+        recipient: payload.recipient, // new
+        title: payload.notifTitle,
+        message: payload.notifMsg,
+        payloadTitle: payload.title,
+        payloadMsg: payload.msg,
+        notificationType: payload.type,
+        simulate: simulate,
+        image: null,
+    });
+  }
+
   public async getNewPrice(simulate) {
     const logger = this.logger;
     logger.debug(`[${new Date(Date.now())}]-[Btc Ticker]-Getting price of Btc... `);
@@ -290,27 +304,14 @@ export default class BtcTickerChannel extends EPNSChannel {
 
                     // Sending Notification
                     try {
-                      // Build Payload
-                      const payload = {
-                        type: 3, // Type of Notification
-                        notifTitle: title, // Title of Notification
-                        notifMsg: message, // Message of Notification
-                        title: payloadTitle, // Internal Title
-                        msg: payloadMsg, // Internal Message
-                        recipient: subscriberObj.subscriber, // Recipient
-                      };
-
-                      // Send notification
-                      this.sendNotification({
-                        recipient: payload.recipient, // new
-                        title: payload.notifTitle,
-                        message: payload.notifMsg,
-                        payloadTitle: payload.title,
-                        payloadMsg: payload.msg,
-                        notificationType: payload.type,
-                        simulate: simulate,
-                        image: null,
-                      });
+                        this.triggerNotification(simulate, {
+                            type: 3, // Type of Notification
+                            notifTitle: title, // Title of Notification
+                            notifMsg: message, // Message of Notification
+                            title: payloadTitle, // Internal Title
+                            msg: payloadMsg, // Internal Message
+                            recipient: subscriberObj.subscriber, // Recipient
+                          });
                     } catch (error) {
                       this.logError(`Error sending notification: ${error}`);
                     }
@@ -333,27 +334,14 @@ export default class BtcTickerChannel extends EPNSChannel {
                 if (Math.abs(Number(globalChangePercentage)) >= settingUserValue1) {
                   // Sending Notification
                   try {
-                    // Build Payload
-                    const payload = {
-                      type: 3, // Type of Notification
-                      notifTitle: title, // Title of Notification
-                      notifMsg: message, // Message of Notification
-                      title: payloadTitle, // Internal Title
-                      msg: globalPayloadMsg, // Internal Message
-                      recipient: subscriberObj.subscriber, // Recipient
-                    };
-
-                    // Send notification
-                    this.sendNotification({
-                      recipient: payload.recipient, // new
-                      title: payload.notifTitle,
-                      message: payload.notifMsg,
-                      payloadTitle: payload.title,
-                      payloadMsg: payload.msg,
-                      notificationType: payload.type,
-                      simulate: simulate,
-                      image: null,
-                    });
+                    this.triggerNotification(simulate, {
+                        type: 3, // Type of Notification
+                        notifTitle: title, // Title of Notification
+                        notifMsg: message, // Message of Notification
+                        title: payloadTitle, // Internal Title
+                        msg: globalPayloadMsg, // Internal Message
+                        recipient: subscriberObj.subscriber, // Recipient
+                      });
                   } catch (error) {
                     this.logError(`Error sending notification: ${error}`);
                   }
@@ -436,27 +424,14 @@ export default class BtcTickerChannel extends EPNSChannel {
 
                   // Sending Notification
                   try {
-                    // Build Payload
-                    const payload = {
-                      type: 3, // Type of Notification
-                      notifTitle: title, // Title of Notification
-                      notifMsg: message, // Message of Notification
-                      title: payloadTitle, // Internal Title
-                      msg: payloadMsg, // Internal Message
-                      recipient: subscriberObj.subscriber, // Recipient
-                    };
-
-                    // Send notification
-                    this.sendNotification({
-                      recipient: payload.recipient, // new
-                      title: payload.notifTitle,
-                      message: payload.notifMsg,
-                      payloadTitle: payload.title,
-                      payloadMsg: payload.msg,
-                      notificationType: payload.type,
-                      simulate: simulate,
-                      image: null,
-                    });
+                    this.triggerNotification(simulate, {
+                        type: 3, // Type of Notification
+                        notifTitle: title, // Title of Notification
+                        notifMsg: message, // Message of Notification
+                        title: payloadTitle, // Internal Title
+                        msg: payloadMsg, // Internal Message
+                        recipient: subscriberObj.subscriber, // Recipient
+                      });
                   } catch (error) {
                     this.logError(`Error sending notification: ${error}`);
                   }
@@ -471,29 +446,17 @@ export default class BtcTickerChannel extends EPNSChannel {
                 { lastCycle: CYCLES, lastBtcPrice: Number(formattedPrice) },
                 { upsert: true },
               );
-
+              
+              // Sending Notification
               try {
-                // Build Payload
-                const payload = {
-                  type: 3, // Type of Notification
-                  notifTitle: title, // Title of Notification
-                  notifMsg: message, // Message of Notification
-                  title: payloadTitle, // Internal Title
-                  msg: payloadMsg, // Internal Message
-                  recipient: subscriberObj.subscriber, // Recipient
-                };
-
-                // Send notification
-                this.sendNotification({
-                  recipient: payload.recipient, // new
-                  title: payload.notifTitle,
-                  message: payload.notifMsg,
-                  payloadTitle: payload.title,
-                  payloadMsg: payload.msg,
-                  notificationType: payload.type,
-                  simulate: simulate,
-                  image: null,
-                });
+                this.triggerNotification(simulate, {
+                    type: 3, // Type of Notification
+                    notifTitle: title, // Title of Notification
+                    notifMsg: message, // Message of Notification
+                    title: payloadTitle, // Internal Title
+                    msg: payloadMsg, // Internal Message
+                    recipient: subscriberObj.subscriber, // Recipient
+                  });
               } catch (error) {
                     this.logError(`Error sending notification: ${error}`);
               }
