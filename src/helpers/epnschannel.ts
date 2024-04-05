@@ -281,7 +281,7 @@ export class EPNSChannel {
 
   getCAIPAddress(address: string) {
     try {
-      let chainID = config.showrunnersEnv === 'staging' ? '5' : '1';
+      let chainID = config.showrunnersEnv === 'staging' ? '11155111' : '1';
       if (this.cSettings.chain === 'BNB') {
         chainID = config.showrunnersEnv === 'staging' ? '97' : '56';
       } else {
