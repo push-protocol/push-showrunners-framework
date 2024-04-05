@@ -36,7 +36,7 @@ The showrunners framework is a scaffold that developers can use to build out not
 - Install docker 
 - Clone the repo
 ``` 
-git clone https://github.com/ethereum-push-notification-service/push-showrunners-framework
+git clone https://github.com/push-protocol/push-showrunners-framework
 ```
 - To make it easier to use, we will be using Docker. You can initialize it using the code below code , but if looking for a manual setup then [Refer this](#external-services).
 ```
@@ -88,7 +88,7 @@ Now lets have a quick tour into example and understand How to actually run a Sho
 
 [Hello World Example](https://docs.push.org/developers/developer-tooling/showrunners-framework/hello-world-channel)
 
-For more examples [Refer this](https://github.com/ethereum-push-notification-service/push-showrunners-framework/tree/main/src/sample_showrunners).
+For more examples [Refer this](https://github.com/push-protocol/push-showrunners-framework/tree/main/src/sample_showrunners).
 
 ---
 
@@ -142,5 +142,5 @@ Not sure where to start? Join our discord and we will help you get started!
 ---
 
 ## License
-Check out our License <a href='https://github.com/sumithprabhu/push-showrunners-framework/blob/main/license-v1.md'>HERE </a>
+Check out our License <a href='https://github.com/push-protocol/push-showrunners-framework/blob/main/license-v1.md'>HERE </a>
 
