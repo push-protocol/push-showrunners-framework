@@ -1,4 +1,3 @@
-
 import { Service, Inject } from 'typedi';
 import config from '../../config';
 import settings from './btcTickerSettings.json';
@@ -33,6 +32,20 @@ export default class BtcTickerChannel extends EPNSChannel {
     } catch (error) {
       logger.error(`[${new Date(Date.now())}]-[Btc Tracker]- Errored on CMC API... skipped with error: %o`, error);
     }
+  }
+
+  // Helper function for sending notifications with payload
+  public async triggerNotification(simulate, payload: any) {
+    this.sendNotification({
+        recipient: payload.recipient, // new
+        title: payload.notifTitle,
+        message: payload.notifMsg,
+        payloadTitle: payload.title,
+        payloadMsg: payload.msg,
+        notificationType: payload.type,
+        simulate: simulate,
+        image: null,
+    });
   }
 
   public async getNewPrice(simulate) {
@@ -83,35 +96,42 @@ export default class BtcTickerChannel extends EPNSChannel {
         { upsert: true },
       );
 
+      //  this.logInfo(`Prev Price: ${prevPrice}`);
+      //   this.logInfo(`Current Price: ${formattedPrice}`);
+
       // 2. Calculate percentage change. |New Price - Old Price| / Old Price
       // Set the Formatted price to a higher price then current Btc price to testout notification
+      // const changePercentage = ((Math.abs(formattedPrice - prevPrice) / prevPrice) * 100).toFixed(2);
+
       const globalChangePercentage = Math.round((Math.abs(formattedPrice - prevPrice) / prevPrice) * 100);
 
-      // Build Payload Content
-      let changeInper = Number(((Math.abs(formattedPrice - prevPrice) / prevPrice) * 100).toFixed(2)) ;
+      // this.logInfo('Change Price :' + globalChangePercentage);
 
+      // Build Payload Content
+      let changeInper = Number(((Math.abs(formattedPrice - prevPrice) / prevPrice) * 100).toFixed(2));
 
       const title = 'BTC at $' + formattedPrice;
       const message = `\nHourly Movement: ${hourChangeFixed}%\nDaily Movement: ${dayChangeFixed}%\nWeekly Movement: ${weekChangeFixed}%`;
       const payloadTitle = `BTC Price Movement`;
-      const globalPayloadMsg = `BTC at [t:$${formattedPrice} (${ changeInper >= 0
-          ?changeInper <=100? `+` + changeInper + '%':'+' + 0 + '%'
-          : `-` + changeInper + '%'
-
-        })]\n\nHourly Movement: ${hourChange >= 0 ? '[s: +' + hourChangeFixed + '%]' : '[d: -' + hourChangeFixed + '%]'
-        }\nDaily Movement: ${dayChange >= 0 ? '[s: +' + dayChangeFixed + '%]' : '[d: -' + dayChangeFixed + '%]'
-        }\nWeekly Movement: ${weekChange >= 0 ? '[s: +' + weekChangeFixed + '%]' : '[d: -' + weekChangeFixed + '%]'
-        }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
+      const globalPayloadMsg = `BTC at [t:$${formattedPrice} (${
+        changeInper >= 0 ? (changeInper < 100 ? `+` + changeInper + '%' : '+' + 0 + '%') : `-` + changeInper + '%'
+      })]\n\nHourly Movement: ${
+        hourChange >= 0 ? '[s: +' + hourChangeFixed + '%]' : '[d: -' + hourChangeFixed + '%]'
+      }\nDaily Movement: ${
+        dayChange >= 0 ? '[s: +' + dayChangeFixed + '%]' : '[d: -' + dayChangeFixed + '%]'
+      }\nWeekly Movement: ${
+        weekChange >= 0 ? '[s: +' + weekChangeFixed + '%]' : '[d: -' + weekChangeFixed + '%]'
+      }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
 
       // --------------------------------------------------------------------------------------------- */
 
       // Initializing userAlice
-      const provider = new ethers.providers.JsonRpcProvider( config.web3TestnetSepoliaProvider || settings.providerUrl);
+      const provider = new ethers.providers.JsonRpcProvider(config.web3TestnetSepoliaProvider || settings.providerUrl);
 
       const signer = new ethers.Wallet(keys.PRIVATE_KEY_NEW_STANDARD.PK, provider);
       const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
 
-      let i = 1;  
+      let i = 1;
 
       while (true) {
         const userData: any = await userAlice.channel.subscribers({
@@ -135,7 +155,7 @@ export default class BtcTickerChannel extends EPNSChannel {
           );
           const btcTickerGlobalData = await btcTickerGlobalModel.findOne({ _id: 'btcTrackerGlobal' });
 
-      //    this.logInfo(`🎯Cycles value after all computation: ${btcTickerGlobalData?.cycles}`);
+          //    this.logInfo(`🎯Cycles value after all computation: ${btcTickerGlobalData?.cycles}`);
 
           break;
         }
@@ -145,10 +165,11 @@ export default class BtcTickerChannel extends EPNSChannel {
           userData.subscribers.map(async (subscriberObj) => {
             const userSettings = JSON.parse(subscriberObj.settings);
 
-           // this.logInfo(`⚡⚡⚡Setting ${JSON.stringify(userSettings)} (${subscriberObj.subscriber})`);
+            // this.logInfo(`⚡⚡⚡Setting ${JSON.stringify(userSettings)} (${subscriberObj.subscriber})`);
 
             // Fetch users last btc price & last cycle values
-            const userDBValue = (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber })) ||
+            const userDBValue =
+              (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber })) ||
               (await btcTickerUserModel.create({
                 _id: subscriberObj.subscriber,
                 lastCycle: btcTrackerGlobalData.cycles,
@@ -156,14 +177,14 @@ export default class BtcTickerChannel extends EPNSChannel {
               }));
 
             // ----------------------------------------------------
-          // Calculation of percentage change for each subscriber
-            const changePercentage =
-              ((Math.abs(formattedPrice - Number(userDBValue.lastBtcPrice) || prevPrice) /
-                Number(userDBValue.lastBtcPrice) || prevPrice) * 100).toFixed(2);
-            
+            // Calculation of percentage change for each subscriber
+            const changePercentage = (
+              (Math.abs(formattedPrice - Number(userDBValue.lastBtcPrice) || prevPrice) /
+                Number(userDBValue.lastBtcPrice) || prevPrice) * 100
+            ).toFixed(2);
 
-          //  this.logInfo(`🔽Previous BTC price of ${subscriberObj.subscriber}: ` + Number(userDBValue.lastBtcPrice));
-            this.logInfo(`Change Price ${subscriberObj.subscriber} :` + changePercentage);
+            this.logInfo(`🔽Previous BTC price of ${subscriberObj.subscriber}: ` + Number(userDBValue.lastBtcPrice));
+            //   this.logInfo(`Change Price ${subscriberObj.subscriber} :` + changePercentage);
 
             // ----------------------------------------------------
 
@@ -172,28 +193,33 @@ export default class BtcTickerChannel extends EPNSChannel {
 
             if (Number(changePercentage) == 0) {
               payloadMsg = `BTC at [t:$${formattedPrice} ( 0 %
-              )]\n\nHourly Movement: ${hourChange >= 0 ? '[s: +' + hourChangeFixed + '%]' : '[d: ' + hourChangeFixed + '%]'
-                }\nDaily Movement: ${dayChange >= 0 ? '[s: +' + dayChangeFixed + '%]' : '[d: ' + dayChangeFixed + '%]'
-                }\nWeekly Movement: ${weekChange >= 0 ? '[s: +' + weekChangeFixed + '%]' : '[d: ' + weekChangeFixed + '%]'
-                }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
-
+              )]\n\nHourly Movement: ${
+                hourChange >= 0 ? '[s: +' + hourChangeFixed + '%]' : '[d: ' + hourChangeFixed + '%]'
+              }\nDaily Movement: ${
+                dayChange >= 0 ? '[s: +' + dayChangeFixed + '%]' : '[d: ' + dayChangeFixed + '%]'
+              }\nWeekly Movement: ${
+                weekChange >= 0 ? '[s: +' + weekChangeFixed + '%]' : '[d: ' + weekChangeFixed + '%]'
+              }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
             } else {
               let changeInpercentage = Number(
                 (
                   ((formattedPrice - Number(userDBValue.lastBtcPrice) || prevPrice) /
                     Number(userDBValue.lastBtcPrice) || prevPrice) * 100
                 ).toFixed(2),
-              )
-              //For first time intialize the value to 0 as the % change would be very high.
-              payloadMsg = `BTC at [t:$${formattedPrice} (${changeInpercentage >= 0
-
-                  ? changeInpercentage <=100? `+` + changeInpercentage + '%' :'+' + 0 + '%'
+              );
+              payloadMsg = `BTC at [t:$${formattedPrice} (${
+                changeInpercentage > 0
+                  ? changeInpercentage < 100
+                    ? `+` + changeInpercentage + '%'
+                    : '+' + 0 + '%'
                   : `-` + changeInpercentage + '%'
-
-                })]\n\nHourly Movement: ${hourChange >= 0 ? '[s: +' + hourChangeFixed + '%]' : '[d: ' + hourChangeFixed + '%]'
-                }\nDaily Movement: ${dayChange >= 0 ? '[s: +' + dayChangeFixed + '%]' : '[d: ' + dayChangeFixed + '%]'
-                }\nWeekly Movement: ${weekChange >= 0 ? '[s: +' + weekChangeFixed + '%]' : '[d: ' + weekChangeFixed + '%]'
-                }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
+              })]\n\nHourly Movement: ${
+                hourChange >= 0 ? '[s: +' + hourChangeFixed + '%]' : '[d: ' + hourChangeFixed + '%]'
+              }\nDaily Movement: ${
+                dayChange >= 0 ? '[s: +' + dayChangeFixed + '%]' : '[d: ' + dayChangeFixed + '%]'
+              }\nWeekly Movement: ${
+                weekChange >= 0 ? '[s: +' + weekChangeFixed + '%]' : '[d: ' + weekChangeFixed + '%]'
+              }[timestamp: ${Math.floor(Date.now() / 1000)}]`;
             }
 
             // ----------------------------------------------------
@@ -201,79 +227,121 @@ export default class BtcTickerChannel extends EPNSChannel {
             if (userSettings !== null) {
               // if both Change percentage and Time interval is enabled
               if (userSettings[0]?.enabled == true && userSettings[1]?.enabled == true) {
-              //  this.logInfo(`🔔 Both settings are enabled. ${subscriberObj.subscriber}`);
+                //  this.logInfo(`🔔 Both settings are enabled. ${subscriberObj.subscriber}`);
 
                 const settingUserValue1 = userSettings[0].user; // Percent Change
-                  // If Time interval is 0 then set it to 3 hrs (default cron job)
-                const settingUserValue2 = userSettings[1].user ==0 ?3:userSettings[1].user; // Time interval
+                const settingUserValue2 = userSettings[1].user == 0 ? 3 : userSettings[1].user; // Time interval
 
-                if (changePercentage >= settingUserValue1 && userDBValue.lastCycle + settingUserValue2 == CYCLES) {
-                  // UPDATE the users mapped value in DB
-                //  this.logInfo(`This address will receive the notif for both change: ${subscriberObj.subscriber}`);
-                  await btcTickerUserModel.findOneAndUpdate(
-                    { _id: subscriberObj.subscriber },
-                    { lastCycle: CYCLES, lastBtcPrice: Number(formattedPrice) },
-                    { upsert: true },
+                // Case for if user opts-in, opts-out and again opts-in later in time interval
+                const presentInDb = (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber }))
+                  ? true
+                  : false;
+
+                if (presentInDb) {
+                  const userDBValueCheck = await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber });
+
+                  if (Number(userDBValueCheck.lastCycle + settingUserValue2) < Number(CYCLES)) {
+                    // Set current cycle as lastCycle
+                    await btcTickerUserModel.findOneAndUpdate(
+                      { _id: subscriberObj.subscriber },
+                      { lastCycle: CYCLES },
+                      { upsert: true },
+                    );
+
+                    const userLastCycleValue = await btcTickerUserModel.findOne({
+                      _id: subscriberObj.subscriber,
+                    });
+                    this.logInfo(
+                      `👋 UserLastCycleValue (${subscriberObj.subscriber}): ` + userLastCycleValue.lastCycle,
+                    ); // 45
+                  }
+                }
+
+                // --------------------------------------------------------------------------------
+
+                // Check if user changed their settings
+                const userDBValueBefore =
+                  (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber })) ||
+                  (await btcTickerUserModel.create({
+                    _id: subscriberObj.subscriber,
+                    lastCycle: CYCLES,
+                    settingsValue: settingUserValue2,
+                  }));
+
+                const userSettingsDBValue = userDBValueBefore.settingsValue ? userDBValueBefore.settingsValue : 0; // 0
+                const userChangedValue = userSettingsDBValue != settingUserValue2; // true
+
+                if (userChangedValue) {
+                  this.logInfo(
+                    '🤯User changed settings value: ' + subscriberObj.subscriber + ' by: ' + settingUserValue2,
                   );
 
-                  // Sending Notification
-                  try {
-                    // Build Payload
-                    const payload = {
-                      type: 3, // Type of Notification
-                      notifTitle: title, // Title of Notification
-                      notifMsg: message, // Message of Notification
-                      title: payloadTitle, // Internal Title
-                      msg: payloadMsg, // Internal Message
-                      recipient: subscriberObj.subscriber, // Recipient
-                    };
+                  await btcTickerUserModel.findOneAndUpdate(
+                    { _id: subscriberObj.subscriber },
+                    { lastCycle: CYCLES, settingsValue: settingUserValue2 },
+                  );
+                }
 
-                    // Send notification
-                    this.sendNotification({
-                      recipient: payload.recipient, // new
-                      title: payload.notifTitle,
-                      message: payload.notifMsg,
-                      payloadTitle: payload.title,
-                      payloadMsg: payload.msg,
-                      notificationType: payload.type,
-                      simulate: simulate,
-                      image: null,
-                    });
-                  } catch (error) {
-                    this.logError(`Error sending notification: ${error}`);
+                // ------------------------------------------------------------------------
+
+                const userDBValue = await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber });
+
+                this.logInfo(`Mapped value of ${userDBValue._id} is ${userDBValue.lastCycle} from both price and time`);
+                this.logInfo(`User value of ${userDBValue._id} is ${settingUserValue2} from both price and time`);
+                this.logInfo(
+                  `🔽User value in db of ${userDBValue._id} is ${userDBValue.settingsValue} from both price and time`,
+                );
+
+                if (userDBValue.lastCycle + settingUserValue2 == CYCLES) {
+                  if (changePercentage >= settingUserValue1) {
+                    // UPDATE the users mapped value in DB
+                    //  this.logInfo(`This address will receive the notif for both change: ${subscriberObj.subscriber}`);
+                    await btcTickerUserModel.findOneAndUpdate(
+                      { _id: subscriberObj.subscriber },
+                      { lastCycle: CYCLES, lastBtcPrice: Number(formattedPrice) },
+                      { upsert: true },
+                    );
+
+                    // Sending Notification
+                    try {
+                        this.triggerNotification(simulate, {
+                            type: 3, // Type of Notification
+                            notifTitle: title, // Title of Notification
+                            notifMsg: message, // Message of Notification
+                            title: payloadTitle, // Internal Title
+                            msg: payloadMsg, // Internal Message
+                            recipient: subscriberObj.subscriber, // Recipient
+                          });
+                    } catch (error) {
+                      this.logError(`Error sending notification: ${error}`);
+                    }
+                  } else {
+                    // UPDATE the users mapped value in DB
+                    await btcTickerUserModel.findOneAndUpdate(
+                      { _id: subscriberObj.subscriber },
+                      { lastCycle: CYCLES, lastBtcPrice: Number(formattedPrice) },
+                      { upsert: true },
+                    );
                   }
                 }
               }
               // if only Change percentage is enabled
               else if (userSettings[0]?.enabled === true) {
-              //  this.logInfo(`💲 Change percentage settings is enabled. ${subscriberObj.subscriber}`);
+                //  this.logInfo(`💲 Change percentage settings is enabled. ${subscriberObj.subscriber}`);
 
                 const settingUserValue1 = userSettings[0].user; // Percent Change
 
                 if (Math.abs(Number(globalChangePercentage)) >= settingUserValue1) {
                   // Sending Notification
                   try {
-                    // Build Payload
-                    const payload = {
-                      type: 3, // Type of Notification
-                      notifTitle: title, // Title of Notification
-                      notifMsg: message, // Message of Notification
-                      title: payloadTitle, // Internal Title
-                      msg: globalPayloadMsg, // Internal Message
-                      recipient: subscriberObj.subscriber, // Recipient
-                    };
-
-                    // Send notification
-                    this.sendNotification({
-                      recipient: payload.recipient, // new
-                      title: payload.notifTitle,
-                      message: payload.notifMsg,
-                      payloadTitle: payload.title,
-                      payloadMsg: payload.msg,
-                      notificationType: payload.type,
-                      simulate: simulate,
-                      image: null,
-                    });
+                    this.triggerNotification(simulate, {
+                        type: 3, // Type of Notification
+                        notifTitle: title, // Title of Notification
+                        notifMsg: message, // Message of Notification
+                        title: payloadTitle, // Internal Title
+                        msg: globalPayloadMsg, // Internal Message
+                        recipient: subscriberObj.subscriber, // Recipient
+                      });
                   } catch (error) {
                     this.logError(`Error sending notification: ${error}`);
                   }
@@ -281,13 +349,73 @@ export default class BtcTickerChannel extends EPNSChannel {
               }
               // if only Time interval is enabled
               else if (userSettings[1]?.enabled === true) {
+                //  this.logInfo(`⌚ Time Interval settings is enabled. ${subscriberObj.subscriber}`);
 
-              //  this.logInfo(`⌚ Time Interval settings is enabled. ${subscriberObj.subscriber}`);
+                const settingUserValue2 = userSettings[1].user == 0 ? 3 : userSettings[1].user; // Time interval
 
-                const settingUserValue2 = userSettings[1].user ==0 ?3:userSettings[1].user;; // Time interval
-               if (userDBValue.lastCycle + settingUserValue2 == CYCLES) {
+                // Case for if user opts-in, opts-out and again opts-in later in time interval
+                const presentInDb = (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber }))
+                  ? true
+                  : false;
 
-                // UPDATE the users mapped value in DB
+                if (presentInDb) {
+                  const userDBValueCheck = await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber });
+
+                  if (Number(userDBValueCheck.lastCycle + settingUserValue2) < Number(CYCLES)) {
+                    // Set current cycle as lastCycle
+                    await btcTickerUserModel.findOneAndUpdate(
+                      { _id: subscriberObj.subscriber },
+                      { lastCycle: CYCLES },
+                      { upsert: true },
+                    );
+
+                    const userLastCycleValue = await btcTickerUserModel.findOne({
+                      _id: subscriberObj.subscriber,
+                    });
+                    this.logInfo(
+                      `👋 UserLastCycleValue (${subscriberObj.subscriber}): ` + userLastCycleValue.lastCycle,
+                    ); // 45
+                  }
+                }
+
+                // --------------------------------------------------------------------------------
+
+                // Check if user changed their settings
+                const userDBValueBefore =
+                  (await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber })) ||
+                  (await btcTickerUserModel.create({
+                    _id: subscriberObj.subscriber,
+                    lastCycle: CYCLES,
+                    settingsValue: settingUserValue2,
+                  }));
+
+                const userSettingsDBValue = userDBValueBefore.settingsValue ? userDBValueBefore.settingsValue : 0; // 0
+                const userChangedValue = userSettingsDBValue != settingUserValue2; // true
+
+                if (userChangedValue) {
+                  this.logInfo(
+                    '🤯User changed settings value: ' + subscriberObj.subscriber + ' by: ' + settingUserValue2,
+                  );
+
+                  await btcTickerUserModel.findOneAndUpdate(
+                    { _id: subscriberObj.subscriber },
+                    { lastCycle: CYCLES, settingsValue: settingUserValue2 },
+                  );
+                }
+
+                // ------------------------------------------------------------------------
+
+                const userDBValue = await btcTickerUserModel.findOne({ _id: subscriberObj.subscriber });
+
+                this.logInfo(`Mapped value of ${userDBValue._id} is ${userDBValue.lastCycle} from both price and time`);
+                this.logInfo(`User value of ${userDBValue._id} is ${settingUserValue2} from both price and time`);
+                this.logInfo(
+                  `🔽User value in db of ${userDBValue._id} is ${userDBValue.settingsValue} from both price and time`,
+                );
+
+                if (userDBValue.lastCycle + settingUserValue2 == CYCLES) {
+
+                  // UPDATE the users mapped value in DB
                   await btcTickerUserModel.findOneAndUpdate(
                     { _id: subscriberObj.subscriber },
                     { lastCycle: CYCLES, lastBtcPrice: Number(formattedPrice) },
@@ -296,27 +424,14 @@ export default class BtcTickerChannel extends EPNSChannel {
 
                   // Sending Notification
                   try {
-                    // Build Payload
-                    const payload = {
-                      type: 3, // Type of Notification
-                      notifTitle: title, // Title of Notification
-                      notifMsg: message, // Message of Notification
-                      title: payloadTitle, // Internal Title
-                      msg: payloadMsg, // Internal Message
-                      recipient: subscriberObj.subscriber, // Recipient
-                    };
-
-                    // Send notification
-                    this.sendNotification({
-                      recipient: payload.recipient, // new
-                      title: payload.notifTitle,
-                      message: payload.notifMsg,
-                      payloadTitle: payload.title,
-                      payloadMsg: payload.msg,
-                      notificationType: payload.type,
-                      simulate: simulate,
-                      image: null,
-                    });
+                    this.triggerNotification(simulate, {
+                        type: 3, // Type of Notification
+                        notifTitle: title, // Title of Notification
+                        notifMsg: message, // Message of Notification
+                        title: payloadTitle, // Internal Title
+                        msg: payloadMsg, // Internal Message
+                        recipient: subscriberObj.subscriber, // Recipient
+                      });
                   } catch (error) {
                     this.logError(`Error sending notification: ${error}`);
                   }
@@ -324,35 +439,27 @@ export default class BtcTickerChannel extends EPNSChannel {
               }
             } else {
               //  this.loginfo('🤷‍♂️ No settings found for user: ' + subscriberObj.subscriber);
-              //Send Notifications to old users 
+              //Send Notifications to old users
               // Build Payload
-              // Save previous price of user to check in next cycle.
               await btcTickerUserModel.findOneAndUpdate(
                 { _id: subscriberObj.subscriber },
                 { lastCycle: CYCLES, lastBtcPrice: Number(formattedPrice) },
                 { upsert: true },
               );
-
-              const payload = {
-                type: 3, // Type of Notification
-                notifTitle: title, // Title of Notification
-                notifMsg: message, // Message of Notification
-                title: payloadTitle, // Internal Title
-                msg: payloadMsg, // Internal Message
-                recipient: subscriberObj.subscriber, // Recipient
-              };
-              // Send notification
-              this.sendNotification({
-                recipient: payload.recipient, // new
-                title: payload.notifTitle,
-                message: payload.notifMsg,
-                payloadTitle: payload.title,
-                payloadMsg: payload.msg,
-                notificationType: payload.type,
-                simulate: simulate,
-                image: null,
-              });
-
+              
+              // Sending Notification
+              try {
+                this.triggerNotification(simulate, {
+                    type: 3, // Type of Notification
+                    notifTitle: title, // Title of Notification
+                    notifMsg: message, // Message of Notification
+                    title: payloadTitle, // Internal Title
+                    msg: payloadMsg, // Internal Message
+                    recipient: subscriberObj.subscriber, // Recipient
+                  });
+              } catch (error) {
+                    this.logError(`Error sending notification: ${error}`);
+              }
             }
           }),
         );

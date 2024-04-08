@@ -12,7 +12,9 @@
 // Execute a cron job every 5 Minutes = */5 * * * *
 // Starts from seconds = * * * * * *
 
+import config from '../../config';
 import logger from '../../loaders/logger';
+
 import { Container } from 'typedi';
 import schedule from 'node-schedule';
 

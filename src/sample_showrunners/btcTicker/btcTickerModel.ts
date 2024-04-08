@@ -4,6 +4,7 @@ export interface BtcTickerUserData {
   _id?: string;
   lastCycle?: number;
   lastBtcPrice?: number;
+  settingsValue?: number;
 }
 
 const btcTickerUserSchema = new Schema<BtcTickerUserData>({
@@ -15,6 +16,9 @@ const btcTickerUserSchema = new Schema<BtcTickerUserData>({
   },
   lastBtcPrice: {
     type: Number
+  },
+  settingsValue: {
+    type: Number,
   }
 });
 

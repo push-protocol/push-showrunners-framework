@@ -3,7 +3,9 @@ import { model, Schema } from 'mongoose';
 export interface PriceTrackerData {
   _id?: string;
   lastCycle?: number;
+  settingsValue?: number;
 }
+
 
 const priceTrackerSchema = new Schema<PriceTrackerData>({
   _id: {
@@ -11,7 +13,10 @@ const priceTrackerSchema = new Schema<PriceTrackerData>({
   },
   lastCycle: {
     type: Number,
-  },
+  }, 
+  settingsValue: {
+    type: Number,
+  }
 });
 
 export const priceTrackerModel = model<PriceTrackerData>('priceTrackerUserDB', priceTrackerSchema);
@@ -45,3 +50,15 @@ const PriceTrackerTokenSchema = new Schema<PriceTrackerToken>({
 });
 
 export const priceTrackerTokenModel = model<PriceTrackerToken>('priceTokenTracker', PriceTrackerTokenSchema);
+
+export interface UserTokenInfo {
+  _id?: String;
+  userTokenPrevPrice?: Number;
+}
+
+const UserTokenInfoSchema = new Schema<UserTokenInfo>({
+  _id: String,
+  userTokenPrevPrice: Number,
+});
+
+export const userTokenModel = model<UserTokenInfo>('userTokenInfo', UserTokenInfoSchema);
