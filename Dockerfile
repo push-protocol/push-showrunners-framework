@@ -1,5 +1,4 @@
 FROM node:16 AS builder
-RUN npm install -g yarn
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install
