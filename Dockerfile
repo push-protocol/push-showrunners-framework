@@ -8,7 +8,7 @@ COPY . .
 
 FROM node:16-alpine
 WORKDIR /app
-COPY --from=builder /app /app
 RUN npm install yarn -g
+COPY --from=builder /app /app
 EXPOSE 5432
 CMD ["yarn", "start"]
