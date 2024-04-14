@@ -4,26 +4,14 @@
   "RUNNING_ON_MACHINE": "windows",
   "TRUSTED_URLS": ["https://epns.io", "https://backend.epns.io", "https://app.epns.io", "https://www.epns.io"],
 
-  "DB_HOST": "localhost",
-  "DB_NAME": "dbname",
-  "DB_USER": "2roor",
-  "DB_PASS": "s1mpl3",
-
-  "MONGO_URI": "mongodb://localhost:27017",
-  "REDIS_URL": "redis://localhost:6379",
-
   "FS_SERVER_DEV": "http://localhost:4000/cache/",
-  "FS_SERVER_PROD": "https://showrunners.epns.io/cache/",
+  "FS_SERVER_PROD": "https://showrunners.push.org/cache/",
 
   "SERVE_STATIC_FILES": "public",
   "SERVE_CACHE_FILES": "cache",
   "LOG_LEVEL": "debug",
   "DEFAULT_MAX_ATTEMPTS": 3,
-
-  "IPFS_MAX_ATTEMPTS": 3,
-  "IPFS_GATEWAY": "https://gateway.ipfs.io/ipfs/",
-  "IPFS_LOCAL_ENDPOINT": "/ip4/0.0.0.0/tcp/5001",
-  "IPFS_INFURA_ENDPOINT": "https://ipfs.infura.io:5001",
+  
 
   "POLYGON_MAINNET_RPC": "https://proportionate-boldest-darkness.matic.quiknode.pro/7fb775fb60a2454d0b7cc90693d9e0e639fa74bf/",
   "POLYGON_MUMBAI_RPC": "https://rpc-mumbai.maticvigil.com",
