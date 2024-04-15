@@ -1,12 +1,12 @@
 FROM node:18 AS builder
-WORKDIR /app
-RUN npm install pm2 -g
+WORKDIR /epns-showrunners-frameworks
 COPY package*.json ./
-RUN yarn install
+# RUN yarn install
 COPY . .
 
 FROM node:18-alpine
-WORKDIR /app
-COPY --from=builder /app /app
+WORKDIR /epns-showrunners-frameworks
+COPY --from=builder /epns-showrunners-frameworks /epns-showrunners-frameworks
+RUN npm install pm2 -g
 EXPOSE 5432
-CMD ["yarn", "start"]
+CMD ["cd","../","&&","pm2", "start","epns-showrunners-frameworks"]
