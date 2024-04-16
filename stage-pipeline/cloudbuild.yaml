@@ -1,6 +1,6 @@
 steps:
 # Step 1: Build the Docker Image and push to Artifact Registry
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'google/cloud-sdk'
   entrypoint: 'bash'
   args:
     - '-c'
