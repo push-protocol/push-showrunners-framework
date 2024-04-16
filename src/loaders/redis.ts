@@ -2,8 +2,8 @@ const redis = require('async-redis');
 import config from '../config';
 
 const ReddisInstance = redis.createClient({ 
-        url: process.env.REDIS_URL,
-        password: process.env.REDIS_AUTH,
+        url: config.redisURL,
+        password: config.redisAuth
 });
 
 export default ReddisInstance;
