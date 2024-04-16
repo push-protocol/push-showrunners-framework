@@ -4,7 +4,10 @@ import config from '../config';
 class CacheInstance {
   private ReddisInstance;
   constructor() {
-    this.ReddisInstance = redis.createClient(config.redisURL);
+    this.ReddisInstance = redis.createClient( 
+        url: config.redisURL,
+        password: config.redisAuth
+    );
   }
   /**
    * Set cache
