@@ -57,13 +57,13 @@ let config = {
   /**
    * The database config
    */
-  dbhost: staticConfig.DB_HOST,
-  dbname: staticConfig.DB_NAME,
-  dbuser: staticConfig.DB_USER,
-  dbpass: staticConfig.DB_PASS,
-  mongodb: staticConfig.MONGO_URI,
-  redisURL: staticConfig.REDIS_URL,
-
+  dbhost: process.env.DB_HOST,
+  dbname: process.env.DB_NAME,
+  dbuser: process.env.DB_USER,
+  dbpass: process.env.DB_PASS,
+  mongodb: process.env.MONGO_URI,
+  redisURL: process.env.REDIS_URL,
+  redisAuth: process.env.REDIS_AUTH,
   /**
    * File system config
    */
