@@ -6,7 +6,7 @@ class CacheInstance {
   constructor() {
     this.ReddisInstance = redis.createClient( 
         url: config.redisURL,
-        password: config.redisAuth
+        password: config.redisAuth,
     );
   }
   /**
