@@ -3,7 +3,7 @@ import config from '../config';
 
 const ReddisInstance = redis.createClient({ 
         url: config.redisURL,
-        password: config.redisAUTH
+        password: config.redisAuth
 });
 
 export default ReddisInstance;
