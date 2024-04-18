@@ -7,5 +7,6 @@ COPY . .
 FROM node:18-alpine
 WORKDIR /epns-showrunners-frameworks
 COPY --from=builder /epns-showrunners-frameworks /epns-showrunners-frameworks
+RUN npm install pm2 -g
 EXPOSE 5432
-CMD ["yarn","start"]
+CMD ["sh", "runner.sh"]
