@@ -37,6 +37,7 @@
     "@aragon/sdk-client": "^1.19.0",
     "@aragon/sdk-client-common": "^1.5.0-rc0",
     "@arbitrum/sdk": "^1.1.0",
+    "@covalenthq/client-sdk": "^1.0.1",
     "@gnosis.pm/safe-service-client": "^1.4.0",
     "@google-cloud/bigquery": "^6.2.0",
     "@improbable-eng/grpc-web": "^0.15.0",
