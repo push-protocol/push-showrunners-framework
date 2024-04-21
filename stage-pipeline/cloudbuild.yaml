@@ -6,7 +6,7 @@ steps:
     - '-c'
     - | 
       #!/bin/bash
-      gcloud container clusters get-credentials gke-s-services-base-usce1 --region us-central1 --project push-stage-apps
+      gcloud container clusters get-credentials gke-d-services-base-usce1 --region us-central1 --project push-dev-apps
       export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
       if [[ -z "$${DEP_EXIST// /}" ]]
       then
@@ -14,8 +14,8 @@ steps:
       else
         echo "✔️ Creating image..."
         cp .env.sample .env
-        docker build -t us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA .
-        docker push us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA
+        docker build -t us-central1-docker.pkg.dev/push-dev-apps/ar-d-services-base-usce1/push-showrunners-image:$SHORT_SHA .
+        docker push us-central1-docker.pkg.dev/push-dev-apps/ar-d-services-base-usce1/push-showrunners-image:$SHORT_SHA
       fi
 
 # Step 2: Create the Cloud Deploy Pipeline and release
@@ -25,7 +25,7 @@ steps:
     - '-c'
     - | 
       #!/bin/bash
-      gcloud container clusters get-credentials gke-s-services-base-usce1 --region us-central1 --project push-stage-apps
+      gcloud container clusters get-credentials gke-d-services-base-usce1 --region us-central1 --project push-dev-apps
       while true
       do
         export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
@@ -43,7 +43,7 @@ steps:
         echo "❌ Deployment for showrunners has not been created, this trigger will be stopped. Please commit to push-showrunners-channels repository first!"
       else
         echo "✔️ Updating Deployment..."
-        kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
+        kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-dev-apps/ar-d-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
         sleep 60
         export POD_NAME=$(kubectl get pods -n apps |  awk 'NR>1 {print $1}' | grep showrunners) 
         kubectl exec -it -n apps $$POD_NAME -- pm2 start ../epns-showrunners-frameworks
@@ -51,4 +51,4 @@ steps:
       fi
 options:
  logging: CLOUD_LOGGING_ONLY
- workerPool: 'projects/push-stage-apps/locations/us-central1/workerPools/worker-pool-s-services-base-usce1'
+ workerPool: 'projects/push-dev-apps/locations/us-central1/workerPools/worker-pool-d-services-base-usce1'
