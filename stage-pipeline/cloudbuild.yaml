@@ -44,9 +44,6 @@ steps:
       else
         echo "✔️ Updating Deployment..."
         kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
-        sleep 60
-        export POD_NAME=$(kubectl get pods -n apps |  awk 'NR>1 {print $1}' | grep showrunners) 
-        kubectl exec -it -n apps $$POD_NAME -- pm2 start ../epns-showrunners-frameworks
         echo "✅ Updated Deployment..."
       fi
 options:
