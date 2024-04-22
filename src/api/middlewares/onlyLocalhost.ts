@@ -22,6 +22,10 @@ const onlyLocalhost = async (req, res, next) => {
       // Return with unauthorized error
       return res.sendStatus(401).json({ info: 'Only development config' });
     }
+    else if (config.environment === 'staging') {
+      // Allow 200 request
+      return res.sendStatus(200).json({ info: 'staging:status' });
+    }
 
     checkLocalHost(ip)
       .then(result => {
