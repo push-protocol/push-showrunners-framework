@@ -23,7 +23,7 @@ const onlyLocalhost = async (req, res, next) => {
       return res.sendStatus(401).json({ info: 'Only development config' });
     }
 
-    //checkLocalHost(ip)
+    checkLocalHost(ip)
       .then(result => {
         if (!result) {
           return res.sendStatus(401).json({ info: 'Only localhost connection allowed' });
