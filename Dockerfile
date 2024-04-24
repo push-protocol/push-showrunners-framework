@@ -1,7 +1,7 @@
 FROM node:18 AS builder
 WORKDIR /epns-showrunners-frameworks
 COPY package*.json ./
-RUN yarn install --check-files
+RUN yarn install --production=false
 COPY . .
 
 FROM node:18-alpine
