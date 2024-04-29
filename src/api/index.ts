@@ -60,7 +60,7 @@ export default () => {
 	// For mailing route
 	//mailing(app);
   //health-check
-  const app = express();
+  const app = Router(); 
   const PORT = 5432;
 
   healthRouter(app);
