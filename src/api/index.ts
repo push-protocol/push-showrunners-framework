@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import LoggerInstance from '../loaders/logger';
 import config from '../config'
+import healthRouter from './routes/health';
 
 import fs from 'fs';
 const utils = require('../helpers/utilsHelper');
@@ -59,9 +60,6 @@ export default () => {
 	// For mailing route
 	//mailing(app);
   //health-check
-  import express from 'express';
-  import healthRouter from './routes/health';
-
   const app = express();
   const PORT = 5432;
 
