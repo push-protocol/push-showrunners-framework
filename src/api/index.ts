@@ -57,7 +57,7 @@ export default () => {
 
 	// -- HELPERS
 	// For mailing route
-	//mailing(app);
+	mailing(app);
 
 	// Finally return app
 	return app;
