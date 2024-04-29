@@ -60,14 +60,7 @@ export default () => {
 	// For mailing route
 	//mailing(app);
   //health-check
-  const PORT = 5432;
-
   healthRouter(app);
-
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-
 
   
 	// Finally return app
