@@ -49,7 +49,7 @@ export default (app: Router) => {
         msg: Joi.string().required(),
       }),
     }),
-    middlewares.onlyTrustedSource,
+//    middlewares.onlyTrustedSource,
     async (req: Request, res: Response, next: NextFunction) => {
       const Logger: any = Container.get('logger');
       Logger.debug('Calling /mailing/get_send_mail endpoint with body: %o', req.body);
