@@ -58,7 +58,21 @@ export default () => {
 	// -- HELPERS
 	// For mailing route
 	//mailing(app);
+  //health-check
+  import express from 'express';
+  import healthRouter from './routes/health';
 
+  const app = express();
+  const PORT = 5432;
+
+  healthRouter(app);
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+
+
+  
 	// Finally return app
 	return app;
 }
