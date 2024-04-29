@@ -9,7 +9,7 @@ export default (app: Router) => {
   app.use('/health', route);
 
   route.get(
-    '/healthcheck',
+    '/',
     async (req: Request, res: Response, next: NextFunction) => {
       const logger: Logger = Container.get('logger');
       logger.debug('Calling /health endpoint');
