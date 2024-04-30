@@ -59,7 +59,7 @@ export default () => {
 
 	// -- HELPERS
 	// For mailing route
-	mailing(app);
+	mailing(app)
 
   //healthcheck
   health(app)
