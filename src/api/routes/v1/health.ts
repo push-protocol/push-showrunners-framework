@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express'
 import { errors } from 'celebrate'
 const route = Router()
-import config from '../../config'
+import config from '../../../config'
 export default (app: Router) => {
   // Load the actual external routes
   app.use(`/${config.api.version}/health`, route)
