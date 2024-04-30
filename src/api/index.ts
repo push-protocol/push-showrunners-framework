@@ -2,6 +2,7 @@ import { Router } from 'express';
 import LoggerInstance from '../loaders/logger';
 import config from '../config'
 import mailing from './routes/mailing'
+import health from './routes/health'
 
 import fs from 'fs';
 const utils = require('../helpers/utilsHelper');
@@ -60,7 +61,8 @@ export default () => {
 	// For mailing route
 	mailing(app);
 
-
+  //healthcheck
+  health(app)
   
 	// Finally return app
 	return app;
