@@ -38,45 +38,11 @@ export default (app: Router) => {
       }
     },
   );
-  route.post(
-    '/get_send_mail',
-    celebrate({
-      body: Joi.object({
-        from: Joi.string().required(),
-        name: Joi.string().required(),
-        topic: Joi.string().required(),
-        sub: Joi.string().required(),
-        msg: Joi.string().required(),
-      }),
-    }),
-    middlewares.onlyTrustedSource,
-    async (req: Request, res: Response, next: NextFunction) => {
-      const Logger: any = Container.get('logger');
-      Logger.debug('Calling /mailing/get_send_mail endpoint with body: %o', req.body);
-      try {
-        const email = Container.get(EmailService);
-        const { success, msg } = await email.sendMailSES(
-          req.body.from,
-          req.body.name,
-          req.body.topic,
-          req.body.sub,
-          req.body.msg,
-        );
-        return res.status(201).json({ success, msg });
-      } catch (e) {
-        Logger.error(':fire: error: %o', e);
-        return next(e);
-      }
-    },
-  );
   route.get(
-    '/get_send_mails',
-    //middlewares.onlyTrustedSource,
+    '/get_send_mail',
+  //  middlewares.onlyTrustedSource,
     async (req: Request, res: Response, next: NextFunction) => {
-      return res.status(201).json({
-        success: "Successful Get request",
-        msg: "Successful Get request"
-      });
-    }
+      return res.status(201).json({success:"Successful Get request",msg:"Successful Get request" });
+    },
   );
 };
