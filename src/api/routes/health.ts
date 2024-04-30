@@ -1,11 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express'
-import { errors } from 'celebrate'
 const route = Router()
 export default (app: Router) => {
-  // Load the actual external routes
-  app.use(`/health`, route)
-  app.use(errors())
-  // To get core address during channel alias verification
+  app.use('/health', route)
   route.get(
     '/checks',
 
