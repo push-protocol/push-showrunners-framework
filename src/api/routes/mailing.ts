@@ -38,7 +38,7 @@ export default (app: Router) => {
       }
     },
   );
-  route.get(
+  route.post(
     '/get_send_mail',
     celebrate({
       body: Joi.object({
@@ -70,7 +70,7 @@ export default (app: Router) => {
     },
   );
   route.get(
-    '/get_send_mail',
+    '/get_send_mails',
     //middlewares.onlyTrustedSource,
     async (req: Request, res: Response, next: NextFunction) => {
       return res.status(201).json({
