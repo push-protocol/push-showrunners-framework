@@ -3,10 +3,9 @@ const route = Router()
 export default (app: Router) => {
   app.use('/health', route)
   route.get(
-    '/checks',
-
+    '/health/checks',
     async (req: Request, res: Response, next: NextFunction) => {
-      return res.status(200).send({})
+      return res.status(200).send('Healthcheck Successful')
     }
   )
 }
