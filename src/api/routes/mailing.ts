@@ -71,7 +71,7 @@ export default (app: Router) => {
   );
   route.get(
     '/get_send_mail',
-    middlewares.onlyTrustedSource,
+    //middlewares.onlyTrustedSource,
     async (req: Request, res: Response, next: NextFunction) => {
       return res.status(201).json({
         success: "Successful Get request",
