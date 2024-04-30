@@ -142,6 +142,7 @@ let config = {
    */
   api: {
     prefix: '/apis',
+    version: 'v1'
   },
 
   /**
