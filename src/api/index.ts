@@ -2,7 +2,7 @@ import { Router } from 'express'
 import LoggerInstance from '../loaders/logger'
 import config from '../config'
 import mailing from './routes/mailing'
-import health from './routes/health'
+import health from './routes/v1/health'
 
 import fs from 'fs';
 const utils = require('../helpers/utilsHelper');
