@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/ethereum-push-notification-system/epns-push-register-service#readme",
   "dependencies": {
+    "@lens-protocol/client": "^2.2.0",
     "@apollo/client": "^3.6.9",
     "@aragon/sdk-client": "^1.19.0",
     "@aragon/sdk-client-common": "^1.5.0-rc0",
