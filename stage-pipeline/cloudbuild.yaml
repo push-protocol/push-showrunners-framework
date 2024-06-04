@@ -15,9 +15,8 @@ steps:
         echo "✔️ Creating image..."
         touch COMM_DEP_EXIST.txt && echo "present" >  COMM_DEP_EXIST.txt
         echo "▶️ Listing the changed files in this commit- "
-        ls /
+
         mkdir /repo && cd /repo
-        ls /
         git clone https://github.com/push-protocol/push-showrunners-framework.git && cd push-showrunners-framework/
         git checkout  gke-cicd-stage-showrunners-framework
         git diff-tree --no-commit-id --name-only -r $SHORT_SHA
