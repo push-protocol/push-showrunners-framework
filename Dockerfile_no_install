@@ -4,7 +4,7 @@ COPY . .
 RUN ls
 RUN mkdir /epns-showrunners-frameworks/node_modules
 RUN ls /epns-showrunners-frameworks/node_modules
-COPY ../ /epns-showrunners-frameworks/node_modules
-RUN ls 
+COPY ../../ /epns-showrunners-frameworks/node_modules
+RUN ls /epns-showrunners-frameworks/node_modules
 EXPOSE 5432
 CMD ["sh", "runner.sh"]
