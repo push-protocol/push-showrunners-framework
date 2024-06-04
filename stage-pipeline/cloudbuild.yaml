@@ -16,7 +16,7 @@ steps:
         touch COMM_DEP_EXIST.txt && echo "present" >  COMM_DEP_EXIST.txt
         echo "▶️ Listing the changed files in this commit- "
         
-        mkdir /repo $$ cd /repo
+        mkdir /push-showrunners-framework-repo $$ cd /push-showrunners-framework-repo
         gh repo clone push-protocol/push-showrunners-framework && cd push-showrunners-framework/
         git checkout  gke-cicd-stage-showrunners-framework
         git log -1 --raw
