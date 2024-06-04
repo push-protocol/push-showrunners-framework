@@ -1,7 +1,6 @@
 FROM node:18-alpine
 WORKDIR /epns-showrunners-frameworks
 COPY . .
-RUN ls
-RUN ls /epns-showrunners-frameworks/node_modules
+RUN npm install pm2 -g
 EXPOSE 5432
 CMD ["sh", "runner.sh"]
