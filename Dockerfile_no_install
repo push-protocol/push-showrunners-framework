@@ -2,6 +2,6 @@ FROM node:18-alpine
 WORKDIR /epns-showrunners-frameworks
 COPY ../ /epns-showrunners-frameworks/node_modules
 COPY . .
-RUN ls
+RUN ls node_modules
 EXPOSE 5432
 CMD ["sh", "runner.sh"]
