@@ -8,13 +8,14 @@ steps:
       #!/bin/bash
       gcloud container clusters get-credentials gke-s-services-base-usce1 --region us-central1 --project push-stage-apps
       export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
-      export TEST_2="is the variable passed"
-      touch test.txt && echo "present" >  test.txt
       if [[ -z "$${DEP_EXIST// /}" ]]
       then
         echo "❌ Deployment for showrunners has not been created, image will not be created. Please commit to push-showrunners-channels repository first!"
       else
         echo "✔️ Creating image..."
+        touch COMM_DEP_EXIST.txt && echo "present" >  COMM_DEP_EXIST.txt
+        echo "▶️ Listing the changed files in this commit- "
+        git diff-tree --no-commit-id --name-only -r $SHORT_SHA 
         cp .env.sample .env
         #docker build -t us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA .
         #docker push us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA
@@ -28,32 +29,37 @@ steps:
     - | 
       #!/bin/bash
       gcloud container clusters get-credentials gke-s-services-base-usce1 --region us-central1 --project push-stage-apps
-      export TEST="$$(<test.txt)"
-      echo "🟣value of TEST"
-      echo $${TEST}
-      echo "🟣value of TEST_2"
-      echo $${TEST_2}
-      while true
-      do
-        export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
-        cat test
-        if [[ -z "$${BUILD_EXIST// /}" ]]
-        then
-          echo "No current build running on push-showrunners-channels repository, proceeding further..."
-          break
-        else
-          echo "⌛ Waiting for the ongoing build to complete on push-showrunners-channels repository"
-        fi
-      done
-      export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
-      if [[ -z "$${DEP_EXIST// /}" ]]
+      export COMM_DEP_EXIST="$$(<COMM_DEP_EXIST.txt)"
+      echo "🟣value of COMM_DEP_EXIST"
+      echo $${COMM_DEP_EXIST}
+      if [[ -z "$${COMM_DEP_EXIST// /}" ]]
       then
         echo "❌ Deployment for showrunners has not been created, this trigger will be stopped. Please commit to push-showrunners-channels repository first!"
       else
-        echo "✔️ Updating Deployment..."
-        #kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
-        echo "✅ Updated Deployment..."
-      fi
+        echo "✔️ Deployment exists, proceeding further..."
+        # ➡️ WHILE LOOP
+        while true
+        do
+          export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
+          if [[ -z "$${BUILD_EXIST// /}" ]]
+          then
+            echo "✔️ No current build running on push-showrunners-channels repository, proceeding further..."
+            break
+          else
+            echo "⌛ Waiting for the ongoing build to complete on push-showrunners-channels repository"
+          fi
+        done
+        # ➡️ WHILE LOOP END
+        export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
+        if [[ -z "$${DEP_EXIST// /}" ]]
+        then
+          echo "❌ Deployment for showrunners has not been created, this trigger will be stopped. Please commit to push-showrunners-channels repository first!"
+        else
+          echo "✔️ Updating Deployment..."
+          #kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
+          echo "✅ Updated Deployment..."
+        fi
+      fi   
 options:
  logging: CLOUD_LOGGING_ONLY
  workerPool: 'projects/push-stage-apps/locations/us-central1/workerPools/worker-pool-s-services-base-usce1'
