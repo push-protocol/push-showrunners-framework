@@ -24,6 +24,23 @@ steps:
           echo "There is no change in package.json"
           cd /workspace
           cp .env.sample .env
+          while true
+          do
+            export POD_NAME=$(kubectl get pods -n apps |  grep push-showrunners | grep Running |  awk '{print $1}' )
+            if [[ -z "$${POD_NAME// /}" ]]; then
+                echo "❌POD_ABSENT, waiting for pod to come in running state⌛"
+            else
+                echo "✅POD is present, proceeding further"
+                mkdir node_modules
+                kubectl cp apps/$$POD_NAME:/epns-showrunners-frameworks/node_modules node_modules/
+                echo "ls in /workspace"
+                ls
+                echo "ls in /workspace/node_modules"
+                ls node_modules
+                break
+            fi
+          done
+          echo $${POD_NAME}
           #docker build -t us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA Dockerfile_no_install
           #docker push us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA
         else
