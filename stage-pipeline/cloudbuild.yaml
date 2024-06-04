@@ -18,9 +18,9 @@ steps:
         ls /
         mkdir /repo && cd /repo
         ls /
-        #git clone push-protocol/push-showrunners-framework && cd push-showrunners-framework/
-        #git checkout  gke-cicd-stage-showrunners-framework
-        #git log -1 --raw
+        git clone https://github.com/push-protocol/push-showrunners-framework.git && cd push-showrunners-framework/
+        git checkout  gke-cicd-stage-showrunners-framework
+        git log -1 --raw
 
         cd /workspace
         cp .env.sample .env
