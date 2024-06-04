@@ -20,7 +20,7 @@ steps:
         ls /
         git clone https://github.com/push-protocol/push-showrunners-framework.git && cd push-showrunners-framework/
         git checkout  gke-cicd-stage-showrunners-framework
-        git log -1 --raw
+        git diff-tree --no-commit-id --name-only -r $SHORT_SHA
 
         cd /workspace
         cp .env.sample .env
