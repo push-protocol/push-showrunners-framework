@@ -8,6 +8,7 @@ steps:
       #!/bin/bash
       gcloud container clusters get-credentials gke-s-services-base-usce1 --region us-central1 --project push-stage-apps
       export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
+      export TEST_2="is the variable passed"
       touch test.txt && echo "present" >  test.txt
       if [[ -z "$${DEP_EXIST// /}" ]]
       then
@@ -30,6 +31,8 @@ steps:
       export TEST="$$(<test.txt)"
       echo "🟣value of TEST"
       echo $${TEST}
+      echo "🟣value of TEST_2"
+      echo $${TEST_2}
       while true
       do
         export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
