@@ -1,5 +1,6 @@
 FROM node:18-alpine
 WORKDIR /epns-showrunners-frameworks
+RUN ls
 COPY ../* /epns-showrunners-frameworks/node_modules
 COPY . .
 RUN ls node_modules
