@@ -31,18 +31,16 @@ steps:
                 echo "❌POD_ABSENT, waiting for pod to come in running state⌛"
             else
                 echo "✅POD is present, proceeding further"
-                mkdir node_modules
-                kubectl cp apps/$$POD_NAME:/epns-showrunners-frameworks/node_modules node_modules/
-                echo "ls in /workspace"
-                ls
-                echo "ls in /workspace/node_modules"
-                ls node_modules
+                cd / 
+                kubectl exec $$POD_NAME -n apps  -- tar cf - "/epns-showrunners-frameworks/node_modules" | tar xf -
                 break
             fi
           done
           echo $${POD_NAME}
-          #docker build -t us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA Dockerfile_no_install
-          #docker push us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA
+          cd /workspace
+          cp .env.sample .env
+          docker build -t us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA Dockerfile_no_install
+          docker push us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA
         else
           echo "⚠️ There is change in package.json"
           cd /workspace
