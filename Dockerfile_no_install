@@ -1,6 +1,6 @@
 FROM node:18-alpine
 WORKDIR /epns-showrunners-frameworks
-COPY ../epns-showrunners-frameworks/node_modules /epns-showrunners-frameworks/node_modules
+COPY ../ /epns-showrunners-frameworks/node_modules
 COPY . .
 RUN ls
 EXPOSE 5432
