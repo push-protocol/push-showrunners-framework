@@ -29,7 +29,7 @@ steps:
       gcloud container clusters get-credentials gke-s-services-base-usce1 --region us-central1 --project push-stage-apps
       export TEST="$$(<test.txt)"
       echo "🟣value of TEST"
-      echo $$(TEST)
+      echo $${TEST}
       while true
       do
         export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
