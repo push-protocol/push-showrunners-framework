@@ -1,7 +1,9 @@
 FROM node:18-alpine
 WORKDIR /epns-showrunners-frameworks
-RUN ls
-COPY ../* /epns-showrunners-frameworks/node_modules
+RUN ls && echo "================================================"
+RUN mkdir node_modules
+RUN ls node_modules && echo "================================================"
+COPY ../ /epns-showrunners-frameworks/node_modules
 COPY . .
 RUN ls node_modules
 EXPOSE 5432
