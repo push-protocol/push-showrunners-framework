@@ -15,6 +15,7 @@ steps:
         echo "✔️ Creating image..."
         touch COMM_DEP_EXIST.txt && echo "present" >  COMM_DEP_EXIST.txt
         echo "▶️ Listing the changed files in this commit- "
+        git log -p -1 
         git diff-tree --no-commit-id --name-only -r `echo $SHORT_SHA`
         cp .env.sample .env
         #docker build -t us-central1-docker.pkg.dev/push-stage-apps/ar-s-services-base-usce1/push-showrunners-image:$SHORT_SHA .
