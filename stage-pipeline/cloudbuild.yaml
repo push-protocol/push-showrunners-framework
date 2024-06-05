@@ -20,7 +20,7 @@ steps:
         CHANGE_PKG_EXIST=$(git diff-tree --no-commit-id --name-only -r $SHORT_SHA | grep package.json )
         if [[ -z "$${CHANGE_PKG_EXIST// /}" ]]
         then
-          echo "There is no change in package.json"
+          echo "✔️ There is no change in package.json"
           while true
           do
             export POD_NAME=$(kubectl get pods -n apps |  grep push-showrunners | grep Running |  awk '{print $1}' )
