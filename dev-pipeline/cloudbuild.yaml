@@ -70,7 +70,7 @@ steps:
           export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
           if [[ -z "$${BUILD_EXIST// /}" ]]
           then
-            echo "No current build running on push-showrunners-channels repository, proceeding further..."
+            echo "✔️ No current build running on push-showrunners-channels repository, proceeding further..."
             break
           else
             echo "⌛ Waiting for the ongoing build to complete on push-showrunners-channels repository"
