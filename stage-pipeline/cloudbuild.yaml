@@ -16,14 +16,11 @@ steps:
         touch COMM_DEP_EXIST.txt && echo "present" >  COMM_DEP_EXIST.txt
         
         mkdir /repo && cd /repo
-        git clone https://github.com/push-protocol/push-showrunners-framework.git && cd push-showrunners-framework/
-        git checkout  gke-cicd-stage-showrunners-framework
+        git clone https://github.com/push-protocol/push-showrunners-framework.git --branch gke-cicd-stage-showrunners-framework --single-branch && cd push-showrunners-framework/
         CHANGE_PKG_EXIST=$(git diff-tree --no-commit-id --name-only -r $SHORT_SHA | grep package.json )
         if [[ -z "$${CHANGE_PKG_EXIST// /}" ]]
         then
           echo "There is no change in package.json"
-          cd /workspace
-          cp .env.sample .env
           while true
           do
             export POD_NAME=$(kubectl get pods -n apps |  grep push-showrunners | grep Running |  awk '{print $1}' )
