@@ -64,8 +64,8 @@ Each folder inside ```src/showrunners``` is treated as their own channel. Showru
 1. channelChannel.js [.ts] (Mandatory)
     - Example: helloWorldChannel.js
     - This file contains all the logic functions of your channel, it can for instance have a way to poll all opted in users of your channel and based on certain conditions that are met, fire notifications out.
-1. channelKeys.json (Mandatory)
-    - Example: helloWorldKeys.json
+1. channel (Mandatory)
+    - Example: helloWorldKeys.ts
     - This file contains all your private keys that you either belong to the channel you created or have authorized the wallets to send notification on your channel's behalf.
 1. channelRoutes.js [.ts]
     - Example: helloWorldRoutes.js
