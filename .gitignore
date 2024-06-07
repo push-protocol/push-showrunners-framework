@@ -144,5 +144,5 @@ yarn.lock
 
 # ChannelKeys
 src/showrunners
-src/showrunners/*/*Keys.json
+src/showrunners/*/*Keys.ts
 src/showrunners/*/*PrivateSettings.json

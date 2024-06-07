@@ -4,7 +4,7 @@ import LoggerInstance from '../loaders/logger';
 const utils = require('../helpers/utilsHelper');
 
 // Loads wallets using the private keys present in each folder
-// Scans for channelNameKeys.json file in the channel directory 
+// Scans for channelNameKeys.ts file in the channel directory 
 // Loads the private key and add the keys to channlKeys
 const channelWallets = function loadShowrunnersWallets() {
   LoggerInstance.info(`    -- Checking and Loading Dynamic Channel Keys...`);
@@ -22,16 +22,17 @@ const channelWallets = function loadShowrunnersWallets() {
   }
 
   for (const channel of directories) {
-    const absPath = `${channelFolderPath}${channel}/${channel}Keys.json`;
-    const relativePath = `../showrunners/${channel}/${channel}Keys.json`;
+    const absPath = `${channelFolderPath}${channel}/${channel}Keys.ts`;
+    const relativePath = `../showrunners/${channel}/${channel}Keys.ts`;
 
     if (fs.existsSync(absPath)) {
       const object = require(absPath);
+      console.log(object);
       let count = 1;
 
       channelKeys[`${channel}`] = {};
 
-      for (const [key, value] of Object.entries(object)) {
+      for (const [key, value] of Object.entries(object.keys)) {
         // check and decide old standard or not
         const isOldStandard = typeof value === 'string' || value instanceof String ? true : false;
         const newValue: any = value;
@@ -51,13 +52,13 @@ const channelWallets = function loadShowrunnersWallets() {
         LoggerInstance.info(`     ✔️  ${channel} Loaded ${Object.keys(channelKeys[`${channel}`]).length} Wallet(s)!`);
       } else {
         LoggerInstance.info(
-          `     ❌  ${channel} has no wallets attached to them... aborting! Check ${channel}Keys.json!!!`,
+          `     ❌  ${channel} has no wallets attached to them... aborting! Check ${channel}Keys.ts!!!`,
         );
         process.exit(1);
       }
     } else {
       LoggerInstance.info(
-        `     ❌  ${channel}Keys.json does not exists. aborting! Create ${channel}Keys.json and add one wallet to it!!!`,
+        `     ❌  ${channel}Keys.ts does not exists. aborting! Create ${channel}Keys.ts and add one wallet to it!!!`,
       );
       process.exit(1);
     }
