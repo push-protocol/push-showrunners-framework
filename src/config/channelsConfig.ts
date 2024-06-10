@@ -22,12 +22,9 @@ const channelWallets = function loadShowrunnersWallets() {
   }
 
   for (const channel of directories) {
-    const absPath = `${channelFolderPath}${channel}/${channel}Keys.js`;
-    const relativePath = `../showrunners/${channel}/${channel}Keys.js`;
-
+    
     if (fs.existsSync(absPath)) {
       const object = require(absPath);
-      console.log(object);
       let count = 1;
 
       channelKeys[`${channel}`] = {};
