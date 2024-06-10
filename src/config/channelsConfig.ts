@@ -25,6 +25,9 @@ const channelWallets = function loadShowrunnersWallets() {
     const absPath = `${channelFolderPath}${channel}/${channel}Keys.ts`;
     const relativePath = `../showrunners/${channel}/${channel}Keys.ts`;
 
+    console.log("Abs Path :",absPath);
+    console.log("relative path :",relativePath);
+    
     if (fs.existsSync(absPath)) {
       const object = require(absPath);
       console.log(object);
