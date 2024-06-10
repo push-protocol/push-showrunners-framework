@@ -4,7 +4,7 @@ import LoggerInstance from '../loaders/logger';
 const utils = require('../helpers/utilsHelper');
 
 // Loads wallets using the private keys present in each folder
-// Scans for channelNameKeys.ts file in the channel directory 
+// Scans for channelNameKeys.js file in the channel directory 
 // Loads the private key and add the keys to channlKeys
 const channelWallets = function loadShowrunnersWallets() {
   LoggerInstance.info(`    -- Checking and Loading Dynamic Channel Keys...`);
@@ -22,12 +22,9 @@ const channelWallets = function loadShowrunnersWallets() {
   }
 
   for (const channel of directories) {
-    const absPath = `${channelFolderPath}${channel}/${channel}Keys.ts`;
-    const relativePath = `../showrunners/${channel}/${channel}Keys.ts`;
+    const absPath = `${channelFolderPath}${channel}/${channel}Keys.js`;
+    const relativePath = `../showrunners/${channel}/${channel}Keys.js`;
 
-    console.log("Abs Path :",absPath);
-    console.log("relative path :",relativePath);
-    
     if (fs.existsSync(absPath)) {
       const object = require(absPath);
       console.log(object);
@@ -55,13 +52,13 @@ const channelWallets = function loadShowrunnersWallets() {
         LoggerInstance.info(`     ✔️  ${channel} Loaded ${Object.keys(channelKeys[`${channel}`]).length} Wallet(s)!`);
       } else {
         LoggerInstance.info(
-          `     ❌  ${channel} has no wallets attached to them... aborting! Check ${channel}Keys.ts!!!`,
+          `     ❌  ${channel} has no wallets attached to them... aborting! Check ${channel}Keys.js!!!`,
         );
         process.exit(1);
       }
     } else {
       LoggerInstance.info(
-        `     ❌  ${channel}Keys.ts does not exists. aborting! Create ${channel}Keys.ts and add one wallet to it!!!`,
+        `     ❌  ${channel}Keys.js does not exists. aborting! Create ${channel}Keys.js and add one wallet to it!!!`,
       );
       process.exit(1);
     }
