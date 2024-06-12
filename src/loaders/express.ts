@@ -16,10 +16,6 @@ export default ({ app }: { app: express.Application }) => {
   app.head('/status', (req, res) => {
     res.status(200).end();
   });
-  app.get('/lensv2/status', (req, res) => {
-    res.status(200).end();
-  });
-
   // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
   // It shows the real origin IP in the heroku or Cloudwatch logs
   app.enable('trust proxy');
