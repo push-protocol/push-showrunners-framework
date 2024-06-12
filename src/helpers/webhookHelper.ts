@@ -13,7 +13,7 @@ const debug = require('debug')('verify-aws-sns-signature');
 
 type payloadHandlerType = (payload: any, simulate?: null) => Promise<any>;
 
-/**
+/** 
  * A helper used to validate the payload of an AWS SNS webhook
  * @param {Object} payload an json representation of the payloada recieved from sns
  * @returns
