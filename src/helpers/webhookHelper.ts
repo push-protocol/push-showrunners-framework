@@ -21,7 +21,7 @@ type payloadHandlerType = (payload: any, simulate?: null) => Promise<any>;
 export async function validatePayload(payload: any) {
   const { SigningCertURL, Signature, Message, MessageId, SubscribeURL, Subject, Timestamp, Token, TopicArn, Type } =
     payload;
-
+  console.log('Payload  = ',payload);
   // validate SubscribeURL
   const url = parseUrl(SigningCertURL);
   assert.ok(
