@@ -34,6 +34,7 @@
   "homepage": "https://github.com/ethereum-push-notification-system/epns-push-register-service#readme",
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "alchemy-sdk": "^3.3.1",
     "@arbitrum/sdk": "^1.1.0",
     "@covalenthq/client-sdk": "^1.0.1",
     "@gnosis.pm/safe-service-client": "^1.4.0",
