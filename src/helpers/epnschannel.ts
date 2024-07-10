@@ -82,7 +82,7 @@ export class EPNSChannel {
 
     let walletKeyMeta = {
       pk: isOldStandard ? this.formatWalletKey(walletInfo) : this.formatWalletKey(walletInfo.PK),
-      chainId: walletInfo.CHAIN_ID,
+      chainId: isOldStandard ? `eip155:1` : walletInfo.CHAIN_ID,
     };
 
     this.logInfo('WalletKey Obtained');
