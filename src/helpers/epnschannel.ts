@@ -281,17 +281,17 @@ export class EPNSChannel {
 
   getCAIPAddress(address: string) {
     try {
-      let chainID = config.showrunnersEnv === 'staging' ? '11155111' : '1';
+     let chainID = config.showrunnersEnv === 'staging'||'DEV' ? '11155111' : '1';
       if (this.cSettings.chain === 'BNB') {
-        chainID = config.showrunnersEnv === 'staging' ? '97' : '56';
+        chainID = config.showrunnersEnv === 'staging'||'DEV' ? '97' : '56';
       } else {
         if (this.cSettings.chain === 'POLYGON') {
-          chainID = config.showrunnersEnv === 'staging' ? '80001' : '137';
+          chainID = config.showrunnersEnv === 'staging'||'DEV' ? '80001' : '137';
         }
       }
       // to keep old channels working
       if (this.cSettings?.isPolygon) {
-        chainID = config.showrunnersEnv === 'staging' ? '80001' : '137';
+        chainID = config.showrunnersEnv === 'staging'||'DEV' ? '80001' : '137';
       }
 
       const accountId = new AccountId({
