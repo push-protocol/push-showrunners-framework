@@ -3,7 +3,7 @@ import { Logger } from 'winston';
 import config from '../../config';
 import settings from './priceTrackerSettings.json';
 import { EPNSChannel } from '../../helpers/epnschannel';
-import keys from './priceTrackerKeys.json';
+// import keys from './priceTracker';
 import { PushAPI, CONSTANTS } from '@pushprotocol/restapi';
 import { ethers } from 'ethers';
 import axios from 'axios';
