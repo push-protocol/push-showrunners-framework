@@ -36,7 +36,7 @@ steps:
           echo $${POD_NAME}
           cd /workspace
           cp .env.sample .env
-          git clone https://$${PAT}@github.com/push-protocol/push-showrunners-channels.git --branch gke-cicd-stage-showrunners --single-branch
+          git clone https://$${PAT}@github.com/push-protocol/push-showrunners-channels.git --branch gke-cicd-dev-showrunners --single-branch
           cp -r /workspace/push-showrunners-channels/Staging_channels/* /workspace/src/showrunners/
           mv /epns-showrunners-frameworks/node_modules /workspace/node_modules
           docker build -t us-central1-docker.pkg.dev/push-dev-apps/ar-d-services-base-usce1/push-showrunners-image:$SHORT_SHA . -f /workspace/Dockerfile_no_install
@@ -45,7 +45,7 @@ steps:
           echo "⚠️ There is change in package.json"
           cd /workspace
           cp .env.sample .env
-          git clone https://$${PAT}@github.com/push-protocol/push-showrunners-channels.git --branch gke-cicd-stage-showrunners --single-branch
+          git clone https://$${PAT}@github.com/push-protocol/push-showrunners-channels.git --branch gke-cicd-dev-showrunners --single-branch
           cp -r /workspace/push-showrunners-channels/Staging_channels/* /workspace/src/showrunners/
           docker build -t us-central1-docker.pkg.dev/push-dev-apps/ar-d-services-base-usce1/push-showrunners-image:$SHORT_SHA . -f /workspace/Dockerfile
           docker push us-central1-docker.pkg.dev/push-dev-apps/ar-d-services-base-usce1/push-showrunners-image:$SHORT_SHA
@@ -94,7 +94,7 @@ steps:
       fi
 availableSecrets:
   secretManager:
-  - versionName: projects/push-stage-apps/secrets/push-channel-repo-clone/versions/1
+  - versionName: projects/push-dev-apps/secrets/push-channel-repo-clone/versions/1
     env: 'PAT'
 options:
  logging: CLOUD_LOGGING_ONLY
