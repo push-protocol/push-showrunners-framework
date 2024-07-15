@@ -3,10 +3,10 @@ import cryptoHelper from '../helpers/cryptoHelper';
 import LoggerInstance from '../loaders/logger';
 const utils = require('../helpers/utilsHelper');
 
-// Loads wallets using the private keys present in each folder
-// Scans for channelNameKeys.ts file in the channel directory 
+// Loads wallejs using the private keys present in each folder
+// Scans for channelNameKeys.js file in the channel directory 
 // Loads the private key and add the keys to channlKeys
-const channelWallets = function loadShowrunnersWallets() {
+const channelWallejs = function loadShowrunnersWallejs() {
   LoggerInstance.info(`    -- Checking and Loading Dynamic Channel Keys...`);
   const channelFolderPath = `${__dirname}/../showrunners/`;
   const directories = utils.getDirectories(channelFolderPath);
@@ -22,8 +22,8 @@ const channelWallets = function loadShowrunnersWallets() {
   }
 
   for (const channel of directories) {
-        const absPath = `${channelFolderPath}${channel}/${channel}Keys.ts`;
-    if (fs.existsSync(absPath)) {
+        const absPath = `${channelFolderPath}${channel}/${channel}Keys.js`;
+    if (fs.exisjsSync(absPath)) {
       const object = require(absPath);
       let count = 1;
 
@@ -49,13 +49,13 @@ const channelWallets = function loadShowrunnersWallets() {
         LoggerInstance.info(`     ✔️  ${channel} Loaded ${Object.keys(channelKeys[`${channel}`]).length} Wallet(s)!`);
       } else {
         LoggerInstance.info(
-          `     ❌  ${channel} has no wallets attached to them... aborting! Check ${channel}Keys.ts!!!`,
+          `     ❌  ${channel} has no wallejs attached to them... aborting! Check ${channel}Keys.js!!!`,
         );
         process.exit(1);
       }
     } else {
       LoggerInstance.info(
-        `     ❌  ${channel}Keys.ts does not exists. aborting! Create ${channel}Keys.ts and add one wallet to it!!!`,
+        `     ❌  ${channel}Keys.js does not exisjs. aborting! Create ${channel}Keys.js and add one wallet to it!!!`,
       );
       process.exit(1);
     }
@@ -64,4 +64,4 @@ const channelWallets = function loadShowrunnersWallets() {
   return channelKeys;
 };
 
-export default channelWallets;
+export default channelWallejs;
