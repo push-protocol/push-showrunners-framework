@@ -13,10 +13,46 @@ steps:
         echo "❌ Deployment for showrunners has not been created, image will not be created. Please commit to push-showrunners-channels repository first!"
       else
         echo "✔️ Creating image..."
-        cp .env.sample .env
-        docker build -t us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA .
-        docker push us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA
+        touch COMM_DEP_EXIST.txt && echo "present" >  COMM_DEP_EXIST.txt
+        
+        mkdir /repo && cd /repo
+        git clone https://github.com/push-protocol/push-showrunners-framework.git --branch gke-cicd-prod-showrunners-framework --single-branch && cd push-showrunners-framework/
+        CHANGE_PKG_EXIST=$(git diff-tree --no-commit-id --name-only -r $SHORT_SHA | grep package.json )
+        if [[ -z "$${CHANGE_PKG_EXIST// /}" ]]
+        then
+          echo "✔️ There is no change in package.json"
+          while true
+          do
+            export POD_NAME=$(kubectl get pods -n apps |  grep push-showrunners | grep Running |  awk '{print $1}' )
+            if [[ -z "$${POD_NAME// /}" ]]; then
+                echo "❌POD_ABSENT, waiting for pod to come in running state⌛"
+            else
+                echo "✅POD is present, proceeding further"
+                cd / 
+                kubectl exec $$POD_NAME -n apps  -- tar cf - "/epns-showrunners-frameworks/node_modules" | tar xf -
+                break
+            fi
+          done
+          echo $${POD_NAME}
+          cd /workspace
+          cp .env.sample .env
+          git clone https://$${PAT}@github.com/push-protocol/push-showrunners-channels.git --branch gke-cicd-prod-showrunners --single-branch
+          cp -r /workspace/push-showrunners-channels/Production_channels/* /workspace/src/showrunners/
+          mv /epns-showrunners-frameworks/node_modules /workspace/node_modules
+          docker build -t us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA . -f /workspace/Dockerfile_no_install
+          docker push us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA
+        else
+          echo "⚠️ There is change in package.json"
+          cd /workspace
+          cp .env.sample .env
+          git clone https://$${PAT}@github.com/push-protocol/push-showrunners-channels.git --branch gke-cicd-prod-showrunners --single-branch
+          cp -r /workspace/push-showrunners-channels/Production_channels/* /workspace/src/showrunners/
+          docker build -t us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA . -f /workspace/Dockerfile
+          docker push us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA
+        fi
+        
       fi
+  secretEnv: ['PAT']
 
 # Step 2: Create the Cloud Deploy Pipeline and release
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -26,26 +62,41 @@ steps:
     - | 
       #!/bin/bash
       gcloud container clusters get-credentials gke-p-services-base-usce1 --region us-central1 --project push-prod-apps
-      while true
-      do
-        export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
-        if [[ -z "$${BUILD_EXIST// /}" ]]
-        then
-          echo "No current build running on push-showrunners-channels repository, proceeding further..."
-          break
-        else
-          echo "⌛ Waiting for the ongoing build to complete on push-showrunners-channels repository"
-        fi
-      done
-      export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
-      if [[ -z "$${DEP_EXIST// /}" ]]
+      export COMM_DEP_EXIST="$$(<COMM_DEP_EXIST.txt)"
+      echo "🟣value of COMM_DEP_EXIST"
+      echo $${COMM_DEP_EXIST}
+      if [[ -z "$${COMM_DEP_EXIST// /}" ]]
       then
         echo "❌ Deployment for showrunners has not been created, this trigger will be stopped. Please commit to push-showrunners-channels repository first!"
       else
-        echo "✔️ Updating Deployment..."
-        kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
-        echo "✅ Updated Deployment..."
-      fi
+        echo "✔️ Deployment exists, proceeding further..."
+        # ➡️ WHILE LOOP
+        while true
+        do
+          export BUILD_EXIST=$(gcloud builds list --region us-central1  --filter "tags=showrunners AND (status=QUEUED OR status=WORKING)")
+          if [[ -z "$${BUILD_EXIST// /}" ]]
+          then
+            echo "✔️ No current build running on push-showrunners-channels repository, proceeding further..."
+            break
+          else
+            echo "⌛ Waiting for the ongoing build to complete on push-showrunners-channels repository"
+          fi
+        done
+        # ➡️ WHILE LOOP END
+        export DEP_EXIST=$(kubectl get deployment -n apps | grep push-showrunners)
+        if [[ -z "$${DEP_EXIST// /}" ]]
+        then
+          echo "❌ Deployment for showrunners has not been created, this trigger will be stopped. Please commit to push-showrunners-channels repository first!"
+        else
+          echo "✔️ Updating Deployment..."
+          kubectl set image deployment push-showrunners push-showrunners=us-central1-docker.pkg.dev/push-prod-apps/ar-p-services-base-usce1/push-showrunners-image:$SHORT_SHA -n=apps
+          echo "✅ Updated Deployment..."
+        fi
+      fi   
+availableSecrets:
+  secretManager:
+  - versionName: projects/push-prod-apps/secrets/push-channel-repo-clone/versions/1
+    env: 'PAT'
 options:
  logging: CLOUD_LOGGING_ONLY
  workerPool: 'projects/push-prod-apps/locations/us-central1/workerPools/worker-pool-p-services-base-usce1'
