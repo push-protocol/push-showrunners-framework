@@ -90,3 +90,4 @@ steps:
 options:
  logging: CLOUD_LOGGING_ONLY
  workerPool: 'projects/push-dev-apps/locations/us-central1/workerPools/worker-pool-d-services-base-usce1'
+
