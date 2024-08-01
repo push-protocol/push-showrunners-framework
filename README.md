@@ -1,4 +1,4 @@
-<h1 align="center"> 
+<h1 align="center">  
     <a href="https://push.org/#gh-light-mode-only">
     <img width='20%' height='10%' src="https://res.cloudinary.com/drdjegqln/image/upload/v1686227557/Push-Logo-Standard-Dark_xap7z5.png">
     </a>
