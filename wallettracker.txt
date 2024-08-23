@@ -1,0 +1,1131 @@
+[timestamp: 1724425440] ---- 1---Fetch Balance called----1
+[timestamp: 1724425441] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425441] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425441] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425441] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425441] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425441] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425441] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425441] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425441] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425441] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425442] ---- Breakkkk.
+[timestamp: 1724425442] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425442] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425442] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425443] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425443] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425443] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425444] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425444] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425444] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425444] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+
+[timestamp: 1724425444] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425444] ---- Third
+[timestamp: 1724425444] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+USDC : 17.4292 ~ $17.43
+
+[timestamp: 1724425445] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425445] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+CQT : 1204.9135 ~ $5.71
+
+[timestamp: 1724425445] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425445] ---- Third
+[timestamp: 1724425445] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425445614] Text : Here comes your portfolio insight!
+[timestamp: 1724425446] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425446321] Text : Here comes your portfolio insight!
+[timestamp: 1724425500] ---- 1---Fetch Balance called----1
+[timestamp: 1724425501] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425501] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425501] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425501] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425501] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425501] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425501] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425501] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425501] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425501] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425501] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425501] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425501] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+
+[timestamp: 1724425501] ---- Third
+[timestamp: 1724425501] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+USDC : 17.4292 ~ $17.43
+
+[timestamp: 1724425501] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425501] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+
+[timestamp: 1724425501] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+CQT : 1204.9135 ~ $5.71
+
+[timestamp: 1724425501] ---- Third
+[timestamp: 1724425501] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425502] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425502] ---- Breakkkk.
+[timestamp: 1724425503] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425503051] Text : Here comes your portfolio insight!
+[timestamp: 1724425503] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425503559] Text : Here comes your portfolio insight!
+[timestamp: 1724425503] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- User Address : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- User Address : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- User Address : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- User Address : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- User Address : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- User Address : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in Fetch Portfolio : [object Object]
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- User Address : 0x94051ee59a831e247590ce779df065dd77ef5d0a, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425503] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425503] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425503] ---- User Address : 0xab8a67743325347aa53bcc66850f8f13df87e3af, Previous Balance: 330.10665439999997, Current Balance: 327.022784, percentage Change: -1
+[timestamp: 1724425504] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425504] ---- Breakkkk.
+[timestamp: 1724425505] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425505] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425505] ---- User Address : 0xcb034160f7b45e41e6015ecea09f31a66c144422, Previous Balance: 1349.92807792665, Current Balance: 1339.7435812272997, percentage Change: -1
+[timestamp: 1724425526] ---- Sending Wallet Performance Notification : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425526]
+[timestamp: 1724425527] ---- Sending Wallet Performance Notification : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425527]
+[timestamp: 1724425527] ---- Sending Wallet Performance Notification : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425527]
+[timestamp: 1724425527] ---- Sending Wallet Performance Notification : 0x94051ee59a831e247590ce779df065dd77ef5d0a : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425527]
+[timestamp: 1724425527] ---- Sending Wallet Performance Notification : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425527]
+[timestamp: 1724425527] ---- Sending Wallet Performance Notification : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425527]
+[timestamp: 1724425527] ---- Sending Wallet Performance Notification : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425527]
+[timestamp: 1724425527] ---- Sending Notification for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 at [1724425527834] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Notification for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 at [1724425528062] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Wallet Performance Notification : 0xcb034160f7b45e41e6015ecea09f31a66c144422 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$1339.74</span>
+
+Anon, it's a dip, not a dive! Your portfolio's down by <span color="#e63946">-1%</span> — time to rally!
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+You have : 768.93 $PUSH, If you stake it for 6 months it will be <span color="#40916c"> 810.84</span> at 10.90% APR
+[timestamp: 1724425528]
+[timestamp: 1724425528] ---- Sending Notification for 0x94051ee59a831e247590ce779df065dd77ef5d0a at [1724425528319] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Notification for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 at [1724425528372] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Notification for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 at [1724425528545] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Notification for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 at [1724425528596] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Notification for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 at [1724425528603] Text : Here comes your portfolio insight!
+[timestamp: 1724425528] ---- Sending Wallet Performance Notification : 0xab8a67743325347aa53bcc66850f8f13df87e3af : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$327.02</span>
+
+Anon, it's a dip, not a dive! Your portfolio's down by <span color="#e63946">-1%</span> — time to rally!
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425528]
+[timestamp: 1724425529] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425529114] Text : Here comes your portfolio insight!
+[timestamp: 1724425529] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425529903] Text : Here comes your portfolio insight!
+[timestamp: 1724425560] ---- 1---Fetch Balance called----1
+[timestamp: 1724425562] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425562] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425562] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425562] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425562] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425562] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425562] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425562] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425562] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425562] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425562] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425562] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425562] ---- Breakkkk.
+[timestamp: 1724425563] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425563] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425563] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425563] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425564] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425564] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+CQT : 1204.9135 ~ $5.71
+
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+
+[timestamp: 1724425564] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425564] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+
+[timestamp: 1724425564] ---- Third
+[timestamp: 1724425564] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425564] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425564] ---- Third
+[timestamp: 1724425564] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+USDC : 17.4292 ~ $17.43
+
+[timestamp: 1724425564] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+
+[timestamp: 1724425564] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425565] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425565536] Text : Here comes your portfolio insight!
+[timestamp: 1724425565] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425565984] Text : Here comes your portfolio insight!
+[timestamp: 1724425620] ---- 1---Fetch Balance called----1
+[timestamp: 1724425622] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425622] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425622] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425622] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425622] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425622] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425622] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425622] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425622] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425622] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425622] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425622] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425622] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425622] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425622] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425622] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425622] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+
+[timestamp: 1724425622] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+USDC : 17.4292 ~ $17.43
+
+[timestamp: 1724425622] ---- Third
+[timestamp: 1724425622] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425622] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425622] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425622] ---- Breakkkk.
+[timestamp: 1724425623] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425623] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425623250] Text : Here comes your portfolio insight!
+[timestamp: 1724425623] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+CQT : 1204.9135 ~ $5.71
+
+[timestamp: 1724425623] ---- Third
+[timestamp: 1724425623] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+
+[timestamp: 1724425623] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425623] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- User Address : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425624] ---- User Address : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425624] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- User Address : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425624] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- User Address : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425624] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- User Address : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425624] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in Fetch Portfolio : [object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- User Address : 0x94051ee59a831e247590ce779df065dd77ef5d0a, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425624] ---- User Address : 0xab8a67743325347aa53bcc66850f8f13df87e3af, Previous Balance: 327.022784, Current Balance: 327.022784, percentage Change: 0
+[timestamp: 1724425624] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425624] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425624] ---- User Address : 0xcb034160f7b45e41e6015ecea09f31a66c144422, Previous Balance: 1339.7435812272997, Current Balance: 1339.7435812272997, percentage Change: 0
+[timestamp: 1724425624] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425624431] Text : Here comes your portfolio insight!
+[timestamp: 1724425624] ---- Breakkkk.
+[timestamp: 1724425624] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425625] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in Fetch Portfolio : [object Object]
+[timestamp: 1724425625] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425625] ---- User Address : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425646] ---- Sending Wallet Performance Notification : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425646]
+[timestamp: 1724425647] ---- Sending Wallet Performance Notification : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425647]
+[timestamp: 1724425647] ---- Sending Wallet Performance Notification : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425647]
+[timestamp: 1724425647] ---- Sending Wallet Performance Notification : 0xcb034160f7b45e41e6015ecea09f31a66c144422 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$1339.74</span>
+
+Steady as its goes, Anon! Your portfolio hasn't budged an inch channel week.
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+You have : 768.93 $PUSH, If you stake it for 6 months it will be <span color="#40916c"> 810.84</span> at 10.90% APR
+[timestamp: 1724425647]
+[timestamp: 1724425647] ---- Sending Wallet Performance Notification : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425647]
+[timestamp: 1724425647] ---- Sending Wallet Performance Notification : 0x94051ee59a831e247590ce779df065dd77ef5d0a : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425647]
+[timestamp: 1724425647] ---- Sending Notification for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 at [1724425647299] Text : Here comes your portfolio insight!
+[timestamp: 1724425647] ---- Sending Wallet Performance Notification : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425647]
+[timestamp: 1724425648] ---- Sending Wallet Performance Notification : 0xab8a67743325347aa53bcc66850f8f13df87e3af : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$327.02</span>
+
+Steady as its goes, Anon! Your portfolio hasn't budged an inch channel week.
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425648]
+[timestamp: 1724425648] ---- Sending Notification for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 at [1724425648224] Text : Here comes your portfolio insight!
+[timestamp: 1724425648] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425648242] Text : Here comes your portfolio insight!
+[timestamp: 1724425648] ---- Sending Wallet Performance Notification : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425648]
+[timestamp: 1724425648] ---- Sending Notification for 0x94051ee59a831e247590ce779df065dd77ef5d0a at [1724425648265] Text : Here comes your portfolio insight!
+[timestamp: 1724425648] ---- Sending Notification for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 at [1724425648261] Text : Here comes your portfolio insight!
+[timestamp: 1724425648] ---- Sending Notification for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 at [1724425648386] Text : Here comes your portfolio insight!
+[timestamp: 1724425649] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425649078] Text : Here comes your portfolio insight!
+[timestamp: 1724425649] ---- Sending Notification for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 at [1724425649256] Text : Here comes your portfolio insight!
+[timestamp: 1724425649] ---- Sending Notification for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 at [1724425649766] Text : Here comes your portfolio insight!
+[timestamp: 1724425680] ---- 1---Fetch Balance called----1
+[timestamp: 1724425681] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425681] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425681] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425681] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425681] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425681] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425681] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425681] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425681] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425681] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425682] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425682] ---- Breakkkk.
+[timestamp: 1724425682] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425682] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425682] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425682] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425682] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425682] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425682] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425683] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+
+[timestamp: 1724425683] ---- Third
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425683] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425683] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $978.91
+USDC : 98.82 ~ $98.82
+GTC : 117.128 ~ $82.80
+CXT : 1204.9135 ~ $77.84
+PUSH : 768.9306 ~ $54.36
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.30
+MANA : 22.9711 ~ $6.78
+CQT : 1204.9135 ~ $5.71
+
+[timestamp: 1724425683] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425683] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+
+[timestamp: 1724425683] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $309.59
+USDC : 17.4292 ~ $17.43
+
+[timestamp: 1724425683] ---- Third
+[timestamp: 1724425683] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425684] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425684031] Text : Here comes your portfolio insight!
+[timestamp: 1724425685] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425685313] Text : Here comes your portfolio insight!
+[timestamp: 1724425860] ---- 1---Fetch Balance called----1
+[timestamp: 1724425861] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425861] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425861] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425861] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425861] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425861] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425861] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425861] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425861] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425861] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425862] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425862] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425862] ---- Breakkkk.
+[timestamp: 1724425862] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425862] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425862] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425863] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425863] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425863] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425863] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- User Address : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425863] ---- User Address : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425863] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- User Address : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425863] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- User Address : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425863] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- User Address : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425863] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- User Address : 0x94051ee59a831e247590ce779df065dd77ef5d0a, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425863] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in Fetch Portfolio : [object Object]
+[timestamp: 1724425863] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425863] ---- User Address : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425864] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+MANA : 22.9711 ~ $6.85
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+
+[timestamp: 1724425864] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425864] ---- Third
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425864] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+MANA : 22.9711 ~ $6.85
+CQT : 1204.9135 ~ $5.69
+
+[timestamp: 1724425864] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425864] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+
+[timestamp: 1724425864] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425864] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+USDC : 17.4292 ~ $17.46
+
+[timestamp: 1724425864] ---- Third
+[timestamp: 1724425864] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425864] ---- Breakkkk.
+[timestamp: 1724425864] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425864] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425864] ---- User Address : 0xab8a67743325347aa53bcc66850f8f13df87e3af, Previous Balance: 327.022784, Current Balance: 328.8965416, percentage Change: 1
+[timestamp: 1724425864] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425864] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425864] ---- User Address : 0xcb034160f7b45e41e6015ecea09f31a66c144422, Previous Balance: 1339.7435812272997, Current Balance: 1347.42337893295, percentage Change: 1
+[timestamp: 1724425865] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425865106] Text : Here comes your portfolio insight!
+[timestamp: 1724425865] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425865365] Text : Here comes your portfolio insight!
+[timestamp: 1724425885] ---- Sending Wallet Performance Notification : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425885]
+[timestamp: 1724425885] ---- Sending Wallet Performance Notification : 0x94051ee59a831e247590ce779df065dd77ef5d0a : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425885]
+[timestamp: 1724425886] ---- Sending Wallet Performance Notification : 0xcb034160f7b45e41e6015ecea09f31a66c144422 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$1347.42</span>
+
+Anon, your portfolio's on the rise! Up <span color="#40916c">1%</span> — sweet gains!
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+You have : 768.93 $PUSH, If you stake it for 6 months it will be <span color="#40916c"> 810.84</span> at 10.90% APR
+[timestamp: 1724425886]
+[timestamp: 1724425886] ---- Sending Notification for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 at [1724425886427] Text : Here comes your portfolio insight!
+[timestamp: 1724425886] ---- Sending Notification for 0x94051ee59a831e247590ce779df065dd77ef5d0a at [1724425886589] Text : Here comes your portfolio insight!
+[timestamp: 1724425886] ---- Sending Wallet Performance Notification : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425886]
+[timestamp: 1724425886] ---- Sending Wallet Performance Notification : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425886]
+[timestamp: 1724425887] ---- Sending Wallet Performance Notification : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425887]
+[timestamp: 1724425887] ---- Sending Wallet Performance Notification : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425887]
+[timestamp: 1724425887] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425887352] Text : Here comes your portfolio insight!
+[timestamp: 1724425887] ---- Sending Notification for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 at [1724425887922] Text : Here comes your portfolio insight!
+[timestamp: 1724425888] ---- Sending Notification for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 at [1724425888038] Text : Here comes your portfolio insight!
+[timestamp: 1724425888] ---- Sending Notification for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 at [1724425888108] Text : Here comes your portfolio insight!
+[timestamp: 1724425888] ---- Sending Notification for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 at [1724425888169] Text : Here comes your portfolio insight!
+[timestamp: 1724425888] ---- Sending Wallet Performance Notification : 0xab8a67743325347aa53bcc66850f8f13df87e3af : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$328.90</span>
+
+Anon, your portfolio's on the rise! Up <span color="#40916c">1%</span> — sweet gains!
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425888]
+[timestamp: 1724425888] ---- Sending Wallet Performance Notification : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724425888]
+[timestamp: 1724425889] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425889240] Text : Here comes your portfolio insight!
+[timestamp: 1724425890] ---- Sending Notification for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 at [1724425890482] Text : Here comes your portfolio insight!
+[timestamp: 1724425920] ---- 1---Fetch Balance called----1
+[timestamp: 1724425921] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425921] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425921] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425921] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425921] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425921] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425921] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425921] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425921] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425921] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425921] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425921] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425921] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425922] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425922] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425922] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425922] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+
+[timestamp: 1724425922] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+USDC : 17.4292 ~ $17.46
+
+[timestamp: 1724425922] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425922] ---- Third
+[timestamp: 1724425922] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+MANA : 22.9711 ~ $6.85
+
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+MANA : 22.9711 ~ $6.85
+CQT : 1204.9135 ~ $5.69
+
+[timestamp: 1724425922] ---- Third
+[timestamp: 1724425922] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425922] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+
+[timestamp: 1724425922] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425922] ---- Breakkkk.
+[timestamp: 1724425922] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425923] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425923] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425923190] Text : Here comes your portfolio insight!
+[timestamp: 1724425923] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425923230] Text : Here comes your portfolio insight!
+[timestamp: 1724425980] ---- 1---Fetch Balance called----1
+[timestamp: 1724425981] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724425981] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724425981] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724425981] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724425981] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724425981] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724425981] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724425981] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724425981] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724425981] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724425981] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724425981] ---- Breakkkk.
+[timestamp: 1724425982] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724425982] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724425982] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724425983] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724425983] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724425983] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724425984] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724425984] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- User Address : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- User Address : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- User Address : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+MANA : 22.9711 ~ $6.85
+
+[timestamp: 1724425984] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $985.59
+USDC : 98.82 ~ $99.02
+GTC : 117.128 ~ $83.43
+CXT : 1204.9135 ~ $77.60
+PUSH : 768.9306 ~ $54.67
+GRT : 145.1735 ~ $23.23
+OGN : 131.4315 ~ $11.36
+MANA : 22.9711 ~ $6.85
+CQT : 1204.9135 ~ $5.69
+
+[timestamp: 1724425984] ---- Third
+[timestamp: 1724425984] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425984] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- User Address : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- User Address : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- User Address : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425984] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+
+[timestamp: 1724425984] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+USDC : 17.4292 ~ $17.46
+
+[timestamp: 1724425984] ---- Third
+[timestamp: 1724425984] ---- Payload FetchBalance 3 : 
+[timestamp: 1724425984] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in Fetch Portfolio : [object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- User Address : 0x94051ee59a831e247590ce779df065dd77ef5d0a, Previous Balance: 0, Current Balance: 0, percentage Change: NaN
+[timestamp: 1724425984] ---- User Address : 0xab8a67743325347aa53bcc66850f8f13df87e3af, Previous Balance: 328.8965416, Current Balance: 328.8965416, percentage Change: 0
+[timestamp: 1724425984] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in Fetch Portfolio : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724425984] ---- 2----Calculating Wallet Performance----2
+[timestamp: 1724425984] ---- User Address : 0xcb034160f7b45e41e6015ecea09f31a66c144422, Previous Balance: 1347.42337893295, Current Balance: 1347.42337893295, percentage Change: 0
+[timestamp: 1724425985] ---- Subscribers in Fetch Portfolio : [object Object]
+[timestamp: 1724425985] ---- Breakkkk.
+[timestamp: 1724425985] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724425985689] Text : Here comes your portfolio insight!
+[timestamp: 1724425987] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724425987272] Text : Here comes your portfolio insight!
+[timestamp: 1724426000] ---- Sending Wallet Performance Notification : 0xab8a67743325347aa53bcc66850f8f13df87e3af : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$328.90</span>
+
+Steady as its goes, Anon! Your portfolio hasn't budged an inch channel week.
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426000]
+[timestamp: 1724426000] ---- Sending Wallet Performance Notification : 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426000]
+[timestamp: 1724426001] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724426001891] Text : Here comes your portfolio insight!
+[timestamp: 1724426001] ---- Sending Notification for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 at [1724426001940] Text : Here comes your portfolio insight!
+[timestamp: 1724426004] ---- Sending Wallet Performance Notification : 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426004]
+[timestamp: 1724426005] ---- Sending Wallet Performance Notification : 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426005]
+[timestamp: 1724426005] ---- Sending Wallet Performance Notification : 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426005]
+[timestamp: 1724426005] ---- Sending Wallet Performance Notification : 0x94051ee59a831e247590ce779df065dd77ef5d0a : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426005]
+[timestamp: 1724426006] ---- Sending Notification for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 at [1724426006041] Text : Here comes your portfolio insight!
+[timestamp: 1724426006] ---- Sending Notification for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 at [1724426006182] Text : Here comes your portfolio insight!
+[timestamp: 1724426006] ---- Sending Notification for 0x94051ee59a831e247590ce779df065dd77ef5d0a at [1724426006391] Text : Here comes your portfolio insight!
+[timestamp: 1724426006] ---- Sending Notification for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 at [1724426006404] Text : Here comes your portfolio insight!
+[timestamp: 1724426011] ---- Sending Wallet Performance Notification : 0xcb034160f7b45e41e6015ecea09f31a66c144422 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$1347.42</span>
+
+Steady as its goes, Anon! Your portfolio hasn't budged an inch channel week.
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+You have : 768.93 $PUSH, If you stake it for 6 months it will be <span color="#40916c"> 810.84</span> at 10.90% APR
+[timestamp: 1724426011]
+[timestamp: 1724426012] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724426012714] Text : Here comes your portfolio insight!
+[timestamp: 1724426013] ---- Sending Wallet Performance Notification : 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426013]
+[timestamp: 1724426014] ---- Sending Notification for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 at [1724426014660] Text : Here comes your portfolio insight!
+[timestamp: 1724426014] ---- Sending Wallet Performance Notification : 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 : <span color='#457b9d'>Portfolio balance</span>: <span color='#e76f51'>$0.00</span>
+
+$PUSH Staking APR: <span color="#40916c">10.90%</span>
+PUSH-WETH UNISWAP LP Token Staking APR: <span color="#40916c">13.36%</span>
+[timestamp: 1724426014]
+[timestamp: 1724426015] ---- Sending Notification for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 at [1724426015686] Text : Here comes your portfolio insight!
+[timestamp: 1724426040] ---- 1---Fetch Balance called----1
+[timestamp: 1724426041] ---- User Data in FetchBalance : {"itemcount":9,"subscribers":["0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6","0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976","0x5fb8c3de7c77cf427935210326fc5575cc6f36e9","0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26","0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67","0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41","0x94051ee59a831e247590ce779df065dd77ef5d0a","0xab8a67743325347aa53bcc66850f8f13df87e3af","0xcb034160f7b45e41e6015ecea09f31a66c144422"]}
+[timestamp: 1724426041] ---- User :0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6
+[timestamp: 1724426041] ---- User :0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976
+[timestamp: 1724426041] ---- User :0x5fb8c3de7c77cf427935210326fc5575cc6f36e9
+[timestamp: 1724426041] ---- User :0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26
+[timestamp: 1724426041] ---- User :0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67
+[timestamp: 1724426041] ---- User :0x94051ee59a831e247590ce779df065dd77ef5d0a
+[timestamp: 1724426041] ---- User :0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41
+[timestamp: 1724426041] ---- User :0xcb034160f7b45e41e6015ecea09f31a66c144422
+[timestamp: 1724426041] ---- User :0xab8a67743325347aa53bcc66850f8f13df87e3af
+[timestamp: 1724426041] ---- Response for 0x0c97b7b7d14fbbfe726bf85c992db02e8e7d0fc6 in FetchBalance : [object Object]
+[timestamp: 1724426041] ---- Response for 0x5fb8c3de7c77cf427935210326fc5575cc6f36e9 in FetchBalance : [object Object]
+[timestamp: 1724426041] ---- Response for 0x0f514b718b8e4dc3e33bdff390673e8ec2ab4976 in FetchBalance : [object Object]
+[timestamp: 1724426041] ---- Response for 0x7f8b35d47aacf62ed934327aa0a42eb6c08c2e67 in FetchBalance : [object Object]
+[timestamp: 1724426041] ---- Response for 0x8bb2cfe10cf7d38bcd7c530bf2af4632f2744a41 in FetchBalance : [object Object]
+[timestamp: 1724426041] ---- Response for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724426041] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+
+[timestamp: 1724426041] ---- Third
+[timestamp: 1724426041] ---- Payload FetchBalance 3 : 
+[timestamp: 1724426041] ---- Payload for 0xab8a67743325347aa53bcc66850f8f13df87e3af in FetchBalance : ETH : 0.1168 ~ $311.43
+USDC : 17.4292 ~ $17.46
+
+[timestamp: 1724426041] ---- Response for 0x7c6b4b4d0b4952958af3feb1dd9a05fcbe7a0c26 in FetchBalance : [object Object]
+[timestamp: 1724426042] ---- Breakkkk.
+[timestamp: 1724426042] ---- User Data in FetchBalance : {"itemcount":0,"subscribers":[]}
+[timestamp: 1724426042] ---- Response for 0x94051ee59a831e247590ce779df065dd77ef5d0a in FetchBalance : [object Object]
+[timestamp: 1724426042] ---- Response for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+CXT : 1204.9135 ~ $78.08
+PUSH : 768.9306 ~ $54.06
+
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+CXT : 1204.9135 ~ $78.08
+
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+CXT : 1204.9135 ~ $78.08
+PUSH : 768.9306 ~ $54.06
+GRT : 145.1735 ~ $24.10
+OGN : 131.4315 ~ $11.33
+
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+CXT : 1204.9135 ~ $78.08
+PUSH : 768.9306 ~ $54.06
+GRT : 145.1735 ~ $24.10
+
+[timestamp: 1724426042] ---- Payload FetchBalance 3 : 
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+CXT : 1204.9135 ~ $78.08
+PUSH : 768.9306 ~ $54.06
+GRT : 145.1735 ~ $24.10
+OGN : 131.4315 ~ $11.33
+MANA : 22.9711 ~ $6.80
+
+[timestamp: 1724426042] ---- Third
+[timestamp: 1724426042] ---- Payload for 0xcb034160f7b45e41e6015ecea09f31a66c144422 in FetchBalance : LINK : 84.6 ~ $983.05
+USDC : 98.82 ~ $98.76
+GTC : 117.128 ~ $83.34
+CXT : 1204.9135 ~ $78.08
+PUSH : 768.9306 ~ $54.06
+GRT : 145.1735 ~ $24.10
+OGN : 131.4315 ~ $11.33
+MANA : 22.9711 ~ $6.80
+CQT : 1204.9135 ~ $5.71
+
+[timestamp: 1724426042] ---- Sending Notification for 0xab8a67743325347aa53bcc66850f8f13df87e3af at [1724426042823] Text : Here comes your portfolio insight!
+[timestamp: 1724426043] ---- Sending Notification for 0xcb034160f7b45e41e6015ecea09f31a66c144422 at [1724426043884] Text : Here comes your portfolio insight!

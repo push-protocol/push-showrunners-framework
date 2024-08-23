@@ -1,0 +1,28 @@
+{
+  "POST_CREATED": {
+    "title": "New post",
+    "body": "You have just created a new post.",
+    "notificationType": "1"
+  },
+  "COMMENT_CREATED": {
+    "title": "New comment",
+    "body": "You have a new comment.",
+    "notificationType": "2"
+  },
+  "MIRROR_CREATED": {
+    "title": "New mirror",
+    "body": "You have a new mirror",
+    "notificationType": "3"
+  },
+  "QUOTE_CREATED": {
+    "title": "New quote",
+    "body": "You have a new quote",
+    "notificationType": "4"
+  },
+  "PROFILE_MENTIONED": {
+    "title": "New mention",
+    "body": "Your profile was mentioned somewhere",
+    "notificationType": "5"
+  },
+  "providerUrl":"https://ethereum-sepolia.publicnode.com"
+}
