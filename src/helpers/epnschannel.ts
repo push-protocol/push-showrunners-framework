@@ -85,7 +85,8 @@ export class EPNSChannel {
       chainId: isOldStandard ? `eip155:1` : walletInfo.CHAIN_ID,
     };
 
-    this.logInfo(`WalletKeyMeta: ${JSON.stringify(walletKeyMeta)}`);
+   this.logInfo(`WalletKeyMeta: ${JSON.stringify(walletKeyMeta)}`);
+
 
     // const wallet = ethers.utils.computeAddress(walletKeyMeta.pk);
     const wallet = this.cSettings?.address ?? ethers.utils.computeAddress(walletKeyMeta.pk);
@@ -97,7 +98,6 @@ export class EPNSChannel {
       caip10: this.getCAIPAddress(wallet),
     };  
     this.logInfo(`WalletKeyObject: ${walletKeyObject}`);
-
     return walletKeyObject;
   }
 
