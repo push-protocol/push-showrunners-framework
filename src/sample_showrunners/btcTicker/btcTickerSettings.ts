@@ -1,4 +1,4 @@
-{
+export const settings = {
     "cmcEndpoint": "https://pro-api.coinmarketcap.com/",
     "providerUrl":"https://sepolia.gateway.tenderly.co",
     "route":"v1/cryptocurrency/quotes/latest",

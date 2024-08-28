@@ -1,10 +1,10 @@
 
 import { Service, Inject } from 'typedi';
 import config from '../../config';
-import settings from './btcTickerSettings.json';
+import {settings} from './btcTickerSettings';
 import { EPNSChannel } from '../../helpers/epnschannel';
 import { Logger } from 'winston';
-import keys from './btcTickerKeys.json';
+import {keys} from './btcTickerKeys';
 import { PushAPI, CONSTANTS } from '@pushprotocol/restapi';
 import { ethers } from 'ethers';
 import { btcTickerUserModel, btcTickerGlobalModel } from './btcTickerModel';
