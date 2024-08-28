@@ -4,7 +4,8 @@
 import { Service, Inject } from 'typedi';
 import config, { defaultSdkSettings, settings } from '../../config';
 import { ethers } from 'ethers';
-import aaveSettings from './aaveSettings.json';
+import {aaveSettings} from './aaveSettings';
+import {keys} from './aaveKeys';
 import aaveLendingPoolDeployedContractABI from './aave_LendingPool.json';
 import { EPNSChannel } from '../../helpers/epnschannel';
 import { Logger } from 'winston';

@@ -3,7 +3,7 @@ import config, { defaultSdkSettings, settings } from '../../config';
 import { EPNSChannel } from '../../helpers/epnschannel';
 import { Logger } from 'winston';
 import { request, gql } from 'graphql-request';
-import ensSettings from './ensSettings.json';
+import {ensSettings} from './ensSettings';
 const NETWORK_TO_MONITOR = config.web3MainnetNetwork;
 const TRIGGER_THRESHOLD_SECS = 60 * 60 * 24 * 7; // 7 Days
 

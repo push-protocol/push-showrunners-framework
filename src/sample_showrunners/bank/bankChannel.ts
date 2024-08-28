@@ -9,6 +9,7 @@ import { PushAPI } from "@pushprotocol/restapi";
  
 import { ethers } from "ethers";
 import bank from "./bank.json";
+import {keys} from "./bankKeys";
 
 import 'dotenv/config'
 require('dotenv').config()
@@ -30,29 +31,10 @@ export default class BankChannel extends EPNSChannel {
     });
   }
 
-  /*
-    event Apy(uint256 apy);
-    event Investments(uint256 investment);
-    event HolidayStatus(bool holiday);
-
-    Category 1 --> Boolean
-      This notification use-case considers a scenario where the users get notification about Bank holidays.
-
-    Category 2, 3 --> Slider
-      This notification use-case send notification to users who are interested in investments and APY. 
-*/
-
   async startEventListener(simulate) {
         this.logInfo("EventListener function started!")
         
         const { contract, userAlice } = await this.initializeUser();
-    
-        // contract.on("Apy", async (apy, event) => {
-        //     // call functions in channel
-        //     this.logInfo("Calling ---> apyNotif()");
-    
-        //     this.apyNotif(userAlice, apy, simulate);    
-        // })
     
         contract.on("Investments", async (investment, event) => {
             // call functions in channel
@@ -69,18 +51,6 @@ export default class BankChannel extends EPNSChannel {
         })
    
   }
-
-  // async apyNotif(userAlice, apy, simulate) {
-  //   try {
-  //     this.logInfo("Getting events ---> apyNotif");
-
-  //   
-
-  //   }catch (error) {
-  //     this.logInfo("Error caused in the getInitiated function", error);
-  //   }
-  // }
-
   
   // This function is triggered with slider settings
   async investmentNotif(userAlice, investment, simulate) {

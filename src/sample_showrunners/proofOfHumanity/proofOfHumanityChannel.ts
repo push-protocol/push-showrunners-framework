@@ -2,7 +2,7 @@ import { Inject, Service } from 'typedi';
 import config, { defaultSdkSettings } from '../../config';
 
 import { request, gql } from 'graphql-request';
-import proofOfHumanitySettings from './proofOfHumanitySettings.json';
+import {proofOfHumanitySettings} from './proofOfHumanitySettings';
 import proofOfHumanityABI from './proofOfHumanity.json';
 
 import { Contract } from '@ethersproject/contracts';

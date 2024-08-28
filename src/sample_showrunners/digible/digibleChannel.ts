@@ -6,7 +6,7 @@ import { EPNSChannel, ISendNotificationParams } from '../../helpers/epnschannel'
 import { ethers } from 'ethers';
 import digiTradeABI from './digiTradeAbi.json';
 import digiTrackABI from './digiTrackabi.json';
-import digibleSettings from './digibleSettings.json';
+import {digibleSettings} from './digibleSettings';
 import { digibleModel } from './digibleModel';
 import ERC20ABI from './ERC20.json';
 
