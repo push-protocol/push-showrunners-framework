@@ -7,7 +7,7 @@
     </a>
 </h1>
  
-<p align="center">
+<p align="center"> 
   <i align="center">Push Protocol is a web3 communication network, enabling cross-chain notifications, messaging, video, and NFT chat for dapps, wallets, and services.🚀</i>
 </p>
 
